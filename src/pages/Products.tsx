@@ -16,7 +16,7 @@ const Products: React.FC = () => {
     {
       name: "Madeirite",
       description: "DESCRIÇÃO",
-      image: "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
+      image: "https://images-offstore.map.azionedge.net/compressed/e1400563917aaa9a8c811fe37064241e.webp",
       price: "Consulte preços",
       category: "Madeirite"
     },
