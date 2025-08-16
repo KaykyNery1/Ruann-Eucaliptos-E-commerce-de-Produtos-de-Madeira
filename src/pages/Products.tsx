@@ -14,7 +14,7 @@ const Products: React.FC = () => {
 
   const products = [
     {
-      name: "Lenha Seca",
+      name: "Madeirite",
       description: "Lenha de eucalipto selecionada e seca",
       image: "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
       price: "Consulte preços",
