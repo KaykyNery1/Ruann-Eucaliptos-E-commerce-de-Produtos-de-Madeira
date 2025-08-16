@@ -10,7 +10,7 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Lenha', 'Toras', 'Mourões', 'Carvão'];
+  const categories = ['Todos', 'Madeirite', 'Toras', 'Mourões', 'Carvão'];
 
   const products = [
     {
