@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
     {
       icon: <Phone className="h-6 w-6 text-emerald-600" />,
       title: "Telefone",
-      info: "(61) 99991 0956",
+      info: "(61) 99991-0956",
       action: () => window.open("tel:6199910956")
     },
     {
