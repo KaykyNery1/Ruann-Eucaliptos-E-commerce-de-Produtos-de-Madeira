@@ -122,7 +122,7 @@ const Contact: React.FC = () => {
               Nossa Localização
             </h2>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <iframe         src="https://www.google.com/maps/place/Ruann+Eucaliptos/@-15.9247312,-47.7566452,17z/data=!3m1!4b1!4m6!3m5!1s0x935a1f01829c77a3:0x74ad726cf411a35f!8m2!3d-15.9247312!4d-47.7566452!16s%2Fg%2F11p56kf9jr?entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D"
+              <iframe         src="https://maps.app.goo.gl/G2gBHXnhRfyugq9x6"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
