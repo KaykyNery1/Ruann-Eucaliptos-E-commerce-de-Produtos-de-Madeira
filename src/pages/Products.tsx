@@ -18,7 +18,7 @@ const Products: React.FC = () => {
       description: "DESCRIÇÃO",
       image: "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
       price: "Consulte preços",
-      category: "Lenha"
+      category: "Madeirite"
     },
     {
       name: "Poste",
