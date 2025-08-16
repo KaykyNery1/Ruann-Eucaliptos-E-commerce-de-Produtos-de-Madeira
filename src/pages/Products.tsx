@@ -10,7 +10,7 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Madeirite', 'Toras', 'Mourões', 'Carvão'];
+  const categories = ['Todos', 'Madeirite', 'Poste', 'Mourões', 'Carvão'];
 
   const products = [
     {
@@ -21,11 +21,11 @@ const Products: React.FC = () => {
       category: "Lenha"
     },
     {
-      name: "Toras",
+      name: "Poste",
       description: "Toras de eucalipto para diversas aplicações",
       image: "https://images.pexels.com/photos/1029641/pexels-photo-1029641.jpeg",
       price: "Consulte preços",
-      category: "Toras"
+      category: "Poste"
     },
     {
       name: "Mourões",
