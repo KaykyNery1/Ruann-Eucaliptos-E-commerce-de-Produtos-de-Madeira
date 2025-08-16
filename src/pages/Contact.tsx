@@ -32,9 +32,10 @@ const Contact: React.FC = () => {
     {
       icon: <MapPin className="h-6 w-6 text-emerald-600" />,
       title: "Endereço",
-      info: "São Sebastião - DF, Brasil",
-      action: () => {}
-    }
+info: "São Sebastião - DF, Brasil",
+action: () => {
+  window.open("https://maps.app.goo.gl/G2gBHXnhRfyugq9x6", "_blank");
+}
   ];
 
   const businessHours = [
