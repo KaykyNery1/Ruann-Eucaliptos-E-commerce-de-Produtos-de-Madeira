@@ -130,7 +130,7 @@ const Contact: React.FC = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Localização da EucaliptusBR"
-                title="Localização da RUANN EUCALIPTOS"s
+                title="Localização da RUANN EUCALIPTOS"
               ></iframe>
             </div>
 
