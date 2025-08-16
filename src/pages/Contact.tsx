@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
     {
       icon: <Phone className="h-6 w-6 text-emerald-600" />,
       title: "Telefone",
-      info: "(61) 99991-0956",
+      info: "(61) 99991 0956",
       action: () => window.open("tel:6199910956")
     },
     {
@@ -32,10 +32,9 @@ const Contact: React.FC = () => {
     {
       icon: <MapPin className="h-6 w-6 text-emerald-600" />,
       title: "Endereço",
-info: "São Sebastião - DF, Brasil",
-action: () => {
-  window.open("https://maps.app.goo.gl/G2gBHXnhRfyugq9x6", "_blank");
-}
+      info: "São Sebastião - DF, Brasil",
+      action: () => {}
+    }
   ];
 
   const businessHours = [
