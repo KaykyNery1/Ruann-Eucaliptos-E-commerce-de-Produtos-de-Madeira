@@ -52,7 +52,7 @@ const About: React.FC = () => {
               Quem Somos
             </h2>
             <p className="text-gray-600 mb-4 text-lg leading-relaxed">
-              A RUANN EUCALIPTOS é uma empresa dedicada ao fornecimento de produtos de eucalipto de alta qualidade. 
+              A Ruann Eucaliptos é uma empresa dedicada ao fornecimento de produtos de eucalipto de alta qualidade. 
               Localizada em São Sebastião, no Distrito Federal, nossa missão é oferecer produtos que atendam às 
               necessidades de nossos clientes com excelência e sustentabilidade.
             </p>
