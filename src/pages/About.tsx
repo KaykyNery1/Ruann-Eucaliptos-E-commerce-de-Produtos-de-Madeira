@@ -114,7 +114,7 @@ const About: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img 
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrfE-5uk6MTtPlRm0iRFtyNcCm5gJCIKeUqQ&s"
+                  src="https://madezanmadeiras.com.br/files/imagem/1293928295755e71c1de185.36080464.jpg"
                   alt="Equipe da fazenda"
                   className="w-full h-96 object-cover rounded-xl shadow-lg"
                 />
