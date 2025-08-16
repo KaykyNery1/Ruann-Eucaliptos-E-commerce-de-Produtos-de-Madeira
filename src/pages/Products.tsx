@@ -16,7 +16,7 @@ const Products: React.FC = () => {
     {
       name: "Madeirite",
       description: "DESCRIÇÃO",
-      image: "https://images-offstore.map.azionedge.net/compressed/e1400563917aaa9a8c811fe37064241e.webp",
+      image: "https://http2.mlstatic.com/D_NQ_NP_668571-MLB89679904286_082025-O-chapa-madeirite-plastificado-resina-fenolica-17mm-construc.webp",
       price: "Consulte preços",
       category: "Madeirite"
     },
@@ -30,7 +30,7 @@ const Products: React.FC = () => {
     {
       name: "Táboa",
       description: "DESCRIÇÃO",
-      image: "https://images.pexels.com/photos/162640/wood-logs-lumber-log-162640.jpeg",
+      image: "https://images-offstore.map.azionedge.net/compressed/e1400563917aaa9a8c811fe37064241e.webp",
       price: "Consulte preços",
       category: "Táboa"
     },
