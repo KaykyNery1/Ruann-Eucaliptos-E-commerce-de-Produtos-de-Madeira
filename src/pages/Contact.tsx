@@ -122,7 +122,7 @@ const Contact: React.FC = () => {
               Nossa Localização
             </h2>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <iframe         src="https://maps.app.goo.gl/G2gBHXnhRfyugq9xd6"
+              <iframe         src="https://maps.app.goo.gl/G2gBHXnhRfyugq9x6"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
