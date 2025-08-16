@@ -42,7 +42,7 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           <div>
             <img 
-              src="https://images.pexels.com/photos/1162251/pexels-photo-1162251.jpeg"
+              src="https://lh3.googleusercontent.com/p/AF1QipMTGlzwtBQQRh_U07Np8UgYzNGgpZqejvOdF3k=s680-w680-h510-rw"
               alt="Fazenda de eucalipto"
               className="w-full h-96 object-cover rounded-xl shadow-lg"
             />
