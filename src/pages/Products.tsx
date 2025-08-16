@@ -23,7 +23,7 @@ const Products: React.FC = () => {
     {
       name: "Poste",
       description: "DESCRIÇÃO",
-      image: "https://images.pexels.com/photos/1029641/pexels-photo-1029641.jpeg",
+      image: "https://images-offstore.map.azionedge.net/compressed/6de7248721eab5680992738cd9648d95.webp",
       price: "Consulte preços",
       category: "Poste"
     },
