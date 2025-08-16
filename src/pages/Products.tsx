@@ -35,11 +35,11 @@ const Products: React.FC = () => {
       category: "Táboa"
     },
     {
-      name: "Carvão Vegetal",
+      name: "Telas",
       description: "DESCRIÇÃO",
       image: "https://images.pexels.com/photos/1162251/pexels-photo-1162251.jpeg",
       price: "Consulte preços",
-      category: "Carvão"
+      category: "Telas"
     }
   ];
 
