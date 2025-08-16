@@ -37,7 +37,7 @@ const Products: React.FC = () => {
     {
       name: "Telas",
       description: "DESCRIÇÃO",
-      image: "https://images.pexels.com/photos/1162251/pexels-photo-1162251.jpeg",
+      image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
       price: "Consulte preços",
       category: "Telas"
     }
