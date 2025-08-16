@@ -122,16 +122,16 @@ const Contact: React.FC = () => {
               Nossa Localização
             </h2>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3836.700934849839!2d-47.7566452!3d-15.9247312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a1f01829c77a3%3A0x74ad726cf411a35f!2sRuann%20Eucaliptos!5e0!3m2!1spt-BR!2sbr!4v1755309671556!5m2!1spt-BR!2sbr"
-  width="100%"
-  height="400"
-  style={{ border: 0 }}
-  allowFullScreen
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-  title="Localização da RUANN EUCALIPTOS"
-/></iframe>
+              <iframe         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3836.700934849839!2d-47.7566452!3d-15.9247312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a1f01829c77a3%3A0x74ad726cf411a35f!2sRuann%20Eucaliptos!5e0!3m2!1spt-BR!2sbr!4v1755309671556!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localização da EucaliptusBR"
+                title="Localização da RUANN EUCALIPTOS"s
+              ></iframe>
             </div>
 
             <div className="mt-6 bg-gray-50 p-6 rounded-lg">
