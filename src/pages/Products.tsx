@@ -10,33 +10,33 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Madeirite', 'Poste', 'Mourões', 'Carvão'];
+  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Carvão'];
 
   const products = [
     {
       name: "Madeirite",
-      description: "Lenha de eucalipto selecionada e seca",
+      description: "DESCRIÇÃO",
       image: "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
       price: "Consulte preços",
       category: "Lenha"
     },
     {
       name: "Poste",
-      description: "Toras de eucalipto para diversas aplicações",
+      description: "DESCRIÇÃO",
       image: "https://images.pexels.com/photos/1029641/pexels-photo-1029641.jpeg",
       price: "Consulte preços",
       category: "Poste"
     },
     {
-      name: "Mourões",
-      description: "Mourões de eucalipto para cercas e construções",
+      name: "Táboa",
+      description: "DESCRIÇÃO",
       image: "https://images.pexels.com/photos/162640/wood-logs-lumber-log-162640.jpeg",
       price: "Consulte preços",
-      category: "Mourões"
+      category: "Táboa"
     },
     {
       name: "Carvão Vegetal",
-      description: "Carvão vegetal de eucalipto de alta qualidade",
+      description: "DESCRIÇÃO",
       image: "https://images.pexels.com/photos/1162251/pexels-photo-1162251.jpeg",
       price: "Consulte preços",
       category: "Carvão"
