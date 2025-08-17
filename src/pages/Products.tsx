@@ -10,7 +10,7 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Mourões', 'Carvão', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
+  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Cano', 'Carvão', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
 
   const products = [
     {
