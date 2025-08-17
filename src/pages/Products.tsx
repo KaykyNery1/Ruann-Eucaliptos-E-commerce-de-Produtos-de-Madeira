@@ -36,7 +36,7 @@ const Products: React.FC = () => {
     },
     {
       name: "Telas",
-      description: "Material resistente, ideal para proteção e divisórias.",
+      description: "Tela resistente, ideal para proteção e divisórias.",
       image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
       price: "R$ 0,00",
       category: "Telas"
