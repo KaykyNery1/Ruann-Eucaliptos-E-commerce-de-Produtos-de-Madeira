@@ -61,7 +61,7 @@ const Home: React.FC = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://sdmntprwestus2.oaiusercontent.com/files/00000000-abc0-61f8-b589-ca1ae475e454/raw?se=2025-08-17T15%3A59%3A09Z&sp=r&sv=2024-08-04&sr=b&scid=21e8b419-5668-5052-a8ff-ac6337172de2&skoid=ec8eb293-a61a-47e0-abd0-6051cc94b050&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-16T23%3A47%3A26Z&ske=2025-08-17T23%3A47%3A26Z&sks=b&skv=2024-08-04&sig=t6HKYmBhT0H3%2B/1OJD5SPqGzwCDOp4WinqBhTy8rHZs%3D)',
+            backgroundImage: 'url(https://sdmntprwestus2.oaiusercontent.com/files/00000000-abc0-61f8-b589-ca1ae475e454/raw?se=2025-08-17T15%3A59%3A09Z&sp=r&sv=2024-08-04&sr=b&scid=21e8b419-5668-5052-a8ff-ac6337172de2&skoid=ec8eb293-a61a-47e0-abd0-6051cc94b050&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-16T23%3A47%3A26Z&ske=2025-08-17T23%3A47%3A26Z&sks=b&skv=2024-08-04&sig=t6HKYmBhT0H3%2B/1OJD5SPqGzwCDOp4WinqBhTy8rHZs%3d)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
