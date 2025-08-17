@@ -65,7 +65,7 @@ const Products: React.FC = () => {
     {
       name: "Arame",
       description: "Forte e durável, ideal para cercas e fixações. (Diversos modelos).",
-      image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lojaforcadocampo.com.br%2Farame-liso-ovalado-maccaferri-1000m-posse-go%3Fsrsltid%3DAfmBOoqbY43TwfouqmzRIuLPBr6cVg6H_utU7KobDysV3A-emRcDIwkG&psig=AOvVaw00O2TpEPkpqBWhlE-lQvzQ&ust=1755541663885000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPivuMG8ko8DFQAAAAAdAAAAABAL",
+image:"https://images.tcdn.com.br/img/img_prod/999130/arame_galvanizado_16_bwg_1_65mm_gerdau_6953_1_0a70604e0ff1c8c5f412e92dbf4d3dbb.png",
       price: "R$ 0,00",
       category: "Arame"
     },
