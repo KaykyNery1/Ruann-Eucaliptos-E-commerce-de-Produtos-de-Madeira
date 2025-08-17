@@ -10,7 +10,7 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Cano', 'Carvão', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
+  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Cano', 'Arame', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
 
   const products = [
     {
@@ -63,9 +63,9 @@ const Products: React.FC = () => {
       category: "Cano"
     },
     {
-      name: "Carvão Vegetal",
-      description: "Carvão vegetal de eucalipto para churrascos",
-      image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQBAgMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAAAAQIDBwT/xAAfEAEBAQEBAQABBQAAAAAAAAAAARFBMSFREmFxgYL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9lS+KcoMzxYRQSp4oCUipAEVAUABFABUAoUBBToIKAhSlBIVYmAJWsQEz4laqWAiNYzQT9KNYgPoOKgEAAwAEBQZMVQZxYKCKAJRUBJ6qp0DTpgCUxQEpVsQBFARGkBKUpQQxU4BkQAd0UBIvEiggpgIKAhphgBuHh6BAAAAAAEVAUACpVAZwxQEOLiYCCpQTEUBEaAdRUAgAAAAFAAARQBFToAoCYcn7rU/ABn1QBKqUBLWkoJq8T+lBBUBErTNBCqUGVAHYPgCCgIAAAAAACghgAFCgAAAAFCgBCggAAAJqUvpQSi1AAAdQAAAEUARagAAAAAKCKICpFQAABagAUAQ4qcAABMStICJGriUE+AA6gAAAAUEAAAABQAARQARQEUASigIKUEAoCKAyFKCWlDAMD/IDoAAIoBQoIsRYACAoQAAAAAAAAAEnqgBSAVFQAAERUoCGAAu/wAANgAAAAAgoCCoCwAAAAAAABF4gLAqAqCggAAIAACAaCffzFQB1QARQAAAqACwgAUAEUAAAC+ACcABagAAAQADiAAIAIAAAP/Z",
+      name: "Arame",
+      description: "Forte e durável, ideal para cercas e fixações. (Diversos modelos).",
+      image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lojaforcadocampo.com.br%2Farame-liso-ovalado-maccaferri-1000m-posse-go%3Fsrsltid%3DAfmBOoqbY43TwfouqmzRIuLPBr6cVg6H_utU7KobDysV3A-emRcDIwkG&psig=AOvVaw00O2TpEPkpqBWhlE-lQvzQ&ust=1755541663885000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPivuMG8ko8DFQAAAAAdAAAAABAL",
       price: "R$ 0,00",
       category: "Carvão"
     },
