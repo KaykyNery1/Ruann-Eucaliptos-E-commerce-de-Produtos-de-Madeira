@@ -15,28 +15,28 @@ const Products: React.FC = () => {
   const products = [
     {
       name: "Madeirite",
-      description: "Madeirite resistente e versátil, ideal para construções.",
+      description: "Madeirite resistente e versátil, ideal para construções. (Vários modelos)",
       image: "https://http2.mlstatic.com/D_NQ_NP_668571-MLB89679904286_082025-O-chapa-madeirite-plastificado-resina-fenolica-17mm-construc.webp",
       price: "R$ 0,00",
       category: "Madeirite"
     },
     {
       name: "Poste",
-      description: "Madeira resistente, ideal para diversas construções.",
+      description: "Madeira resistente, ideal para diversas construções. (Vários modelos)",
       image: "https://images-offstore.map.azionedge.net/compressed/6de7248721eab5680992738cd9648d95.webp",
       price: "R$ 0,00",
       category: "Poste"
     },
     {
       name: "Táboa",
-      description: "Madeira de alta qualidade, perfeita para cortes e construções.",
+      description: "Madeira de alta qualidade, perfeita para cortes e construções. (Vários modelos)",
       image: "https://images-offstore.map.azionedge.net/compressed/e1400563917aaa9a8c811fe37064241e.webp",
       price: "R$ 0,00",
       category: "Táboa"
     },
     {
       name: "Telas",
-      description: "Tela resistente, ideal para proteção e divisórias.",
+      description: "Tela resistente, ideal para proteção e divisórias. (Vários modelos)",
       image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
       price: "R$ 0,00",
       category: "Telas"
