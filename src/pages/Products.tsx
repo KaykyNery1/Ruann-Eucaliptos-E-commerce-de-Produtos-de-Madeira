@@ -15,7 +15,7 @@ const Products: React.FC = () => {
   const products = [
     {
       name: "Madeirite",
-      description: "Madeirite resistente e versátil, ideal para construções, revestimentos e projetos que exigem durabilidade e acabamento de qualidade.",
+      description: "Madeirite resistente e versátil, ideal para construções, revestimentos e projetos que exigem durabilidade e acabamento de qualidad.",
       image: "https://http2.mlstatic.com/D_NQ_NP_668571-MLB89679904286_082025-O-chapa-madeirite-plastificado-resina-fenolica-17mm-construc.webp",
       price: "R$ 0,00",
       category: "Madeirite"
