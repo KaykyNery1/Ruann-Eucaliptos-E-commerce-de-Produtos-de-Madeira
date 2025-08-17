@@ -60,7 +60,7 @@ const Products: React.FC = () => {
       description: "Resistente e versátil, ideal para instalações e construções. (Diversos modelos).",
       image: "https://images.tcdn.com.br/img/img_prod/624414/tubo_cano_pvc_esgoto_branco_de_50mm_barra_6_metros_1663_1_20200224192604.jpg",
       price: "R$ 0,00",
-      category: "Mourões"
+      category: "Cano"
     },
     {
       name: "Carvão Vegetal",
