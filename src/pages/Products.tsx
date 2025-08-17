@@ -10,7 +10,7 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Cano', 'Arame', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
+  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Cano', 'Arame', 'Ripas', 'Caibros', 'Vigas'];
 
   const products = [
     {
@@ -68,13 +68,6 @@ const Products: React.FC = () => {
       image: "https://acdn-us.mitiendanube.com/stores/001/111/164/products/93533875b91daeb411a0535a5348933f-d8e11751daac4c7e8016918459991988-640-0.jpg",
       price: "R$ 0,00",
       category: "Arame"
-    },
-    {
-      name: "Estacas de Eucalipto",
-      description: "Estacas resistentes para diversos usos",
-      image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQBAgMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAAAAQIDBwT/xAAfEAEBAQEBAQABBQAAAAAAAAAAARFBMSFREmFxgYL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9lS+KcoMzxYRQSp4oCUipAEVAUABFABUAoUBBToIKAhSlBIVYmAJWsQEz4laqWAiNYzQT9KNYgPoOKgEAAwAEBQZMVQZxYKCKAJRUBJ6qp0DTpgCUxQEpVsQBFARGkBKUpQQxU4BkQAd0UBIvEiggpgIKAhphgBuHh6BAAAAAAEVAUACpVAZwxQEOLiYCCpQTEUBEaAdRUAgAAAAFAAARQBFToAoCYcn7rU/ABn1QBKqUBLWkoJq8T+lBBUBErTNBCqUGVAHYPgCCgIAAAAAACghgAFCgAAAAFCgBCggAAAJqUvpQSi1AAAdQAAAEUARagAAAAAKCKICpFQAABagAUAQ4qcAABMStICJGriUE+AA6gAAAAUEAAAABQAARQARQEUASigIKUEAoCKAyFKCWlDAMD/IDoAAIoBQoIsRYACAoQAAAAAAAAAEnqgBSAVFQAAERUoCGAAu/wAANgAAAAAgoCCoCwAAAAAAABF4gLAqAqCggAAIAACAaCffzFQB1QARQAAAqACwgAUAEUAAAC+ACcABagAAAQADiAAIAIAAAP/Z",
-      price: "R$ 0,00",
-      category: "Estacas"
     },
     {
       name: "Ripas de Eucalipto",
