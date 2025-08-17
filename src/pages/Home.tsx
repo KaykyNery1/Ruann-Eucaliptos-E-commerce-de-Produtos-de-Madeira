@@ -92,7 +92,7 @@ const Home: React.FC = () => {
               Nossos Diferenciais
             </h2>
             <p className="text-xl text-gray-600">
-              Qualidade, sustentabilidade e atendimento excepcional
+              Qualidade, sustentabilidade e atendimento excepcional.
             </p>
           </div>
 
