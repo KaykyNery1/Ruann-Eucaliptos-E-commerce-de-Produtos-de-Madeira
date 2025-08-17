@@ -50,7 +50,7 @@ const Products: React.FC = () => {
     },
     {
       name: "Verniz",
-      description: "Toras resistentes para construção civil",
+      description: "Protege e realça a beleza natural da madeira.",
       image: "https://www.zemad.com.br/wp-content/uploads/2016/10/tipos-de-verniz.jpg",
       price: "R$ 0,00",
       category: "Verniz"
