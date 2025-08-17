@@ -22,21 +22,21 @@ const Products: React.FC = () => {
     },
     {
       name: "Poste",
-      description: "DESCRIÇÃO",
+      description: "Madeira resistente, ideal para diversas construções.",
       image: "https://images-offstore.map.azionedge.net/compressed/6de7248721eab5680992738cd9648d95.webp",
       price: "R$ 0,00",
       category: "Poste"
     },
     {
       name: "Táboa",
-      description: "DESCRIÇÃO",
+      description: "Madeira de alta qualidade, perfeita para cortes e construções.",
       image: "https://images-offstore.map.azionedge.net/compressed/e1400563917aaa9a8c811fe37064241e.webp",
       price: "R$ 0,00",
       category: "Táboa"
     },
     {
       name: "Telas",
-      description: "DESCRIÇÃO",
+      description: "Material resistente, ideal para proteção e divisórias.",
       image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
       price: "R$ 0,00",
       category: "Telas"
