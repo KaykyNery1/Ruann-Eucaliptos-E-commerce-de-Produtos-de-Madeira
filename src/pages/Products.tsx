@@ -10,7 +10,7 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Toras', 'Mourões', 'Carvão', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
+  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Mourões', 'Carvão', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
 
   const products = [
     {
@@ -49,11 +49,11 @@ const Products: React.FC = () => {
       category: "Telha Ecológica"
     },
     {
-      name: "Toras para Construção",
+      name: "Verniz",
       description: "Toras resistentes para construção civil",
-      image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQBAgMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAAAAQIDBwT/xAAfEAEBAQEBAQABBQAAAAAAAAAAARFBMSFREmFxgYL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9lS+KcoMzxYRQSp4oCUipAEVAUABFABUAoUBBToIKAhSlBIVYmAJWsQEz4laqWAiNYzQT9KNYgPoOKgEAAwAEBQZMVQZxYKCKAJRUBJ6qp0DTpgCUxQEpVsQBFARGkBKUpQQxU4BkQAd0UBIvEiggpgIKAhphgBuHh6BAAAAAAEVAUACpVAZwxQEOLiYCCpQTEUBEaAdRUAgAAAAFAAARQBFToAoCYcn7rU/ABn1QBKqUBLWkoJq8T+lBBUBErTNBCqUGVAHYPgCCgIAAAAAACghgAFCgAAAAFCgBCggAAAJqUvpQSi1AAAdQAAAEUARagAAAAAKCKICpFQAABagAUAQ4qcAABMStICJGriUE+AA6gAAAAUEAAAABQAARQARQEUASigIKUEAoCKAyFKCWlDAMD/IDoAAIoBQoIsRYACAoQAAAAAAAAAEnqgBSAVFQAAERUoCGAAu/wAANgAAAAAgoCCoCwAAAAAAABF4gLAqAqCggAAIAACAaCffzFQB1QARQAAAqACwgAUAEUAAAC+ACcABagAAAQADiAAIAIAAAP/Z",
+      image: "https://www.zemad.com.br/wp-content/uploads/2016/10/tipos-de-verniz.jpg",
       price: "R$ 0,00",
-      category: "Toras"
+      category: "Verniz"
     },
     {
       name: "Mourões Tratados",
