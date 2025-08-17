@@ -10,36 +10,92 @@ const Products: React.FC = () => {
     window.open(url, '_blank');
   };
 
-  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas'];
+  const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Lenha', 'Toras', 'Mourões', 'Carvão', 'Estacas', 'Ripas', 'Caibros', 'Vigas'];
 
   const products = [
     {
       name: "Madeirite",
       description: "DESCRIÇÃO",
       image: "https://http2.mlstatic.com/D_NQ_NP_668571-MLB89679904286_082025-O-chapa-madeirite-plastificado-resina-fenolica-17mm-construc.webp",
-      price: "Consulte preços",
+      price: "R$ 0,00",
       category: "Madeirite"
     },
     {
       name: "Poste",
       description: "DESCRIÇÃO",
       image: "https://images-offstore.map.azionedge.net/compressed/6de7248721eab5680992738cd9648d95.webp",
-      price: "Consulte preços",
+      price: "R$ 0,00",
       category: "Poste"
     },
     {
       name: "Táboa",
       description: "DESCRIÇÃO",
       image: "https://images-offstore.map.azionedge.net/compressed/e1400563917aaa9a8c811fe37064241e.webp",
-      price: "Consulte preços",
+      price: "R$ 0,00",
       category: "Táboa"
     },
     {
       name: "Telas",
       description: "DESCRIÇÃO",
       image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
-      price: "Consulte preços",
+      price: "R$ 0,00",
       category: "Telas"
+    },
+    {
+      name: "Lenha Seca Premium",
+      description: "Lenha de eucalipto selecionada, ideal para churrascos",
+      image: "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
+      price: "R$ 0,00",
+      category: "Lenha"
+    },
+    {
+      name: "Toras para Construção",
+      description: "Toras resistentes para construção civil",
+      image: "https://images.pexels.com/photos/162640/wood-logs-lumber-log-162640.jpeg",
+      price: "R$ 0,00",
+      category: "Toras"
+    },
+    {
+      name: "Mourões Tratados",
+      description: "Mourões de eucalipto tratado para cercas",
+      image: "https://images.pexels.com/photos/1029641/pexels-photo-1029641.jpeg",
+      price: "R$ 0,00",
+      category: "Mourões"
+    },
+    {
+      name: "Carvão Vegetal",
+      description: "Carvão vegetal de eucalipto para churrascos",
+      image: "https://images.pexels.com/photos/1309240/pexels-photo-1309240.jpeg",
+      price: "R$ 0,00",
+      category: "Carvão"
+    },
+    {
+      name: "Estacas de Eucalipto",
+      description: "Estacas resistentes para diversos usos",
+      image: "https://images.pexels.com/photos/1029641/pexels-photo-1029641.jpeg",
+      price: "R$ 0,00",
+      category: "Estacas"
+    },
+    {
+      name: "Ripas de Eucalipto",
+      description: "Ripas de eucalipto para construção",
+      image: "https://images.pexels.com/photos/162640/wood-logs-lumber-log-162640.jpeg",
+      price: "R$ 0,00",
+      category: "Ripas"
+    },
+    {
+      name: "Caibros",
+      description: "Caibros de eucalipto para estruturas",
+      image: "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
+      price: "R$ 0,00",
+      category: "Caibros"
+    },
+    {
+      name: "Vigas de Eucalipto",
+      description: "Vigas estruturais de eucalipto tratado",
+      image: "https://images.pexels.com/photos/162640/wood-logs-lumber-log-162640.jpeg",
+      price: "R$ 0,00",
+      category: "Vigas"
     }
   ];
 

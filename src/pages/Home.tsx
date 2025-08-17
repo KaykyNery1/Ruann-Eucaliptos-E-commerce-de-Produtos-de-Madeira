@@ -69,11 +69,10 @@ const Home: React.FC = () => {
         
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
-            <span className="text-emerald-400">RUANN EUCALIPTOS</span><br />
-            Qualidade e Sustentabilidade
+            <span className="text-emerald-400">RUANN EUCALIPTOS</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 opacity-90">
-            Produtos de eucalipto de alta qualidade com compromisso sustentável
+          <p className="text-xl md:text-2xl mb-8 opacity-90 font-semibold">
+            Strong, reliable, and sustainable eucalyptus for every need.
           </p>
           <button 
             onClick={() => handleWhatsAppClick("Informações gerais")}
