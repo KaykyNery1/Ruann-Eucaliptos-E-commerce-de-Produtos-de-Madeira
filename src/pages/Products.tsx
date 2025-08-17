@@ -15,28 +15,28 @@ const Products: React.FC = () => {
   const products = [
     {
       name: "Madeirite",
-      description: "Madeirite resistente e versátil, ideal para construções. (Vários modelos)",
+      description: "Madeirite resistente e versátil, ideal para construções. (Diversos modelos)",
       image: "https://http2.mlstatic.com/D_NQ_NP_668571-MLB89679904286_082025-O-chapa-madeirite-plastificado-resina-fenolica-17mm-construc.webp",
       price: "R$ 0,00",
       category: "Madeirite"
     },
     {
       name: "Poste",
-      description: "Madeira resistente, ideal para diversas construções. (Vários modelos)",
+      description: "Madeira resistente, ideal para diversas construções. (Diversos modelos)",
       image: "https://images-offstore.map.azionedge.net/compressed/6de7248721eab5680992738cd9648d95.webp",
       price: "R$ 0,00",
       category: "Poste"
     },
     {
       name: "Táboa",
-      description: "Madeira de alta qualidade, perfeita para cortes e construções. (Vários modelos)",
+      description: "Madeira de alta qualidade, perfeita para cortes e construções. (Diversos modelos)",
       image: "https://images-offstore.map.azionedge.net/compressed/e1400563917aaa9a8c811fe37064241e.webp",
       price: "R$ 0,00",
       category: "Táboa"
     },
     {
       name: "Telas",
-      description: "Tela resistente, ideal para proteção e divisórias. (Vários modelos)",
+      description: "Tela resistente, ideal para proteção e divisórias. (Diversos modelos)",
       image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
       price: "R$ 0,00",
       category: "Telas"
@@ -50,14 +50,14 @@ const Products: React.FC = () => {
     },
     {
       name: "Verniz",
-      description: "Protege e realça a beleza natural da madeira. (Vários modelos)",
+      description: "Protege e realça a beleza natural da madeira. (Diversos modelos)",
       image: "https://www.zemad.com.br/wp-content/uploads/2016/10/tipos-de-verniz.jpg",
       price: "R$ 0,00",
       category: "Verniz"
     },
     {
       name: "Cano",
-      description: "Resistente e versátil, ideal para instalações e construções. (Vários modelos)",
+      description: "Resistente e versátil, ideal para instalações e construções. (Diversos modelos)",
       image: "https://images.tcdn.com.br/img/img_prod/624414/tubo_cano_pvc_esgoto_branco_de_50mm_barra_6_metros_1663_1_20200224192604.jpg",
       price: "R$ 0,00",
       category: "Mourões"
