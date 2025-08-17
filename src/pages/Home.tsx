@@ -61,7 +61,7 @@ const Home: React.FC = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFHNmCpUaN10DwdM8KNAh-O4rOn_FQi017jg&s)',
+            backgroundImage: 'url(/Capa inicio.png)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
