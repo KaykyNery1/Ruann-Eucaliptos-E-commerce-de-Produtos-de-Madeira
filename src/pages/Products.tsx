@@ -65,7 +65,7 @@ const Products: React.FC = () => {
     {
       name: "Arame",
       description: "Forte e durável, ideal para cercas e fixações. (Diversos modelos).",
-      image: "https://casaserralheiro.com.br/wp-content/uploads/2020/12/Casa-do-Serralheiro-Produtos-Arames-Arame-Galvanizado.jpg",
+      image: "https://acdn-us.mitiendanube.com/stores/001/111/164/products/93533875b91daeb411a0535a5348933f-d8e11751daac4c7e8016918459991988-640-0.jpg",
       price: "R$ 0,00",
       category: "Arame"
     },
