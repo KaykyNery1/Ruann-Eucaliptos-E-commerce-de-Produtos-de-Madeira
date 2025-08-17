@@ -61,7 +61,7 @@ const Home: React.FC = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://sdmntprwestus2.oaiusercontent.com/files/00000000-abc0-61f8-b589-ca1ae475e454/raw?se=2025-08-17T19%3A52%3A20Z&sp=r&sv=2024-08-04&sr=b&scid=3bcb5371-59b3-5077-838c-c1042797dc2c&skoid=5c72dd08-68ae-4091-b4e1-40ccec0693ae&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-17T18%3A22%3A09Z&ske=2025-08-18T18%3A22%3A09Z&sks=b&skv=2024-08-04&sig=0hf%2BQsQJR%2BX4XUwToJ6pPVzjWwJWzzb44XYXvaxck%2BQ%3D)',
+            backgroundImage: 'url()',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
