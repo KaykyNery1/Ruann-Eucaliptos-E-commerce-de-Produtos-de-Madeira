@@ -43,10 +43,10 @@ const Products: React.FC = () => {
     },
     {
       name: "Telha Ecológica",
-      description: "Lenha de eucalipto selecionada, ideal para churrascos",
+      description: "Sustentável e resistente, perfeita para coberturas.",
       image: "https://images.tcdn.com.br/img/img_prod/727427/telha_ecologica_termica_al_6mm_2_20m_x_0_80m_6807935_8_cf02a7f5308a6401ef90dce83887452e.jpg",
       price: "R$ 0,00",
-      category: "Lenha"
+      category: "Telha Ecológica"
     },
     {
       name: "Toras para Construção",
