@@ -25,10 +25,10 @@ const Testimonials: React.FC = () => {
       location: "São Sebastião - DF"
     },
     {
-      name: "Ana Carolina",
-      photo: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg",
+      name: "Mozart Silva - Drone no ar",
+      photo: "https://lh3.googleusercontent.com/a-/ALV-UjW2RqLoRMq6CACaPHwssw5DgH5RSKdJwVo0uGMYkVGCZb8CuEsnlg=w72-h72-p-rp-mo-ba2-br100",
       rating: 5,
-      comment: "Atendimento excepcional! Tiraram todas as dúvidas pelo WhatsApp e a entrega foi super rápida.",
+      comment: "Equipe muito profissional e produtos de qualidade... atendimento de 1°!",
       location: "Gama - DF"
     },
     {
