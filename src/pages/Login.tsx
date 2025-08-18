@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Trees } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +11,8 @@ const Login: React.FC = () => {
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isLoading, setIsLoading] = useState(false);
+  const { login, loginWithGoogle } = useAuth();
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -51,14 +54,32 @@ const Login: React.FC = () => {
 
     setIsLoading(true);
     
-    setTimeout(() => {
+    try {
+      await login(formData.email, formData.password);
+      navigate('/');
+    } catch (error: any) {
+      console.error('Erro no login:', error);
+      setErrors({ 
+        general: error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' 
+          ? 'Email ou senha incorretos' 
+          : 'Erro ao fazer login. Tente novamente.'
+      });
+    } finally {
       setIsLoading(false);
-      console.log('Login attempt:', formData);
-    }, 1500);
+    }
   };
 
-  const handleSocialLogin = (provider: string) => {
-    console.log(`Login with ${provider}`);
+  const handleGoogleLogin = async () => {
+    try {
+      setIsLoading(true);
+      await loginWithGoogle();
+      navigate('/');
+    } catch (error: any) {
+      console.error('Erro no login com Google:', error);
+      setErrors({ general: 'Erro ao fazer login com Google. Tente novamente.' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -87,6 +108,13 @@ const Login: React.FC = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
+            {/* General Error Message */}
+            {errors.general && (
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
+                {errors.general}
+              </div>
+            )}
+
             {/* Email Field */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -213,7 +241,9 @@ const Login: React.FC = () => {
             {/* Social Login Buttons */}
             <div className="mt-6 grid grid-cols-1 gap-3">
               <button
-                onClick={() => handleSocialLogin('Google')}
+                type="button"
+                onClick={handleGoogleLogin}
+                disabled={isLoading}
                 className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24">

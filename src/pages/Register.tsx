@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, User, Trees } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +14,8 @@ const Register: React.FC = () => {
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isLoading, setIsLoading] = useState(false);
+  const { register, loginWithGoogle } = useAuth();
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -52,14 +55,33 @@ const Register: React.FC = () => {
     if (!validateForm()) return;
 
     setIsLoading(true);
-    setTimeout(() => {
+    
+    try {
+      await register(formData.email, formData.password, formData.name);
+      navigate('/');
+    } catch (error: any) {
+      console.error('Erro no registro:', error);
+      setErrors({ 
+        general: error.code === 'auth/email-already-in-use' 
+          ? 'Este email já está em uso' 
+          : 'Erro ao criar conta. Tente novamente.'
+      });
+    } finally {
       setIsLoading(false);
-      console.log('Registration attempt:', formData);
-    }, 1500);
+    }
   };
 
-  const handleSocialLogin = (provider: string) => {
-    console.log(`Register with ${provider}`);
+  const handleGoogleLogin = async () => {
+    try {
+      setIsLoading(true);
+      await loginWithGoogle();
+      navigate('/');
+    } catch (error: any) {
+      console.error('Erro no registro com Google:', error);
+      setErrors({ general: 'Erro ao registrar com Google. Tente novamente.' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -83,6 +105,13 @@ const Register: React.FC = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
+            {/* General Error Message */}
+            {errors.general && (
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
+                {errors.general}
+              </div>
+            )}
+
             {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nome Completo</label>
@@ -230,7 +259,9 @@ const Register: React.FC = () => {
             {/* Social Login */}
             <div className="mt-6 grid grid-cols-1 gap-3">
               <button
-                onClick={() => handleSocialLogin('Google')}
+                type="button"
+                onClick={handleGoogleLogin}
+                disabled={isLoading}
                 className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24">

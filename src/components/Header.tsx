@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Trees, User } from 'lucide-react';
+import { Menu, X, Trees, User, LogOut } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { currentUser, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +25,14 @@ const Header: React.FC = () => {
     { name: 'Depoimentos', path: '/testimonials' },
     { name: 'Contato', path: '/contact' },
   ];
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+    }
+  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -54,13 +64,28 @@ const Header: React.FC = () => {
 
           {/* Login Button - Desktop */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/login"
-              className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
-            >
-              <User className="h-4 w-4" />
-              <span>Entrar</span>
-            </Link>
+            {currentUser ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-gray-700">
+                  Olá, {currentUser.displayName || currentUser.email}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Sair</span>
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+              >
+                <User className="h-4 w-4" />
+                <span>Entrar</span>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,14 +114,32 @@ const Header: React.FC = () => {
                 {item.name}
               </Link>
             ))}
-            <Link
-              to="/login"
-              className="block py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <User className="h-4 w-4" />
-              <span>Entrar</span>
-            </Link>
+            {currentUser ? (
+              <div className="py-2">
+                <span className="block text-sm text-gray-700 mb-2">
+                  Olá, {currentUser.displayName || currentUser.email}
+                </span>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Sair</span>
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="block py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <User className="h-4 w-4" />
+                <span>Entrar</span>
+              </Link>
+            )}
           </nav>
         )}
       </div>
