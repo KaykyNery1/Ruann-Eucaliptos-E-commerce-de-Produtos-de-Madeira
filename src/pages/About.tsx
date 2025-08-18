@@ -58,8 +58,7 @@ const About: React.FC = () => {
             </p>
             <p className="text-gray-600 mb-4 text-lg leading-relaxed">
               Construímos nossa reputação baseada na confiança, qualidade e relacionamento próximo com nossos 
-              clientes. Priorizamos a satisfação do cliente e o compromisso com práticas sustentáveis em 
-              todos os nossos processos.
+              clientes.
             </p>
             <p className="text-gray-600 text-lg leading-relaxed">
               Oferecemos lenha, toras, mourões e carvão vegetal, sempre priorizando a qualidade dos produtos 
