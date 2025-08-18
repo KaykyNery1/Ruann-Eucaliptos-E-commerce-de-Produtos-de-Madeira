@@ -49,8 +49,8 @@ const Home: React.FC = () => {
     },
     {
       icon: <Clock className="h-8 w-8 text-emerald-600" />,
-      title: "Sustentabilidade",
-      description: "Compromisso com práticas ambientalmente responsáveis"
+      title: "Durabilidade Garantida",
+      description: "Madeiras resistentes que oferecem longa vida útil para seu projeto."
     }
   ];
 
