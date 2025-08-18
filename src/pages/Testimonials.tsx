@@ -8,7 +8,7 @@ const Testimonials: React.FC = () => {
       photo: "https://lh3.googleusercontent.com/a-/ALV-UjV5fA5ZHBEtqm69khUKqfOgMPar3Mm1Bjp-sCfnadvdb2xmCbUoKQ=w72-h72-p-rp-mo-ba5-br100",
       rating: 5,
       comment: "Bom atendimento, promoções boas.",
-      location: "Brasília - DF"
+      location: ""
     },
     {
       name: "Maria Fernanda",
