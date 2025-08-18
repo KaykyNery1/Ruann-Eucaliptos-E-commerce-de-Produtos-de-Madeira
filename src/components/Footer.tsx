@@ -13,8 +13,7 @@ const Footer: React.FC = () => {
               <span className="text-xl font-bold">RUANN EUCALIPTOS</span>
             </div>
             <p className="text-gray-300 mb-4">
-              Fornecemos eucalipto de alta qualidade com compromisso com a sustentabilidade 
-              e excelência no atendimento. Produtos selecionados para suas necessidades.
+              Fornecemos eucalipto de alta qualidade com compromisso e excelência no atendimento. Produtos selecionados para suas necessidades.
             </p>
           </div>
 
