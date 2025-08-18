@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Trees } from 'lucide-react';
-import { auth, googleProvider } from './firebase';
+import { auth, googleProvider } from "../firebase";
 import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login: React.FC = () => {
