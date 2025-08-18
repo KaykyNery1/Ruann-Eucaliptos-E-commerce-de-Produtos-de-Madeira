@@ -11,7 +11,7 @@ const About: React.FC = () => {
     {
       icon: <Leaf className="h-8 w-8 text-emerald-600" />,
       title: "Resistência Natural",
-      description: "Práticas ambientalmente responsáveis em todos os processos"
+      description: "Durabilidade que só a madeira de eucalipto pode oferecer"
     },
     {
       icon: <Users className="h-8 w-8 text-emerald-600" />,
