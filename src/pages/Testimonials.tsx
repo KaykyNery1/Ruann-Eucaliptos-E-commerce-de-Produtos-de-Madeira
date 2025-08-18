@@ -12,10 +12,10 @@ const Testimonials: React.FC = () => {
     },
     {
       name: "Gracinha Barros",
-      photo: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg",
+      photo: "https://lh3.googleusercontent.com/a-/ALV-UjXmSwR9BFrRqOUHk682R7i5eNeZAFnzj--gXK1bjGrrWjohxIQ4eQ=w72-h72-p-rp-mo-ba3-br100",
       rating: 5,
       comment: "Lá vc encontra bom preço e grande variedade em Madeira móveis rústicos.",
-      location: "Taguatinga - DF"
+      location: "São Sebastião, Brasília - DF"
     },
     {
       name: "João Pereira",
