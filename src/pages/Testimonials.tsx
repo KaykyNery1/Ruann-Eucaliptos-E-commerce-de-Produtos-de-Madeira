@@ -32,10 +32,10 @@ const Testimonials: React.FC = () => {
       location: "Gama - DF"
     },
     {
-      name: "Roberto Santos",
-      photo: "https://images.pexels.com/photos/1674752/pexels-photo-1674752.jpeg",
+      name: "Sebastião Rodrigues",
+      photo: "https://lh3.googleusercontent.com/a-/ALV-UjXdTpy_ILK6VEdV0WZqiUn1k1DVpDS00eQo6G0C8h70SKnZZICp=w72-h72-p-rp-mo-ba3-br100",
       rating: 5,
-      comment: "Mourões de excelente qualidade! Instalei minha cerca há 1 ano e estão perfeitos até hoje.",
+      comment: "Atendimento de primeira!",
       location: "Planaltina - DF"
     },
     {
