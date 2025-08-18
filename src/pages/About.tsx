@@ -61,8 +61,7 @@ const About: React.FC = () => {
               clientes.
             </p>
             <p className="text-gray-600 text-lg leading-relaxed">
-              Oferecemos lenha, toras, mourões e carvão vegetal, sempre priorizando a qualidade dos produtos 
-              e o cuidado com o meio ambiente.
+             Oferecemos uma ampla variedade de produtos de madeira, sempre priorizando a qualidade e a satisfação dos nossos clientes.
             </p>
           </div>
         </div>
