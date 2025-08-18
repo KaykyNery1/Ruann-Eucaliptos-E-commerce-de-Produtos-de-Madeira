@@ -18,10 +18,10 @@ const Testimonials: React.FC = () => {
       location: "São Sebastião, Brasília - DF"
     },
     {
-      name: "João Pereira",
-      photo: "https://images.pexels.com/photos/1674752/pexels-photo-1674752.jpeg",
+      name: "Jonathan Pereira",
+      photo: "https://lh3.googleusercontent.com/a-/ALV-UjUkthHUDRwBF7rhZvNSzbDPwkgRBMUrCZuzOOyV1U_yN7ZZwxoPMg=w72-h72-p-rp-mo-br100",
       rating: 5,
-      comment: "As toras que comprei foram perfeitas para minha obra. Material resistente e bem tratado. Recomendo!",
+      comment: "Ótimo atendimento e produtos de qualidade!",
       location: "São Sebastião - DF"
     },
     {
