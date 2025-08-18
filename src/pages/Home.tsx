@@ -72,7 +72,7 @@ const Home: React.FC = () => {
             <span className="text-emerald-400">RUANN EUCALIPTOS</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 opacity-90 font-semibold">
-            Eucalipto forte, confiável e sustentável para cada necessidade.
+            Eucalipto resistente e de confiança para todo projeto.
           </p>
           <button 
             onClick={() => handleWhatsAppClick("Informações gerais")}
