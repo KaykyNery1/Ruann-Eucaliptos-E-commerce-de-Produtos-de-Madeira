@@ -143,9 +143,7 @@ const About: React.FC = () => {
             Nossa Missão
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Nosso objetivo é ser a escolha preferida para produtos de eucalipto, oferecendo qualidade 
-            superior, atendimento personalizado e práticas sustentáveis. Trabalhamos continuamente para 
-            superar as expectativas de nossos clientes e contribuir para um futuro mais sustentável.
+            Nosso objetivo é ser a escolha preferida para produtos de eucalipto, oferecendo qualidade superior, atendimento personalizado e confiança. Trabalhamos continuamente para superar as expectativas de nossos clientes e garantir soluções que atendam às suas necessidades.
           </p>
         </div>
       </div>
