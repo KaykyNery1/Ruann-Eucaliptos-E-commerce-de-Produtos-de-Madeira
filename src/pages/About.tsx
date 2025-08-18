@@ -10,7 +10,7 @@ const About: React.FC = () => {
     },
     {
       icon: <Leaf className="h-8 w-8 text-emerald-600" />,
-      title: "Sustentabilidade",
+      title: "Resistência Natural",
       description: "Práticas ambientalmente responsáveis em todos os processos"
     },
     {
