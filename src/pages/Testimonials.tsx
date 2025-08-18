@@ -11,10 +11,10 @@ const Testimonials: React.FC = () => {
       location: "São Sebastião, Brasília - DF"
     },
     {
-      name: "Maria Fernanda",
+      name: "Gracinha Barros",
       photo: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg",
       rating: 5,
-      comment: "Compro lenha há mais de 2 anos. Nunca tive problemas. Produto de primeira qualidade e preço justo.",
+      comment: "Lá vc encontra bom preço e grande variedade em Madeira móveis rústicos.",
       location: "Taguatinga - DF"
     },
     {
