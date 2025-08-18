@@ -1,3 +1,5 @@
+import { auth, googleProvider } from './firebase';
+import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Trees } from 'lucide-react';
