@@ -4,10 +4,10 @@ import { Star } from 'lucide-react';
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
-      name: "Carlos Silva",
-      photo: "https://images.pexels.com/photos/1674752/pexels-photo-1674752.jpeg",
+      name: "Enmanuel Matute",
+      photo: "https://lh3.googleusercontent.com/a-/ALV-UjV5fA5ZHBEtqm69khUKqfOgMPar3Mm1Bjp-sCfnadvdb2xmCbUoKQ=w72-h72-p-rp-mo-ba5-br100",
       rating: 5,
-      comment: "Excelente qualidade da lenha! Sempre seca e bem selecionada. O atendimento é muito bom e a entrega é pontual.",
+      comment: "Bom atendimento, promoções boas.",
       location: "Brasília - DF"
     },
     {
