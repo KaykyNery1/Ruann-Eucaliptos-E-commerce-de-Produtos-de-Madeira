@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+            <h3 className="text-lg font-semibold mb-4"></h3>
             <div className="space-y-2">
               <a href="/products" className="block text-gray-300 hover:text-emerald-400 transition-colors">
                
