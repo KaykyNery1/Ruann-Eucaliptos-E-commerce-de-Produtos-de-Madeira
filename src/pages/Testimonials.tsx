@@ -39,10 +39,10 @@ const Testimonials: React.FC = () => {
       location: "Planaltina - DF"
     },
     {
-      name: "Luciana Oliveira",
-      photo: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg",
-      rating: 5,
-      comment: "O carvão vegetal é ótimo para churrasco. Acende fácil e dura bastante. Família toda aprova!",
+      name: "Carlos Alberto",
+      photo: "https://lh3.googleusercontent.com/a-/ALV-UjXiS2f9LV74HIAgTcYpaHMs0CpgO2IIApXGckiCdMa4Of4Henbf=w72-h72-p-rp-mo-ba8-br100",
+      rating: 4,
+      comment: "Comércio de eucaliptos, boa variedade e um ótimo atendimento.",
       location: "Águas Claras - DF"
     }
   ];
