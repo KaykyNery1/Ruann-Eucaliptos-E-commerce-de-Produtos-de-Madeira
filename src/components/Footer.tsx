@@ -38,18 +38,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
-            <div className="space-y-2">
-              <a href="/products" className="block text-gray-300 hover:text-emerald-400 transition-colors">
-                Produtos
-              </a>
-              <a href="/about" className="block text-gray-300 hover:text-emerald-400 transition-colors">
-                Sobre Nós
-              </a>
-              <a href="/contact" className="block text-gray-300 hover:text-emerald-400 transition-colors">
-                Contato
-              </a>
+        
             </div>
           </div>
         </div>
