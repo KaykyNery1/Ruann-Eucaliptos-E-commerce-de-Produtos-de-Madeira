@@ -47,6 +47,11 @@ const Home: React.FC = () => {
       title: "Atendimento Personalizado",
       description: "Suporte direto e personalizado para suas necessidades"
     },
+    {
+      icon: <Clock className="h-8 w-8 text-emerald-600" />,
+      title: "Sustentabilidade",
+      description: "Compromisso com práticas ambientalmente responsáveis"
+    }
   ];
 
   return (
