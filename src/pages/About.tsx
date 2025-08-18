@@ -34,7 +34,7 @@ const About: React.FC = () => {
             Sobre a RUANN EUCALIPTOS
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Qualidade, sustentabilidade e compromisso com a excelência
+            Qualidade, confiança e compromisso com a excelência.
           </p>
         </div>
 
