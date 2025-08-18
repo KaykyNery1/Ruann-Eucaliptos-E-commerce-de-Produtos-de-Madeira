@@ -34,7 +34,7 @@ const About: React.FC = () => {
             Sobre a RUANN EUCALIPTOS
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Qualidade, confiança e compromisso com a excelência.
+            a
           </p>
         </div>
 
@@ -97,7 +97,58 @@ const About: React.FC = () => {
           </div>
         </div>
 
-  
+        {/* Team Section */}
+        <div className="bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-20">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Nosso Compromisso
+              </h2>
+              <p className="text-xl text-gray-600">
+                Dedicação e qualidade em cada produto
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <img 
+                  src="https://madezanmadeiras.com.br/files/imagem/1293928295755e71c1de185.36080464.jpg"
+                  alt="Equipe da fazenda"
+                  className="w-full h-96 object-cover rounded-xl shadow-lg"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Qualidade e Sustentabilidade
+                </h3>
+                <p className="text-gray-600 mb-4 text-lg leading-relaxed">
+                  Nossa equipe é formada por profissionais dedicados que conhecem cada detalhe do processo, 
+                  garantindo a qualidade desde a seleção até a entrega do produto final.
+                </p>
+                <p className="text-gray-600 mb-4 text-lg leading-relaxed">
+                  Utilizamos as melhores práticas para garantir produtos de alta qualidade, sempre respeitando 
+                  o meio ambiente e priorizando a sustentabilidade.
+                </p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Nosso compromisso é com a excelência no atendimento e a total satisfação de nossos clientes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Commitment Section */}
+        <div className="text-center mt-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Nossa Missão
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Nosso objetivo é ser a escolha preferida para produtos de eucalipto, oferecendo qualidade superior, atendimento personalizado e confiança. Trabalhamos continuamente para superar as expectativas de nossos clientes e garantir soluções que atendam às suas necessidades.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default About;
