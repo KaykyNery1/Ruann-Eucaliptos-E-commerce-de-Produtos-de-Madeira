@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Trees } from 'lucide-react';
+import { Menu, X, Trees, User } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +52,17 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
+          {/* Login Button - Desktop */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link
+              to="/login"
+              className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+            >
+              <User className="h-4 w-4" />
+              <span>Entrar</span>
+            </Link>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -78,6 +89,14 @@ const Header: React.FC = () => {
                 {item.name}
               </Link>
             ))}
+            <Link
+              to="/login"
+              className="block py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <User className="h-4 w-4" />
+              <span>Entrar</span>
+            </Link>
           </nav>
         )}
       </div>
