@@ -50,7 +50,7 @@ const Header: React.FC = () => {
               alt="RUANN EUCALIPTOS Logo" 
               className="h-9 w-9 object-contain"
             />
-            <span className="text-xl font-bold text-gray-900">RUANN EUCALIPTOS</span>
+            <span className="text-xl font-bold text-gray-800">RUANN EUCALIPTOS</span>
           </Link>
 
           {/* Desktop Navigation */}
