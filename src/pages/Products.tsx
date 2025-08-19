@@ -29,7 +29,7 @@ const products: Product[] = [
     id: 2,
     name: "SARRAFO DE PINUS",
     price: 1.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://ilhabela.tudoem.com.br/assets/img/anuncio/sarrafo_de_pinus_10cm_2.webp",
     category: "madeira",
     description: "Sarrafo de pinus - preço por metro",
     rating: 4.7
