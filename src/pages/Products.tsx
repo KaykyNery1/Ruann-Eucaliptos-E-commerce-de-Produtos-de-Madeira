@@ -38,7 +38,7 @@ const products: Product[] = [
     id: 3,
     name: "TABUA 02/15 3 MT",
     price: 16.50,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
     category: "madeira",
     description: "Tábua 02/15 com 3 metros de comprimento",
     rating: 4.6
@@ -47,7 +47,7 @@ const products: Product[] = [
     id: 4,
     name: "TABUA 02/10 3 MT",
     price: 12.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
     category: "madeira",
     description: "Tábua 02/10 com 3 metros de comprimento",
     rating: 4.5
@@ -56,7 +56,7 @@ const products: Product[] = [
     id: 5,
     name: "TABUA 02/25 3MTS",
     price: 27.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
     category: "madeira",
     description: "Tábua 02/25 com 3 metros de comprimento",
     rating: 4.7
@@ -65,7 +65,7 @@ const products: Product[] = [
     id: 6,
     name: "TABUA 02/30 3MT",
     price: 31.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
     category: "madeira",
     description: "Tábua 02/30 com 3 metros de comprimento",
     rating: 4.8
