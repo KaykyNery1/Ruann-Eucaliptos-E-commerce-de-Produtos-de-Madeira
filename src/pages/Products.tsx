@@ -389,7 +389,7 @@ const products: Product[] = [
     id: 41,
     name: "TUBO KRONA SOLD 25MM",
     price: 20.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0cafe220991befb9ebba8e17502a375b.webp",
     category: "tubos",
     description: "Tubo Krona soldável 25mm",
     rating: 4.4
@@ -398,7 +398,7 @@ const products: Product[] = [
     id: 42,
     name: "TUBO ESG 40MM KRONA",
     price: 44.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/3bde6ab84a3c4a461b01a2fe2d8d177c.webp",
     category: "tubos",
     description: "Tubo esgoto 40mm Krona",
     rating: 4.5
@@ -407,7 +407,7 @@ const products: Product[] = [
     id: 43,
     name: "TUBO ESGOTO CLASSE B - 75MM 6MTS",
     price: 34.90,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/301afa1ba86652ba1ea4b3ee11501ec8.webp",
     category: "tubos",
     description: "Tubo esgoto classe B 75mm - 6 metros",
     rating: 4.6
@@ -416,7 +416,7 @@ const products: Product[] = [
     id: 44,
     name: "TUBO ESG 100MM KRONA",
     price: 65.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/5f234bacf5c0843d4a91f9547c6d6264.webp",
     category: "tubos",
     description: "Tubo esgoto 100mm Krona",
     rating: 4.7
@@ -425,7 +425,7 @@ const products: Product[] = [
     id: 45,
     name: "TUBO DE ESGOTO 50MM NBR CLASSE - B",
     price: 31.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/d624346b2016c2b04553b6eec5a2d966.webp",
     category: "tubos",
     description: "Tubo de esgoto 50mm NBR classe B",
     rating: 4.5
@@ -434,7 +434,7 @@ const products: Product[] = [
     id: 46,
     name: "TUBO DE ESGOTO 40MM NBR CLASSE - B",
     price: 22.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/c6e775733fbcfc2f2d4116b4e1b65253.webp",
     category: "tubos",
     description: "Tubo de esgoto 40mm NBR classe B",
     rating: 4.4
@@ -443,7 +443,7 @@ const products: Product[] = [
     id: 47,
     name: "TUBO DE ESGOTO 200 NBR CLASSE -B",
     price: 270.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/d363c8d39d812f85b3287c93a205b859.webp",
     category: "tubos",
     description: "Tubo de esgoto 200mm NBR classe B",
     rating: 4.8
@@ -452,7 +452,7 @@ const products: Product[] = [
     id: 48,
     name: "TUBO DE ESGOTO 150 NBR CLASSE -B",
     price: 126.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/9b1887fedc773da16862b06d59d61ac7.webp",
     category: "tubos",
     description: "Tubo de esgoto 150mm NBR classe B",
     rating: 4.7
@@ -461,7 +461,7 @@ const products: Product[] = [
     id: 49,
     name: "TUBO DE ESGOTO 100 NBR CLASSE - B (6 METROS)",
     price: 34.90,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/459256c0a10d73eb64c03bbcd22c4b31.webp",
     category: "tubos",
     description: "Tubo de esgoto 100mm NBR classe B - 6 metros",
     rating: 4.6
@@ -471,7 +471,7 @@ const products: Product[] = [
     id: 50,
     name: "POSTE 14/16 5 MT",
     price: 260.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 14/16 - 5 metros",
     rating: 4.9
@@ -480,7 +480,7 @@ const products: Product[] = [
     id: 51,
     name: "POSTE 14/16 4 MT",
     price: 170.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 14/16 - 4 metros",
     rating: 4.8
@@ -489,7 +489,7 @@ const products: Product[] = [
     id: 52,
     name: "POSTE 12/14 7 MT",
     price: 230.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 12/14 - 7 metros",
     rating: 4.9
@@ -498,7 +498,7 @@ const products: Product[] = [
     id: 53,
     name: "POSTE 12/14 6 MT",
     price: 180.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 12/14 - 6 metros",
     rating: 4.8
@@ -507,7 +507,7 @@ const products: Product[] = [
     id: 54,
     name: "POSTE 12/14 5 MT",
     price: 160.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 12/14 - 5 metros",
     rating: 4.7
@@ -516,7 +516,7 @@ const products: Product[] = [
     id: 55,
     name: "POSTE 12/14 4 MT",
     price: 130.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 12/14 - 4 metros",
     rating: 4.6
@@ -525,7 +525,7 @@ const products: Product[] = [
     id: 56,
     name: "POSTE 10/12 7MT",
     price: 180.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 10/12 - 7 metros",
     rating: 4.8
@@ -534,7 +534,7 @@ const products: Product[] = [
     id: 57,
     name: "POSTE 10/12 6MT",
     price: 149.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 10/12 - 6 metros",
     rating: 4.7
@@ -543,7 +543,7 @@ const products: Product[] = [
     id: 58,
     name: "POSTE 10/12 5 MT",
     price: 125.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 10/12 - 5 metros",
     rating: 4.6
@@ -552,7 +552,7 @@ const products: Product[] = [
     id: 59,
     name: "POSTE 10/12 4 MT",
     price: 100.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 10/12 - 4 metros",
     rating: 4.5
@@ -561,7 +561,7 @@ const products: Product[] = [
     id: 60,
     name: "POSTE 08/10 8 MT",
     price: 230.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 08/10 - 8 metros",
     rating: 4.9
@@ -570,7 +570,7 @@ const products: Product[] = [
     id: 61,
     name: "POSTE 08/10 7 MT",
     price: 125.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp0",
     category: "postes",
     description: "Poste 08/10 - 7 metros",
     rating: 4.7
@@ -579,7 +579,7 @@ const products: Product[] = [
     id: 62,
     name: "POSTE 08/10 5 MT",
     price: 95.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 08/10 - 5 metros",
     rating: 4.6
@@ -588,7 +588,7 @@ const products: Product[] = [
     id: 63,
     name: "POSTE 08/10 4 MT",
     price: 75.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 08/10 - 4 metros",
     rating: 4.5
@@ -597,7 +597,7 @@ const products: Product[] = [
     id: 64,
     name: "POSTE 06/08 7 MT",
     price: 120.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 06/08 - 7 metros",
     rating: 4.7
@@ -606,7 +606,7 @@ const products: Product[] = [
     id: 65,
     name: "POSTE 06/08 6 MT eucalipto tratado",
     price: 65.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 06/08 eucalipto tratado - 6 metros",
     rating: 4.6
@@ -615,7 +615,7 @@ const products: Product[] = [
     id: 66,
     name: "Poste de Eucalipto Tratado 6/8 – 4.00m",
     price: 55.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste de eucalipto tratado 6/8 - 4 metros",
     rating: 4.5
@@ -624,7 +624,7 @@ const products: Product[] = [
     id: 67,
     name: "Poste de Eucalipto Tratado 4/6 – 6.00m",
     price: 75.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste de eucalipto tratado 4/6 - 6 metros",
     rating: 4.6
@@ -633,7 +633,7 @@ const products: Product[] = [
     id: 68,
     name: "Poste de Eucalipto Tratado 4/6 – 5.00m",
     price: 65.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste de eucalipto tratado 4/6 - 5 metros",
     rating: 4.5
@@ -642,7 +642,7 @@ const products: Product[] = [
     id: 69,
     name: "Poste 04/06 eucalipto tratado 4mt",
     price: 45.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 04/06 eucalipto tratado - 4 metros",
     rating: 4.4
