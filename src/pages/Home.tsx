@@ -1,5 +1,6 @@
 import React from 'react';
-import { Truck, Award, Clock, Users, ArrowRight } from 'lucide-react';
+import { Truck, Award, Clock, Users, ArrowRight, ShoppingCart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const whatsappNumber = "556199910956";
@@ -9,27 +10,6 @@ const Home: React.FC = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
-
-  const featuredProducts = [
-    {
-      name: "Lenha Seca Premium",
-      description: "Lenha de eucalipto selecionada, ideal para churrascos",
-      image: "https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg",
-      price: "R$ 25/saca"
-    },
-    {
-      name: "Toras para Construção",
-      description: "Toras resistentes para construção civil",
-      image: "https://images.pexels.com/photos/162640/wood-logs-lumber-log-162640.jpeg",
-      price: "R$ 45/m³"
-    },
-    {
-      name: "Mourões Tratados",
-      description: "Mourões de eucalipto tratado para cercas",
-      image: "https://images.pexels.com/photos/1029641/pexels-photo-1029641.jpeg",
-      price: "R$ 18/unidade"
-    }
-  ];
 
   const highlights = [
     {
@@ -81,6 +61,14 @@ const Home: React.FC = () => {
             <span>Fale Conosco</span>
             <ArrowRight className="h-5 w-5" />
           </button>
+          
+          <Link 
+            to="/products"
+            className="mt-4 bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2 mx-auto w-fit"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            <span>Ver Produtos</span>
+          </Link>
         </div>
       </section>
 
@@ -113,6 +101,65 @@ const Home: React.FC = () => {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Preview */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Produtos em Destaque
+            </h2>
+            <p className="text-xl text-gray-600">
+              Conheça alguns dos nossos principais produtos
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-gray-50 p-8 rounded-xl text-center">
+              <img 
+                src="https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg"
+                alt="Lenha Premium"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Lenha Premium</h3>
+              <p className="text-gray-600 mb-4">Lenha seca de eucalipto, ideal para churrascos</p>
+              <span className="text-emerald-600 font-bold">A partir de R$ 18,50</span>
+            </div>
+            
+            <div className="bg-gray-50 p-8 rounded-xl text-center">
+              <img 
+                src="https://images-offstore.map.azionedge.net/compressed/6de7248721eab5680992738cd9648d95.webp"
+                alt="Postes"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Postes Tratados</h3>
+              <p className="text-gray-600 mb-4">Postes de eucalipto para construções</p>
+              <span className="text-emerald-600 font-bold">A partir de R$ 45,00</span>
+            </div>
+            
+            <div className="bg-gray-50 p-8 rounded-xl text-center">
+              <img 
+                src="https://http2.mlstatic.com/D_NQ_NP_668571-MLB89679904286_082025-O-chapa-madeirite-plastificado-resina-fenolica-17mm-construc.webp"
+                alt="Madeirite"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Madeirite</h3>
+              <p className="text-gray-600 mb-4">Chapas de madeirite para construção</p>
+              <span className="text-emerald-600 font-bold">A partir de R$ 65,50</span>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link 
+              to="/products"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 inline-flex items-center space-x-2"
+            >
+              <span>Ver Todos os Produtos</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
           </div>
         </div>
       </section>
