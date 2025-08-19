@@ -20,7 +20,7 @@ const products: Product[] = [
     id: 1,
     name: "TÁBUA DE PINUS 2x30",
     price: 10.33,
-    image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQFRY9xGF8CGY_VRchqFEVh92HOfcGMhvH_j2UtjATYj2clrIKyffZHjvxY718NBao6fYuRic_7b7H5W7GgDPqzDxw5cu8Xn0HM57Ap2-pRCojncqBUCweqR_GldMrYIzWtTmK-94w&usqp=CAc",
+    image: "https://img.irroba.com.br/filters:fill(fff):quality(80)/rabeloma/catalog/api/rabeloma_citelirr/672ca903e8f10.jpg",
     category: "madeira",
     description: "Tábua de pinus 2x30 - preço por metro",
     rating: 4.8
