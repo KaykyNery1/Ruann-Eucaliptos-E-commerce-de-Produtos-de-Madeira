@@ -169,7 +169,7 @@ const products: Product[] = [
     id: 17,
     name: "ARAME RECONZIDO 12.2.77 MM APROX. 5KG",
     price: 84.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
     category: "arames",
     description: "Arame recozido 12 - 2.77mm aproximadamente 5kg",
     rating: 4.5
@@ -178,7 +178,7 @@ const products: Product[] = [
     id: 18,
     name: "ARAME RECONZIDO 14.2.11 MM 1KG",
     price: 15.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
     category: "arames",
     description: "Arame recozido 14 - 2.11mm - 1kg",
     rating: 4.4
@@ -187,7 +187,7 @@ const products: Product[] = [
     id: 19,
     name: "ARAME RECONZIDO 18.1.24 MM 1KG",
     price: 17.49,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
     category: "arames",
     description: "Arame recozido 18 - 1.24mm - 1kg",
     rating: 4.3
@@ -196,7 +196,7 @@ const products: Product[] = [
     id: 20,
     name: "ARAME RECONZIDO 16.1.65 MM 1KG",
     price: 16.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
     category: "arames",
     description: "Arame recozido 16 - 1.65mm - 1kg",
     rating: 4.4
@@ -205,7 +205,7 @@ const products: Product[] = [
     id: 21,
     name: "CHAVE P/ESTICADOR TP BOBS 1X1 UN",
     price: 9.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://www.ferpam.com.br/pub/media/catalog/product/c/h/chave_acionamento_tipo_esticador_bobs_jg_ind_stria_ferpam.jpg",
     category: "ferramentas",
     description: "Chave para esticador tipo bobs 1x1 - unidade",
     rating: 4.2
