@@ -20,7 +20,7 @@ const products: Product[] = [
     id: 1,
     name: "TÁBUA DE PINUS 2x30",
     price: 10.33,
-    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.saadbricolagem.com.br%2Fprodutos%2Ftabua-de-pinus-20cm-x-3mts-entrega-somente-em-bh-e-regiao-metropolitana%2F&psig=AOvVaw25L1w6cZffxIhB985v-_KX&ust=1755663338928000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCODcwOaBlo8DFQAAAAAdAAAAABAE",
+    image: "https://dcdn-us.mitiendanube.com/stores/001/205/048/products/tabua-pinus-30cm-x-3mts-loja-fisica-madeira-88d72d69df1a22137717107038361352-1024-1024.jpeg",
     category: "madeira",
     description: "Tábua de pinus 2x30 - preço por metro",
     rating: 4.8
