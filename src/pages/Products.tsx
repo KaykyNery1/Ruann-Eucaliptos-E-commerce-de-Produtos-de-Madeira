@@ -75,7 +75,7 @@ const products: Product[] = [
     id: 7,
     name: "Maderite plastificado",
     price: 117.90,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://tijolodefabricape.meucatalogofacil.com/_core/_uploads//2023/07/0024190723348ejk6dbe.jpg",
     category: "madeirite",
     description: "Madeirite plastificado de alta qualidade",
     rating: 4.9
