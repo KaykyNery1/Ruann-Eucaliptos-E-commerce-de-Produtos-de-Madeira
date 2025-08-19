@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             <img 
               src="https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp" 
               alt="RUANN EUCALIPTOS Logo" 
-              className="h-95 w-95 object-contain"
+              className="h-9,5 w-9,5 object-contain"
             />
             <span className="text-xl font-bold text-gray-900">RUANN EUCALIPTOS</span>
           </Link>
