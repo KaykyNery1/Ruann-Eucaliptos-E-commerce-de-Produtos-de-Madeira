@@ -113,7 +113,7 @@ const products: Product[] = [
     id: 11,
     name: "VERNIZ EXTRA RAPIDO BRIL 900ML",
     price: 34.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/35d727d664149f1e56b5571315f5821b.webp",
+    image: "https://http2.mlstatic.com/D_Q_NP_2X_831334-MLB89825122700_082025-E-vernize-alto-brilho-36l-extra-rapido-protege-e-realca.webp",
     category: "verniz",
     description: "Verniz extra rápido brilhante 900ml",
     rating: 4.5
