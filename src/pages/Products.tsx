@@ -219,8 +219,8 @@ export default function Products() {
   const [suggestions, setSuggestions] = useState<Product[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   
-  const { user } = useAuth();
-  const { addToCart } = useCart();
+  const { currentUser } = useAuth();
+  const { addItem } = useCart();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -263,11 +263,11 @@ export default function Products() {
   };
 
   const handleAddToCart = (product: Product) => {
-    if (!user) {
+    if (!currentUser) {
       navigate('/login');
       return;
     }
-    addToCart(product);
+    addItem(product);
   };
 
   return (
