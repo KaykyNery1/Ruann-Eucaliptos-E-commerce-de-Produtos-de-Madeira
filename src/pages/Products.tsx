@@ -159,7 +159,7 @@ const products: Product[] = [
     id: 16,
     name: "CAVADEIRA ART 1,20MT C/CABO",
     price: 74.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://http2.mlstatic.com/D_NQ_NP_881414-MLB49546877901_042022-O-cavadeira-articulada-tramontina-cabo-madeira-145-mt.webp",
     category: "ferramentas",
     description: "Cavadeira articulada 1,20m com cabo",
     rating: 4.6
