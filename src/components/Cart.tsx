@@ -68,20 +68,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     const customerName = currentUser.displayName || currentUser.email;
     const whatsappNumber = "556199910956";
     
-    let message = `🛒 *PEDIDO - RUANN EUCALIPTOS*\n\n`;
-    message += `👤 *Cliente:* ${customerName}\n`;
-    message += `📧 *Email:* ${currentUser.email}\n\n`;
-    message += `📍 *Endereço de Entrega:*\n${address.street}, ${address.number}\n${address.neighborhood} - ${address.city}/${address.state}\nCEP: ${address.zipCode}\n\n`;
-    message += `📋 *Itens do Pedido:*\n`;
+    let message = `*PEDIDO - RUANN EUCALIPTOS*\n\n`;
+    message += `*Cliente:* ${customerName}\n`;
+    message += `*Email:* ${currentUser.email}\n`;
+    message += `*Endereço de Entrega:* ${address.street}, ${address.number}, ${address.neighborhood} - ${address.city}/${address.state}, CEP: ${address.zipCode}\n\n`;
+    message += `*Itens do Pedido:*\n`;
     
-    state.items.forEach((item, index) => {
-      message += `${index + 1}. ${item.name}\n`;
-      message += `   Quantidade: ${item.quantity}\n`;
-      message += `   Preço unitário: R$ ${item.price.toFixed(2)}\n`;
-      message += `   Subtotal: R$ ${(item.price * item.quantity).toFixed(2)}\n\n`;
+    state.items.forEach((item) => {
+      message += `${item.quantity}x ${item.name} - R$ ${item.price.toFixed(2)} cada\n`;
     });
     
-    message += `💰 *TOTAL: R$ ${state.total.toFixed(2)}*\n\n`;
+    message += `\n*TOTAL: R$ ${state.total.toFixed(2)}*\n\n`;
     message += `Gostaria de finalizar este pedido. Aguardo retorno para combinar entrega e pagamento.`;
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
