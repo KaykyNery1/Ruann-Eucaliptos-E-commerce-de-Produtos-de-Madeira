@@ -45,7 +45,11 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
-            <Trees className="h-8 w-8 text-emerald-600" />
+            <img 
+              src="https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp" 
+              alt="RUANN EUCALIPTOS Logo" 
+              className="h-8 w-8 object-contain"
+            />
             <span className="text-xl font-bold text-gray-900">RUANN EUCALIPTOS</span>
           </Link>
 

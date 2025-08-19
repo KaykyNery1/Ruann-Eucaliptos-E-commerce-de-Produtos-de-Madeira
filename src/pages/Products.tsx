@@ -674,6 +674,40 @@ export default function Products() {
   const { addItem } = useCart();
   const navigate = useNavigate();
 
+  // Group products by category for organized display
+  const productSections = [
+    {
+      title: 'Madeiras & Postes',
+      categories: ['madeira', 'postes'],
+      products: products.filter(p => ['madeira', 'postes'].includes(p.category))
+    },
+    {
+      title: 'Telhas',
+      categories: ['telhas'],
+      products: products.filter(p => p.category === 'telhas')
+    },
+    {
+      title: 'Vernizes',
+      categories: ['verniz'],
+      products: products.filter(p => p.category === 'verniz')
+    },
+    {
+      title: 'Ferragens & Ferramentas',
+      categories: ['ferragens', 'ferramentas', 'arames'],
+      products: products.filter(p => ['ferragens', 'ferramentas', 'arames'].includes(p.category))
+    },
+    {
+      title: 'Telas & Tubos',
+      categories: ['telas', 'tubos'],
+      products: products.filter(p => ['telas', 'tubos'].includes(p.category))
+    },
+    {
+      title: 'Madeirite',
+      categories: ['madeirite'],
+      products: products.filter(p => p.category === 'madeirite')
+    }
+  ];
+
   useEffect(() => {
     let filtered = products;
 
@@ -798,59 +832,126 @@ export default function Products() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="aspect-w-1 aspect-h-1">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-48 object-cover"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-3">
-                  {product.description}
-                </p>
-                
-                {/* Rating */}
-                <div className="flex items-center mb-3">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(product.rating)
-                            ? 'text-yellow-400 fill-current'
-                            : 'text-gray-300'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <span className="ml-2 text-sm text-gray-600">
-                    {product.rating}
-                  </span>
-                </div>
+        {/* Show organized sections when no filters are applied */}
+        {!searchTerm && !selectedCategory ? (
+          <div className="space-y-12">
+            {productSections.map((section, sectionIndex) => (
+              <div key={sectionIndex}>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-emerald-600 pb-2">
+                  {section.title}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {section.products.map((product) => (
+                    <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                      <div className="aspect-w-1 aspect-h-1">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-48 object-cover"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          {product.name}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-3">
+                          {product.description}
+                        </p>
+                        
+                        {/* Rating */}
+                        <div className="flex items-center mb-3">
+                          <div className="flex items-center">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`w-4 h-4 ${
+                                  i < Math.floor(product.rating)
+                                    ? 'text-yellow-400 fill-current'
+                                    : 'text-gray-300'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <span className="ml-2 text-sm text-gray-600">
+                            {product.rating}
+                          </span>
+                        </div>
 
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-emerald-600">
-                    R$ {product.price.toFixed(2)}
-                  </span>
-                  <button
-                    onClick={() => handleAddToCart(product)}
-                    className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center gap-2"
-                  >
-                    <ShoppingCart className="w-4 h-4" />
-                    Adicionar
-                  </button>
+                        <div className="flex items-center justify-between">
+                          <span className="text-2xl font-bold text-emerald-600">
+                            R$ {product.price.toFixed(2)}
+                          </span>
+                          <button
+                            onClick={() => handleAddToCart(product)}
+                            className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center gap-2"
+                          >
+                            <ShoppingCart className="w-4 h-4" />
+                            Adicionar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          /* Show filtered results when search or category filter is applied */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((product) => (
+              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="aspect-w-1 aspect-h-1">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-3">
+                    {product.description}
+                  </p>
+                  
+                  {/* Rating */}
+                  <div className="flex items-center mb-3">
+                    <div className="flex items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${
+                            i < Math.floor(product.rating)
+                              ? 'text-yellow-400 fill-current'
+                              : 'text-gray-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <span className="ml-2 text-sm text-gray-600">
+                      {product.rating}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-bold text-emerald-600">
+                      R$ {product.price.toFixed(2)}
+                    </span>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center gap-2"
+                    >
+                      <ShoppingCart className="w-4 h-4" />
+                      Adicionar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* No Results */}
         {filteredProducts.length === 0 && (

@@ -14,6 +14,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [address, setAddress] = useState({
     street: '',
     number: '',
@@ -22,7 +23,12 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     state: 'DF',
     zipCode: ''
   });
+  const [payment, setPayment] = useState({
+    method: '',
+    cardBrand: ''
+  });
   const [addressErrors, setAddressErrors] = useState<{[key: string]: string}>({});
+  const [paymentErrors, setPaymentErrors] = useState<{[key: string]: string}>({});
 
   const handleQuantityChange = (id: string, newQuantity: number) => {
     if (newQuantity < 1) {
@@ -45,9 +51,28 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     return Object.keys(errors).length === 0;
   };
 
+  const validatePayment = () => {
+    const errors: {[key: string]: string} = {};
+    
+    if (!payment.method) errors.method = 'Método de pagamento é obrigatório';
+    if ((payment.method === 'credit' || payment.method === 'debit') && !payment.cardBrand) {
+      errors.cardBrand = 'Bandeira do cartão é obrigatória';
+    }
+    
+    setPaymentErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleAddressSubmit = () => {
     if (validateAddress()) {
       setShowAddressForm(false);
+      setShowPaymentForm(true);
+    }
+  };
+
+  const handlePaymentSubmit = () => {
+    if (validatePayment()) {
+      setShowPaymentForm(false);
       setShowConfirmation(true);
     }
   };
@@ -72,6 +97,24 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     message += `*Cliente:* ${customerName}\n`;
     message += `*Email:* ${currentUser.email}\n`;
     message += `*Endereço de Entrega:* ${address.street}, ${address.number}, ${address.neighborhood} - ${address.city}/${address.state}, CEP: ${address.zipCode}\n\n`;
+    
+    // Add payment method
+    let paymentText = '';
+    switch (payment.method) {
+      case 'pix':
+        paymentText = 'PIX';
+        break;
+      case 'credit':
+        paymentText = `Cartão de Crédito (${payment.cardBrand})`;
+        break;
+      case 'debit':
+        paymentText = `Cartão de Débito (${payment.cardBrand})`;
+        break;
+      case 'cash':
+        paymentText = 'Dinheiro';
+        break;
+    }
+    message += `*Forma de Pagamento:* ${paymentText}\n`;
     message += `*Itens do Pedido:*\n`;
     
     state.items.forEach((item) => {
@@ -91,7 +134,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       clearCart();
       setShowConfirmation(false);
       setShowAddressForm(false);
+      setShowPaymentForm(false);
       setAddress({ street: '', number: '', neighborhood: '', city: '', state: 'DF', zipCode: '' });
+      setPayment({ method: '', cardBrand: '' });
       onClose();
       setIsProcessing(false);
     }, 1000);
@@ -317,6 +362,109 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
         </div>
       )}
 
+      {showPaymentForm && (
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">Forma de Pagamento</h3>
+              <button
+                onClick={() => setShowPaymentForm(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Método de Pagamento</label>
+                <div className="space-y-2">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="pix"
+                      checked={payment.method === 'pix'}
+                      onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value, cardBrand: '' }))}
+                      className="mr-2"
+                    />
+                    PIX
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="credit"
+                      checked={payment.method === 'credit'}
+                      onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value }))}
+                      className="mr-2"
+                    />
+                    Cartão de Crédito
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="debit"
+                      checked={payment.method === 'debit'}
+                      onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value }))}
+                      className="mr-2"
+                    />
+                    Cartão de Débito
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="cash"
+                      checked={payment.method === 'cash'}
+                      onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value, cardBrand: '' }))}
+                      className="mr-2"
+                    />
+                    Dinheiro
+                  </label>
+                </div>
+                {paymentErrors.method && <p className="text-red-600 text-xs mt-1">{paymentErrors.method}</p>}
+              </div>
+
+              {(payment.method === 'credit' || payment.method === 'debit') && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Bandeira do Cartão</label>
+                  <select
+                    value={payment.cardBrand}
+                    onChange={(e) => setPayment(prev => ({ ...prev, cardBrand: e.target.value }))}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${paymentErrors.cardBrand ? 'border-red-300' : 'border-gray-300'}`}
+                  >
+                    <option value="">Selecione a bandeira</option>
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="Elo">Elo</option>
+                    <option value="American Express">American Express</option>
+                    <option value="Hipercard">Hipercard</option>
+                  </select>
+                  {paymentErrors.cardBrand && <p className="text-red-600 text-xs mt-1">{paymentErrors.cardBrand}</p>}
+                </div>
+              )}
+            </div>
+
+            <div className="flex space-x-3 mt-6">
+              <button
+                onClick={() => setShowPaymentForm(false)}
+                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Voltar
+              </button>
+              <button
+                onClick={handlePaymentSubmit}
+                className="flex-1 py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md transition-colors"
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Confirmation Modal */}
       {showConfirmation && (
         <div className="fixed inset-0 z-60 flex items-center justify-center bg-black bg-opacity-50">
@@ -348,6 +496,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   {address.neighborhood} - {address.city}/{address.state}<br />
                   CEP: {address.zipCode}
                 </div>
+              </div>
+            </div>
+
+            {/* Payment Info */}
+            <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+              <h4 className="font-medium text-gray-900 mb-2">Forma de Pagamento:</h4>
+              <div className="text-sm text-gray-600">
+                {payment.method === 'pix' && 'PIX'}
+                {payment.method === 'credit' && `Cartão de Crédito (${payment.cardBrand})`}
+                {payment.method === 'debit' && `Cartão de Débito (${payment.cardBrand})`}
+                {payment.method === 'cash' && 'Dinheiro'}
               </div>
             </div>
 
