@@ -214,7 +214,7 @@ const products: Product[] = [
     id: 22,
     name: "Catraca p/cerca UN",
     price: 14.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4ff19b841ff892e44de2e29eeb98b384.webp",
     category: "ferramentas",
     description: "Catraca para cerca - unidade",
     rating: 4.3
