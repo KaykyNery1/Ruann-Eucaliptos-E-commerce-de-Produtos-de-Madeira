@@ -223,7 +223,7 @@ const products: Product[] = [
     id: 23,
     name: "ESPICHADEIRA P/ ARAME LISO C/CORRENTE",
     price: 219.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/81027bf89b4502d4ff256d706c69f07c.webp",
     category: "ferramentas",
     description: "Espichadeira para arame liso com corrente",
     rating: 4.8
@@ -233,7 +233,7 @@ const products: Product[] = [
     id: 24,
     name: "Dobradiça N1 UN",
     price: 24.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
     category: "ferragens",
     description: "Dobradiça número 1 - unidade",
     rating: 4.5
@@ -242,7 +242,7 @@ const products: Product[] = [
     id: 25,
     name: "Dobradiça N3 UN",
     price: 34.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
     category: "ferragens",
     description: "Dobradiça número 3 - unidade",
     rating: 4.7
@@ -251,7 +251,7 @@ const products: Product[] = [
     id: 26,
     name: "Dobradiça N2 UN",
     price: 29.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
     category: "ferragens",
     description: "Dobradiça número 2 - unidade",
     rating: 4.6
@@ -260,7 +260,7 @@ const products: Product[] = [
     id: 27,
     name: "Dobradiça N0 UN",
     price: 19.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
     category: "ferragens",
     description: "Dobradiça número 0 - unidade",
     rating: 4.4
