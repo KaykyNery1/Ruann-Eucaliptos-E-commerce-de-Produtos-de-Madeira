@@ -21,7 +21,8 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     neighborhood: '',
     city: '',
     state: 'DF',
-    zipCode: ''
+    zipCode: '',
+    cpf: ''
   });
   const [payment, setPayment] = useState({
     method: '',
@@ -46,6 +47,8 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     if (!address.neighborhood.trim()) errors.neighborhood = 'Bairro é obrigatório';
     if (!address.city.trim()) errors.city = 'Cidade é obrigatória';
     if (!address.zipCode.trim()) errors.zipCode = 'CEP é obrigatório';
+    if (!address.cpf.trim()) errors.cpf = 'CPF é obrigatório';
+    else if (!/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(address.cpf)) errors.cpf = 'CPF deve estar no formato 000.000.000-00';
     
     setAddressErrors(errors);
     return Object.keys(errors).length === 0;
@@ -77,6 +80,22 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     }
   };
 
+  const formatCPF = (value: string) => {
+    // Remove all non-digits
+    const digits = value.replace(/\D/g, '');
+    
+    // Apply CPF mask
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return `${digits.slice(0, 3)}.${digits.slice(3)}`;
+    if (digits.length <= 9) return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6)}`;
+    return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}-${digits.slice(9, 11)}`;
+  };
+
+  const handleCPFChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatCPF(e.target.value);
+    setAddress(prev => ({ ...prev, cpf: formatted }));
+  };
+
   const handleCheckout = async () => {
     if (!showAddressForm) {
       setShowAddressForm(true);
@@ -95,6 +114,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     
     let message = `*PEDIDO - RUANN EUCALIPTOS*\n\n`;
     message += `*Cliente:* ${customerName}\n`;
+    message += `*CPF:* ${address.cpf}\n`;
     message += `*Email:* ${currentUser.email}\n`;
     message += `*Endereço de Entrega:* ${address.street}, ${address.number}, ${address.neighborhood} - ${address.city}/${address.state}, CEP: ${address.zipCode}\n\n`;
     
@@ -135,7 +155,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       setShowConfirmation(false);
       setShowAddressForm(false);
       setShowPaymentForm(false);
-      setAddress({ street: '', number: '', neighborhood: '', city: '', state: 'DF', zipCode: '' });
+      setAddress({ street: '', number: '', neighborhood: '', city: '', state: 'DF', zipCode: '', cpf: '' });
       setPayment({ method: '', cardBrand: '' });
       onClose();
       setIsProcessing(false);
@@ -342,6 +362,19 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                 />
                 {addressErrors.zipCode && <p className="text-red-600 text-xs mt-1">{addressErrors.zipCode}</p>}
               </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">CPF (para emissão de nota fiscal)</label>
+                <input
+                  type="text"
+                  value={address.cpf}
+                  onChange={handleCPFChange}
+                  maxLength={14}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.cpf ? 'border-red-300' : 'border-gray-300'}`}
+                  placeholder="000.000.000-00"
+                />
+                {addressErrors.cpf && <p className="text-red-600 text-xs mt-1">{addressErrors.cpf}</p>}
+              </div>
             </div>
 
             <div className="flex space-x-3 mt-6">
@@ -484,6 +517,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               <div className="flex items-center mb-2">
                 <User className="h-4 w-4 text-gray-600 mr-2" />
                 <span className="font-medium">{currentUser?.displayName || currentUser?.email}</span>
+              </div>
+              <div className="flex items-center mb-2">
+                <span className="text-sm text-gray-600"><strong>CPF:</strong> {address.cpf}</span>
               </div>
               <div className="flex items-center mb-2">
                 <Mail className="h-4 w-4 text-gray-600 mr-2" />
