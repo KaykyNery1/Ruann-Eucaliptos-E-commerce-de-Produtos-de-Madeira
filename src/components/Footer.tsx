@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -9,7 +9,11 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Trees className="h-8 w-8 text-emerald-400" />
+              <img 
+                src="https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp" 
+                alt="RUANN EUCALIPTOS Logo" 
+                className="h-8 w-8 object-contain"
+              />
               <span className="text-xl font-bold">RUANN EUCALIPTOS</span>
             </div>
             <p className="text-gray-300 mb-4">

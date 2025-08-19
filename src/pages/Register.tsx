@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, User, Trees } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const Register: React.FC = () => {
@@ -89,7 +89,11 @@ const Register: React.FC = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <div className="flex items-center space-x-2">
-            <Trees className="h-10 w-10 text-emerald-600" />
+            <img 
+              src="https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp" 
+              alt="RUANN EUCALIPTOS Logo" 
+              className="h-10 w-10 object-contain"
+            />
             <span className="text-2xl font-bold text-gray-900">RUANN EUCALIPTOS</span>
           </div>
         </div>
