@@ -570,7 +570,7 @@ const products: Product[] = [
     id: 61,
     name: "POSTE 08/10 7 MT",
     price: 125.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp0",
+    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
     category: "postes",
     description: "Poste 08/10 - 7 metros",
     rating: 4.7
