@@ -85,7 +85,7 @@ const products: Product[] = [
     id: 8,
     name: "TELHA ECOLOGICA INOVA RECYCLE UN",
     price: 99.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTACMjh5GoFOT_k6LJsrGTOYvA4uf-Tx1vjrw&s",
     category: "telhas",
     description: "Telha ecológica Inova Recycle - unidade",
     rating: 4.6
