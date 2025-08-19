@@ -8,12 +8,10 @@ import Cart from '../components/Cart';
 const Products: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchTerm, setSearchTerm] = useState('');
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   
   const { currentUser } = useAuth();
-  const { addItem, getItemCount } = useCart();
+  const { addItem } = useCart();
   const navigate = useNavigate();
 
   const categories = ['Todos', 'Madeirite', 'Poste', 'Táboa', 'Telas', 'Telha Ecológica', 'Verniz', 'Cano', 'Arame', 'Lenha', 'Mourão', 'Tinta', 'Parafuso', 'Prego', 'Cola', 'Lixa'];
@@ -187,11 +185,9 @@ const Products: React.FC = () => {
       const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            product.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesPrice = product.price >= priceRange.min && product.price <= priceRange.max;
       
-      return matchesCategory && matchesSearch && matchesPrice;
+      return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchTerm, priceRange]);
 
   // Autocomplete suggestions
   const suggestions = useMemo(() => {
@@ -271,7 +267,7 @@ const Products: React.FC = () => {
             <h3 className="text-lg font-semibold text-gray-900">Filtros</h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="max-w-md">
             {/* Category Filter */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -289,35 +285,6 @@ const Products: React.FC = () => {
                 ))}
               </select>
             </div>
-
-            {/* Price Range */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Preço Mínimo
-              </label>
-              <input
-                type="number"
-                min="0"
-                value={priceRange.min}
-                onChange={(e) => setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
-                placeholder="R$ 0"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Preço Máximo
-              </label>
-              <input
-                type="number"
-                min="0"
-                value={priceRange.max}
-                onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
-                placeholder="R$ 1000"
-              />
-            </div>
           </div>
         </div>
 
@@ -326,20 +293,6 @@ const Products: React.FC = () => {
           <p className="text-gray-600">
             {filteredProducts.length} produto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''}
           </p>
-          
-          {/* Cart Button */}
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center space-x-2"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            <span>Carrinho</span>
-            {getItemCount() > 0 && (
-              <span className="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center">
-                {getItemCount()}
-              </span>
-            )}
-          </button>
         </div>
 
         {/* Products Grid */}
@@ -389,9 +342,6 @@ const Products: React.FC = () => {
           </div>
         )}
       </div>
-
-      {/* Cart Sidebar */}
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
 };

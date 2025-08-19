@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Plus, Minus, ShoppingCart, Trash2 } from 'lucide-react';
+import { X, Plus, Minus, ShoppingCart, Trash2, MapPin, User, Mail } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -12,6 +12,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   const { state, removeItem, updateQuantity, clearCart } = useCart();
   const { currentUser } = useAuth();
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showAddressForm, setShowAddressForm] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [address, setAddress] = useState({
+    street: '',
+    number: '',
+    neighborhood: '',
+    city: '',
+    state: 'DF',
+    zipCode: ''
+  });
+  const [addressErrors, setAddressErrors] = useState<{[key: string]: string}>({});
 
   const handleQuantityChange = (id: string, newQuantity: number) => {
     if (newQuantity < 1) {
@@ -21,9 +32,36 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleCheckout = async () => {
-    if (!currentUser || state.items.length === 0) return;
+  const validateAddress = () => {
+    const errors: {[key: string]: string} = {};
+    
+    if (!address.street.trim()) errors.street = 'Rua é obrigatória';
+    if (!address.number.trim()) errors.number = 'Número é obrigatório';
+    if (!address.neighborhood.trim()) errors.neighborhood = 'Bairro é obrigatório';
+    if (!address.city.trim()) errors.city = 'Cidade é obrigatória';
+    if (!address.zipCode.trim()) errors.zipCode = 'CEP é obrigatório';
+    
+    setAddressErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
+  const handleAddressSubmit = () => {
+    if (validateAddress()) {
+      setShowAddressForm(false);
+      setShowConfirmation(true);
+    }
+  };
+
+  const handleCheckout = async () => {
+    if (!showAddressForm) {
+      setShowAddressForm(true);
+      return;
+    }
+  };
+
+  const confirmOrder = async () => {
+    if (!currentUser || state.items.length === 0) return;
+    
     setIsProcessing(true);
 
     // Prepare WhatsApp message
@@ -33,6 +71,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     let message = `🛒 *PEDIDO - RUANN EUCALIPTOS*\n\n`;
     message += `👤 *Cliente:* ${customerName}\n`;
     message += `📧 *Email:* ${currentUser.email}\n\n`;
+    message += `📍 *Endereço de Entrega:*\n${address.street}, ${address.number}\n${address.neighborhood} - ${address.city}/${address.state}\nCEP: ${address.zipCode}\n\n`;
     message += `📋 *Itens do Pedido:*\n`;
     
     state.items.forEach((item, index) => {
@@ -53,6 +92,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     // Clear cart after successful checkout
     setTimeout(() => {
       clearCart();
+      setShowConfirmation(false);
+      setShowAddressForm(false);
+      setAddress({ street: '', number: '', neighborhood: '', city: '', state: 'DF', zipCode: '' });
       onClose();
       setIsProcessing(false);
     }, 1000);
@@ -152,14 +194,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     : 'bg-green-500 hover:bg-green-600 text-white'
                 }`}
               >
-                {isProcessing ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Processando...
-                  </div>
-                ) : (
-                  'Finalizar Pedido via WhatsApp'
-                )}
+                Continuar para Endereço
               </button>
               
               <button
@@ -172,6 +207,201 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           )}
         </div>
       </div>
+
+      {/* Address Form Modal */}
+      {showAddressForm && (
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                <MapPin className="h-5 w-5 mr-2" />
+                Endereço de Entrega
+              </h3>
+              <button
+                onClick={() => setShowAddressForm(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div className="grid grid-cols-3 gap-2">
+                <div className="col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Rua</label>
+                  <input
+                    type="text"
+                    value={address.street}
+                    onChange={(e) => setAddress(prev => ({ ...prev, street: e.target.value }))}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.street ? 'border-red-300' : 'border-gray-300'}`}
+                    placeholder="Nome da rua"
+                  />
+                  {addressErrors.street && <p className="text-red-600 text-xs mt-1">{addressErrors.street}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Número</label>
+                  <input
+                    type="text"
+                    value={address.number}
+                    onChange={(e) => setAddress(prev => ({ ...prev, number: e.target.value }))}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.number ? 'border-red-300' : 'border-gray-300'}`}
+                    placeholder="123"
+                  />
+                  {addressErrors.number && <p className="text-red-600 text-xs mt-1">{addressErrors.number}</p>}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Bairro</label>
+                <input
+                  type="text"
+                  value={address.neighborhood}
+                  onChange={(e) => setAddress(prev => ({ ...prev, neighborhood: e.target.value }))}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.neighborhood ? 'border-red-300' : 'border-gray-300'}`}
+                  placeholder="Nome do bairro"
+                />
+                {addressErrors.neighborhood && <p className="text-red-600 text-xs mt-1">{addressErrors.neighborhood}</p>}
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Cidade</label>
+                  <input
+                    type="text"
+                    value={address.city}
+                    onChange={(e) => setAddress(prev => ({ ...prev, city: e.target.value }))}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.city ? 'border-red-300' : 'border-gray-300'}`}
+                    placeholder="Cidade"
+                  />
+                  {addressErrors.city && <p className="text-red-600 text-xs mt-1">{addressErrors.city}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+                  <select
+                    value={address.state}
+                    onChange={(e) => setAddress(prev => ({ ...prev, state: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  >
+                    <option value="DF">DF</option>
+                    <option value="GO">GO</option>
+                    <option value="MG">MG</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">CEP</label>
+                <input
+                  type="text"
+                  value={address.zipCode}
+                  onChange={(e) => setAddress(prev => ({ ...prev, zipCode: e.target.value }))}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.zipCode ? 'border-red-300' : 'border-gray-300'}`}
+                  placeholder="00000-000"
+                />
+                {addressErrors.zipCode && <p className="text-red-600 text-xs mt-1">{addressErrors.zipCode}</p>}
+              </div>
+            </div>
+
+            <div className="flex space-x-3 mt-6">
+              <button
+                onClick={() => setShowAddressForm(false)}
+                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleAddressSubmit}
+                className="flex-1 py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md transition-colors"
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {showConfirmation && (
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">Confirmar Pedido</h3>
+              <button
+                onClick={() => setShowConfirmation(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Customer Info */}
+            <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+              <div className="flex items-center mb-2">
+                <User className="h-4 w-4 text-gray-600 mr-2" />
+                <span className="font-medium">{currentUser?.displayName || currentUser?.email}</span>
+              </div>
+              <div className="flex items-center mb-2">
+                <Mail className="h-4 w-4 text-gray-600 mr-2" />
+                <span className="text-sm text-gray-600">{currentUser?.email}</span>
+              </div>
+              <div className="flex items-start">
+                <MapPin className="h-4 w-4 text-gray-600 mr-2 mt-0.5" />
+                <div className="text-sm text-gray-600">
+                  {address.street}, {address.number}<br />
+                  {address.neighborhood} - {address.city}/{address.state}<br />
+                  CEP: {address.zipCode}
+                </div>
+              </div>
+            </div>
+
+            {/* Order Items */}
+            <div className="mb-4">
+              <h4 className="font-medium text-gray-900 mb-2">Itens do Pedido:</h4>
+              <div className="space-y-2">
+                {state.items.map((item) => (
+                  <div key={item.id} className="flex justify-between text-sm">
+                    <span>{item.name} x{item.quantity}</span>
+                    <span>R$ {(item.price * item.quantity).toFixed(2)}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t pt-2 mt-2">
+                <div className="flex justify-between font-semibold">
+                  <span>Total:</span>
+                  <span className="text-emerald-600">R$ {state.total.toFixed(2)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex space-x-3">
+              <button
+                onClick={() => setShowConfirmation(false)}
+                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Voltar
+              </button>
+              <button
+                onClick={confirmOrder}
+                disabled={isProcessing}
+                className={`flex-1 py-2 px-4 rounded-md font-semibold transition-colors ${
+                  isProcessing
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-green-500 hover:bg-green-600 text-white'
+                }`}
+              >
+                {isProcessing ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Enviando...
+                  </div>
+                ) : (
+                  'Enviar Pedido'
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

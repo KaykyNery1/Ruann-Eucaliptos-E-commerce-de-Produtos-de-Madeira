@@ -61,14 +61,6 @@ const Home: React.FC = () => {
             <span>Fale Conosco</span>
             <ArrowRight className="h-5 w-5" />
           </button>
-          
-          <Link 
-            to="/products"
-            className="mt-4 bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2 mx-auto w-fit"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            <span>Ver Produtos</span>
-          </Link>
         </div>
       </section>
 
