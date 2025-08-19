@@ -205,7 +205,7 @@ const products: Product[] = [
     id: 21,
     name: "CHAVE P/ESTICADOR TP BOBS 1X1 UN",
     price: 9.99,
-    image: "https://www.ferpam.com.br/pub/media/catalog/product/c/h/chave_acionamento_tipo_esticador_bobs_jg_ind_stria_ferpam.jpg",
+    image: "https://images-offstore.map.azionedge.net/compressed/2a55ee276b9798f5b056e78a9ab4e8b6.webp",
     category: "ferramentas",
     description: "Chave para esticador tipo bobs 1x1 - unidade",
     rating: 4.2
