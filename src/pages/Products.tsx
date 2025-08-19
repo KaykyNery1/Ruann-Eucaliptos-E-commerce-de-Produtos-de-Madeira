@@ -361,7 +361,7 @@ const products: Product[] = [
     id: 38,
     name: "TELA HEXAGONAL MANGUEIRÃO 1.50MT X 50MT",
     price: 600.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
     category: "telas",
     description: "Tela hexagonal mangueirão 1,50m x 50m",
     rating: 4.8
@@ -370,7 +370,7 @@ const products: Product[] = [
     id: 39,
     name: "TELA HEX PINTEIRO",
     price: 280.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
     category: "telas",
     description: "Tela hexagonal pinteiro",
     rating: 4.6
@@ -379,7 +379,7 @@ const products: Product[] = [
     id: 40,
     name: "TELA HEX GALINHEIRO",
     price: 320.00,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
     category: "telas",
     description: "Tela hexagonal galinheiro",
     rating: 4.7
