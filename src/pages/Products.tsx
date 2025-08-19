@@ -270,7 +270,7 @@ const products: Product[] = [
     id: 28,
     name: "Prego 26x72 1kg",
     price: 27.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 26x72 - 1kg",
     rating: 4.5
@@ -279,7 +279,7 @@ const products: Product[] = [
     id: 29,
     name: "Prego 24x60 1kg",
     price: 27.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 24x60 - 1kg",
     rating: 4.5
@@ -288,7 +288,7 @@ const products: Product[] = [
     id: 30,
     name: "Prego 22x48 1kg",
     price: 27.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 22x48 - 1kg",
     rating: 4.5
@@ -297,7 +297,7 @@ const products: Product[] = [
     id: 31,
     name: "Prego 22x42 1kg",
     price: 27.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 22x42 - 1kg",
     rating: 4.5
@@ -306,7 +306,7 @@ const products: Product[] = [
     id: 32,
     name: "Prego 19x36 1kg",
     price: 19.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 19x36 - 1kg",
     rating: 4.4
@@ -315,7 +315,7 @@ const products: Product[] = [
     id: 33,
     name: "Prego 18x30 1 kg",
     price: 19.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 18x30 - 1kg",
     rating: 4.4
@@ -324,7 +324,7 @@ const products: Product[] = [
     id: 34,
     name: "Prego 17x27 1kg",
     price: 19.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 17x27 - 1kg",
     rating: 4.4
@@ -333,7 +333,7 @@ const products: Product[] = [
     id: 35,
     name: "Prego 17x21 1kg",
     price: 19.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 17x21 - 1kg",
     rating: 4.4
@@ -342,7 +342,7 @@ const products: Product[] = [
     id: 36,
     name: "Prego 15x15 1kg",
     price: 17.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
     category: "ferragens",
     description: "Prego 15x15 - 1kg",
     rating: 4.3
@@ -351,7 +351,7 @@ const products: Product[] = [
     id: 37,
     name: "Grampo polido p/ cerca 1,X9 3,75 MM",
     price: 19.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/409bc956785617c1ab0727fa46a58a59.webp",
     category: "ferragens",
     description: "Grampo polido para cerca 1x9 - 3,75mm",
     rating: 4.4
