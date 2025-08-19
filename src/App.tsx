@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import { CartProvider } from './contexts/CartContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -15,24 +16,26 @@ import Register from './pages/Register';
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="min-h-screen bg-white">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/testimonials" element={<Testimonials />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-            </Routes>
-          </main>
-          <Footer />
-          <WhatsAppButton />
-        </div>
-      </Router>
+      <CartProvider>
+        <Router>
+          <div className="min-h-screen bg-white">
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Routes>
+            </main>
+            <Footer />
+            <WhatsAppButton />
+          </div>
+        </Router>
+      </CartProvider>
     </AuthProvider>
   );
 }
