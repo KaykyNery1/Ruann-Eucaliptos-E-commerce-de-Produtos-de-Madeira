@@ -95,7 +95,7 @@ const products: Product[] = [
     id: 9,
     name: "VERNIZ CETOL DECK ULTRA PROTEOR 3,6LT",
     price: 449.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images-offstore.map.azionedge.net/compressed/cb7e06ee72dc34c9e1c53b3accd6d231.webp",
     category: "verniz",
     description: "Verniz Cetol Deck Ultra Protetor 3,6 litros",
     rating: 4.9
