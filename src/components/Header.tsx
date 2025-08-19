@@ -66,7 +66,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Login Button - Desktop */}
+          {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
             {currentUser ? (
               <div className="flex items-center space-x-4">
@@ -104,13 +104,31 @@ const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-emerald-600"
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center space-x-3">
+            {/* Mobile Cart Icon - Only show if user is logged in */}
+            {currentUser && (
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                <ShoppingCart className="h-6 w-6" />
+                {getItemCount() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                    {getItemCount()}
+                  </span>
+                )}
+              </button>
+            )}
+            
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-md text-gray-700 hover:text-emerald-600"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -132,17 +150,6 @@ const Header: React.FC = () => {
             ))}
             {currentUser ? (
               <div className="py-2">
-                {/* Mobile Cart */}
-                <button
-                  onClick={() => {
-                    setIsCartOpen(true);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="flex items-center py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors"
-                >
-                  <ShoppingCart className="h-4 w-4 mr-2" />
-                  <span>Carrinho ({getItemCount()})</span>
-                </button>
                 <span className="block text-sm text-gray-700 mb-2">
                   Olá, {currentUser.displayName || currentUser.email}
                 </span>
