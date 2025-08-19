@@ -140,7 +140,7 @@ const products: Product[] = [
     id: 14,
     name: "VERNIZ STAIN INC 3,6LT",
     price: 159.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://images.tcdn.com.br/img/img_prod/861603/verniz_stain_acetinado_3_6l_incolor_iquine_99469_1_b1b4838019fda5c82563678f3da0d7bf.jpg",
     category: "verniz",
     description: "Verniz Stain incolor 3,6 litros",
     rating: 4.8
