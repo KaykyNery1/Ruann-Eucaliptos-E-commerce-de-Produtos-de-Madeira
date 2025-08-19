@@ -131,7 +131,7 @@ const products: Product[] = [
     id: 13,
     name: "VERNIZ STAIN INC 900ML",
     price: 44.99,
-    image: "https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "https://i0.wp.com/lojasaquitem.com/wp-content/uploads/2023/01/stain900.jpg?fit=350%2C350&ssl=1",
     category: "verniz",
     description: "Verniz Stain incolor 900ml",
     rating: 4.6
