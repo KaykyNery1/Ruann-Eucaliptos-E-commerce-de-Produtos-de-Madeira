@@ -3,8 +3,6 @@ import { Search, Filter, ShoppingCart, Star } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../config/firebase';
 
 interface Product {
   id: number;
@@ -668,11 +666,9 @@ const categories = [
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [allProducts, setAllProducts] = useState<Product[]>(products);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [suggestions, setSuggestions] = useState<Product[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   
   const { currentUser } = useAuth();
   const { addItem } = useCart();
@@ -711,37 +707,9 @@ export default function Products() {
       products: products.filter(p => p.category === 'madeirite')
     }
   ];
-      products: allProducts.filter(p => ['madeira', 'postes'].includes(p.category))
-  // Load products from Firebase
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-      products: allProducts.filter(p => p.category === 'telhas')
-        const firebaseProducts = querySnapshot.docs.map(doc => ({
-          id: parseInt(doc.id) || Math.random(),
-          ...doc.data(),
-          rating: 4.5 // Default rating for Firebase products
-      products: allProducts.filter(p => p.category === 'verniz')
-        
-        // Use Firebase products if available, otherwise use static products
-        const productsToUse = firebaseProducts.length > 0 ? firebaseProducts : products;
-        setAllProducts(productsToUse);
-      products: allProducts.filter(p => ['ferragens', 'ferramentas', 'arames'].includes(p.category))
-      } catch (error) {
-        console.error('Error loading products:', error);
-        // Fallback to static products
-        setAllProducts(products);
-      products: allProducts.filter(p => ['telas', 'tubos'].includes(p.category))
-      } finally {
-        setIsLoading(false);
-      }
-    };
-      products: allProducts.filter(p => p.category === 'madeirite')
-    loadProducts();
-  }, []);
 
   useEffect(() => {
-    let filtered = allProducts;
+    let filtered = products;
 
     // Filter by search term
     if (searchTerm) {
@@ -757,14 +725,14 @@ export default function Products() {
     }
 
     setFilteredProducts(filtered);
-  }, [searchTerm, selectedCategory, allProducts]);
+  }, [searchTerm, selectedCategory]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
 
     if (value.length > 0) {
-      const productSuggestions = allProducts.filter(product =>
+      const productSuggestions = products.filter(product =>
         product.name.toLowerCase().includes(value.toLowerCase())
       ).slice(0, 5);
       setSuggestions(productSuggestions);
@@ -786,14 +754,6 @@ export default function Products() {
     }
     addItem(product);
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
