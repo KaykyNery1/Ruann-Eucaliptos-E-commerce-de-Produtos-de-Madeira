@@ -717,21 +717,27 @@ export default function Products() {
     const loadProducts = async () => {
       try {
       products: allProducts.filter(p => p.category === 'telhas')
+        const firebaseProducts = querySnapshot.docs.map(doc => ({
           id: parseInt(doc.id) || Math.random(),
           ...doc.data(),
           rating: 4.5 // Default rating for Firebase products
       products: allProducts.filter(p => p.category === 'verniz')
         
+        // Use Firebase products if available, otherwise use static products
         const productsToUse = firebaseProducts.length > 0 ? firebaseProducts : products;
         setAllProducts(productsToUse);
       products: allProducts.filter(p => ['ferragens', 'ferramentas', 'arames'].includes(p.category))
       } catch (error) {
+        console.error('Error loading products:', error);
         // Fallback to static products
         setAllProducts(products);
       products: allProducts.filter(p => ['telas', 'tubos'].includes(p.category))
       } finally {
+        setIsLoading(false);
       }
     };
+      products: allProducts.filter(p => p.category === 'madeirite')
+    loadProducts();
   }, []);
 
   useEffect(() => {

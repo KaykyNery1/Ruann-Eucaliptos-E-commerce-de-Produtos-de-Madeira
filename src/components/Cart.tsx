@@ -23,6 +23,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     state: 'DF',
     zipCode: '',
     document: ''
+    document: ''
   });
   const [payment, setPayment] = useState({
     method: '',
@@ -238,6 +239,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
         errors.document = 'CPF deve ter 11 dígitos ou CNPJ deve ter 14 dígitos';
       }
     }
+    if (!address.document.trim()) errors.document = 'CPF ou CNPJ é obrigatório';
+    else if (!validateDocument(address.document)) {
+      const digits = address.document.replace(/\D/g, '');
+      if (digits.length === 11) {
+        errors.document = 'CPF inválido';
+      } else if (digits.length === 14) {
+        errors.document = 'CNPJ inválido';
+      } else {
+        errors.document = 'CPF deve ter 11 dígitos ou CNPJ deve ter 14 dígitos';
+      }
+    }
     
     setAddressErrors(errors);
     return Object.keys(errors).length === 0;
@@ -274,6 +286,11 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     setAddress(prev => ({ ...prev, document: formatted }));
   };
 
+  const handleDocumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatDocument(e.target.value);
+    setAddress(prev => ({ ...prev, document: formatted }));
+  };
+
   const handleCheckout = async () => {
     if (!showAddressForm) {
       setShowAddressForm(true);
@@ -292,6 +309,8 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     
     let message = `*PEDIDO - RUANN EUCALIPTOS*\n\n`;
     message += `*Cliente:* ${customerName}\n`;
+    const documentType = address.document.replace(/\D/g, '').length === 11 ? 'CPF' : 'CNPJ';
+    message += `*${documentType}:* ${address.document}\n`;
     const documentType = address.document.replace(/\D/g, '').length === 11 ? 'CPF' : 'CNPJ';
     message += `*${documentType}:* ${address.document}\n`;
     message += `*Email:* ${currentUser.email}\n`;
@@ -554,6 +573,18 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                 />
                 {addressErrors.document && <p className="text-red-600 text-xs mt-1">{addressErrors.document}</p>}
               </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">CPF ou CNPJ (para emissão de nota fiscal)</label>
+                <input
+                  type="text"
+                  value={address.document}
+                  onChange={handleDocumentChange}
+                  maxLength={18}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.document ? 'border-red-300' : 'border-gray-300'}`}
+                  placeholder="000.000.000-00 ou 00.000.000/0000-00"
+                />
+                {addressErrors.document && <p className="text-red-600 text-xs mt-1">{addressErrors.document}</p>}
+              </div>
             </div>
 
             <div className="flex space-x-3 mt-6">
@@ -696,6 +727,11 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               <div className="flex items-center mb-2">
                 <User className="h-4 w-4 text-gray-600 mr-2" />
                 <span className="font-medium">{currentUser?.displayName || currentUser?.email}</span>
+              </div>
+              <div className="flex items-center mb-2">
+                <span className="text-sm text-gray-600">
+                  <strong>{address.document.replace(/\D/g, '').length === 11 ? 'CPF' : 'CNPJ'}:</strong> {address.document}
+                </span>
               </div>
               <div className="flex items-center mb-2">
                 <span className="text-sm text-gray-600">
