@@ -245,11 +245,12 @@ const Login: React.FC = () => {
 
               <div className="text-sm">
                 <a
+                 href="#"
                   onClick={() => {
                     setShowForgotPassword(true);
                     setForgotPasswordEmail(formData.email);
                   }}
-                  className="font-medium text-emerald-600 hover:text-emerald-500 transition-colors"
+                 className="font-medium text-emerald-600 hover:text-emerald-500 transition-colors cursor-pointer"
                 >
                   Esqueceu a senha?
                 </a>
