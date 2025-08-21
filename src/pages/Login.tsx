@@ -323,7 +323,7 @@ const Login: React.FC = () => {
         </div>
       </div>
 
-                      setForgotPasswordEmail(e.target.value);
+                     setForgotPasswordEmail(e.target.value);
                 if (errors.forgotPassword) {
                   setErrors(prev => ({ ...prev, forgotPassword: '' }));
                 }
@@ -363,4 +363,7 @@ const Login: React.FC = () => {
       </form>
     </div>
   </div>
-)
+)} 
+export default Login;
+
+
