@@ -284,7 +284,7 @@ const Login: React.FC = () => {
 
       {/* Forgot Password Modal */}
       {showForgotPassword && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" onClick={closeForgotPasswordModal}>
           <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
               Recuperar Senha
@@ -294,9 +294,17 @@ const Login: React.FC = () => {
             </p>
             
             <form onSubmit={handleForgotPassword}>
-              {errors.forgotPassword && (
+              {/* Error Message */}
+              {errors.forgotPassword && !resetSuccess && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm mb-4">
                   {errors.forgotPassword}
+                </div>
+              )}
+              
+              {/* Success Message */}
+              {resetMessage && resetSuccess && (
+                <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-md text-sm mb-4">
+                  {resetMessage}
                 </div>
               )}
               
@@ -311,10 +319,12 @@ const Login: React.FC = () => {
                   <input
                     id="forgotEmail"
                     type="email"
+                    required
                     value={forgotPasswordEmail}
                     onChange={(e) => {
                       setForgotPasswordEmail(e.target.value);
-                      if (errors.forgotPassword) {
+                      // Clear errors when user starts typing
+                      if (errors.forgotPassword && !resetSuccess) {
                         setErrors(prev => ({ ...prev, forgotPassword: '' }));
                       }
                     }}
@@ -322,6 +332,7 @@ const Login: React.FC = () => {
                       errors.forgotPassword ? 'border-red-300' : 'border-gray-300'
                     }`}
                     placeholder="seu@email.com"
+                    disabled={forgotPasswordLoading || resetSuccess}
                   />
                 </div>
               </div>
@@ -329,26 +340,36 @@ const Login: React.FC = () => {
               <div className="flex space-x-3">
                 <button
                   type="button"
-                  onClick={() => {
-                    setShowForgotPassword(false);
-                    setForgotPasswordEmail('');
-                    setErrors({});
-                  }}
-                  className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
-                >
-                  Cancelar
-                </button>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
-                    isLoading
-                      ? 'bg-gray-400 cursor-not-allowed text-white'
-                      : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                  onClick={closeForgotPasswordModal}
+                  disabled={forgotPasswordLoading}
+                  className={`flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 transition-colors ${
+                    forgotPasswordLoading ? 'cursor-not-allowed opacity-50' : 'hover:bg-gray-50'
                   }`}
                 >
-                  {isLoading ? 'Enviando...' : 'Enviar'}
+                  {resetSuccess ? 'Fechar' : 'Cancelar'}
                 </button>
+                
+                {/* Only show submit button if not successful */}
+                {!resetSuccess && (
+                  <button
+                    type="submit"
+                    disabled={forgotPasswordLoading}
+                    className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
+                      forgotPasswordLoading
+                        ? 'bg-gray-400 cursor-not-allowed text-white'
+                        : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                    }`}
+                  >
+                    {forgotPasswordLoading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Enviando...
+                      </div>
+                    ) : (
+                      'Enviar'
+                    )}
+                  </button>
+                )}
               </div>
             </form>
           </div>
