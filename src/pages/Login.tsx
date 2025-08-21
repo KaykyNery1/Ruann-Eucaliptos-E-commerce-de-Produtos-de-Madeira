@@ -17,6 +17,48 @@ const Login: React.FC = () => {
   const { login, loginWithGoogle, resetPassword } = useAuth();
   const navigate = useNavigate();
 
+  const handleForgotPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!forgotPasswordEmail.trim()) {
+      setErrors(prev => ({ ...prev, forgotPassword: 'Email é obrigatório' }));
+      return;
+    }
+    
+    if (!/\S+@\S+\.\S+/.test(forgotPasswordEmail)) {
+      setErrors(prev => ({ ...prev, forgotPassword: 'Email inválido' }));
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      await resetPassword(forgotPasswordEmail);
+      setResetMessage('Email de recuperação enviado! Verifique sua caixa de entrada.');
+      setErrors(prev => ({ ...prev, forgotPassword: '' }));
+      setTimeout(() => {
+        setShowForgotPassword(false);
+        setForgotPasswordEmail('');
+        setResetMessage('');
+      }, 3000);
+    } catch (error: any) {
+      console.error('Erro ao enviar email de recuperação:', error);
+      let errorMessage = 'Erro ao enviar email de recuperação. Tente novamente.';
+      
+      if (error.code === 'auth/user-not-found') {
+        errorMessage = 'Email não encontrado. Verifique se o email está correto.';
+      } else if (error.code === 'auth/invalid-email') {
+        errorMessage = 'Email inválido.';
+      } else if (error.code === 'auth/too-many-requests') {
+        errorMessage = 'Muitas tentativas. Tente novamente mais tarde.';
+      }
+      
+      setErrors(prev => ({ ...prev, forgotPassword: errorMessage }));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -203,7 +245,10 @@ const Login: React.FC = () => {
 
               <div className="text-sm">
                 <a
-                  href="#"
+                  onClick={() => {
+                    setShowForgotPassword(true);
+                    setForgotPasswordEmail(formData.email);
+                  }}
                   className="font-medium text-emerald-600 hover:text-emerald-500 transition-colors"
                 >
                   Esqueceu a senha?
@@ -293,6 +338,12 @@ const Login: React.FC = () => {
               {errors.forgotPassword && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm mb-4">
                   {errors.forgotPassword}
+                </div>
+              )}
+              
+              {resetMessage && (
+                <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-md text-sm mb-4">
+                  {resetMessage}
                 </div>
               )}
               
