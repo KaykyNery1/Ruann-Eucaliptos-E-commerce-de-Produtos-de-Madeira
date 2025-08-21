@@ -375,7 +375,7 @@ const Login: React.FC = () => {
               
               <div className="flex space-x-3">
                 <button
-                  type="button"
+                  type="pointer"
                   onClick={() => {
                     setShowForgotPassword(false);
                     setForgotPasswordEmail('');
