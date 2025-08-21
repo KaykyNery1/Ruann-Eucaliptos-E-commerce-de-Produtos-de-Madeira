@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
   const businessHours = [
     { day: "Segunda a Sexta", hours: "08:00 - 18:00" },
     { day: "Sábado", hours: "08:00 - 12:00" },
-    { day: "Domingo", hours:#FF0000 "Fechado" }
+    { day: "Domingo", #FF0000 hours: "Fechado" }
   ];
 
   return (
