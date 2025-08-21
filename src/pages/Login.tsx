@@ -386,7 +386,7 @@ const Login: React.FC = () => {
                   Cancelar
                 </button>
                 <button
-                  type="submit"
+                  type="pointer"
                   disabled={isLoading}
                   className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
                     isLoading
