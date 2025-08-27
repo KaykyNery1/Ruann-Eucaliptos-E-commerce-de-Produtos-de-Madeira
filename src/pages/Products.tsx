@@ -122,6 +122,8 @@ export default function Products() {
       if ('id' in productData) {
         // Update existing product
         await updateProduct(productData.id, productData);
+        // Force re-render by updating the products state
+        setProducts(prev => prev.map(p => p.id === productData.id ? productData : p));
       } else {
         // Add new product
         await addProduct(productData);

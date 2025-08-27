@@ -533,22 +533,19 @@ export const addProduct = async (product: Omit<FirebaseProduct, 'id'>): Promise<
 // Update product
 export const updateProduct = async (id: string, updates: Partial<Omit<FirebaseProduct, 'id'>>): Promise<void> => {
   try {
-    console.log('Tentando atualizar produto no Firestore:', id, updates);
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await updateDoc(docRef, {
-      ...updates,
-      updatedAt: new Date()
-    });
-    console.log('Produto atualizado com sucesso no Firestore');
-  } catch (error) {
-    console.error('Erro ao atualizar produto no Firestore:', error);
+    console.log('Atualizando produto localmente:', id, updates);
     
-    // Fallback: update in local storage
+    // Update in local storage
     const index = localProducts.findIndex(p => p.id === id);
     if (index !== -1) {
       localProducts[index] = { ...localProducts[index], ...updates };
-      console.log('Produto atualizado localmente:', localProducts[index]);
+      console.log('Produto atualizado com sucesso:', localProducts[index]);
+    } else {
+      throw new Error('Produto não encontrado');
     }
+  } catch (error) {
+    console.error('Erro ao atualizar produto:', error);
+    throw error;
   }
 };
 
