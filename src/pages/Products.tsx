@@ -1,731 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Filter, ShoppingCart, Star } from 'lucide-react';
+import { Search, Filter, ShoppingCart, Star, Plus, Edit, Trash2, Shield } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-  description: string;
-  rating: number;
-}
-
-const products: Product[] = [
-  // Madeira
-  {
-    id: 1,
-    name: "TÁBUA DE PINUS 2x30",
-    price: 10.33,
-    image: "https://dcdn-us.mitiendanube.com/stores/001/205/048/products/tabua-pinus-30cm-x-3mts-loja-fisica-madeira-88d72d69df1a22137717107038361352-1024-1024.jpeg",
-    category: "madeira",
-    description: "Tábua de pinus 2x30 - preço por metro",
-    rating: 4.8
-  },
-  {
-    id: 2,
-    name: "SARRAFO DE PINUS",
-    price: 1.99,
-    image: "https://ilhabela.tudoem.com.br/assets/img/anuncio/sarrafo_de_pinus_10cm_2.webp",
-    category: "madeira",
-    description: "Sarrafo de pinus - preço por metro",
-    rating: 4.7
-  },
-  {
-    id: 3,
-    name: "TABUA 02/15 3 MT",
-    price: 16.50,
-    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
-    category: "madeira",
-    description: "Tábua 02/15 com 3 metros de comprimento",
-    rating: 4.6
-  },
-  {
-    id: 4,
-    name: "TABUA 02/10 3 MT",
-    price: 12.00,
-    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
-    category: "madeira",
-    description: "Tábua 02/10 com 3 metros de comprimento",
-    rating: 4.5
-  },
-  {
-    id: 5,
-    name: "TABUA 02/25 3MTS",
-    price: 27.00,
-    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
-    category: "madeira",
-    description: "Tábua 02/25 com 3 metros de comprimento",
-    rating: 4.7
-  },
-  {
-    id: 6,
-    name: "TABUA 02/30 3MT",
-    price: 31.00,
-    image: "https://cesconstrucao.com.br/media/catalog/product/i/m/image_2786.jpg",
-    category: "madeira",
-    description: "Tábua 02/30 com 3 metros de comprimento",
-    rating: 4.8
-  },
-  // Madeirite
-  {
-    id: 7,
-    name: "Maderite plastificado",
-    price: 117.90,
-    image: "https://tijolodefabricape.meucatalogofacil.com/_core/_uploads//2023/07/0024190723348ejk6dbe.jpg",
-    category: "madeirite",
-    description: "Madeirite plastificado de alta qualidade",
-    rating: 4.9
-  },
-  // Telhas
-  {
-    id: 8,
-    name: "TELHA ECOLOGICA INOVA RECYCLE UN",
-    price: 99.99,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTACMjh5GoFOT_k6LJsrGTOYvA4uf-Tx1vjrw&s",
-    category: "telhas",
-    description: "Telha ecológica Inova Recycle - unidade",
-    rating: 4.6
-  },
-  // Verniz
-  {
-    id: 9,
-    name: "VERNIZ CETOL DECK ULTRA PROTEOR 3,6LT",
-    price: 449.99,
-    image: "https://padovani.vtexassets.com/arquivos/ids/194392-800-800?v=638435150235330000&width=800&height=800&aspect=true",
-    category: "verniz",
-    description: "Verniz Cetol Deck Ultra Protetor 3,6 litros",
-    rating: 4.9
-  },
-  {
-    id: 10,
-    name: "VERNIZ OSMOCOLOR STAIN 3,6LT",
-    price: 299.99,
-    image: "https://http2.mlstatic.com/D_NQ_NP_821250-MLB84187996111_042025-O-osmocolor-montana-transparente-36l-acabamento-acetinado.webp",
-    category: "verniz",
-    description: "Verniz Osmocolor Stain 3,6 litros",
-    rating: 4.8
-  },
-  {
-    id: 11,
-    name: "VERNIZ EXTRA RAPIDO BRIL 900ML",
-    price: 34.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/35d727d664149f1e56b5571315f5821b.webp",
-    category: "verniz",
-    description: "Verniz extra rápido brilhante 900ml",
-    rating: 4.5
-  },
-  {
-    id: 12,
-    name: "VERNIZ EXTRA RAPIDO BRIL 3,6LT",
-    price: 114.99,
-    image: "https://http2.mlstatic.com/D_Q_NP_2X_831334-MLB89825122700_082025-E-vernize-alto-brilho-36l-extra-rapido-protege-e-realca.webp",
-    category: "verniz",
-    description: "Verniz extra rápido brilhante 3,6 litros",
-    rating: 4.7
-  },
-  {
-    id: 13,
-    name: "VERNIZ STAIN INC 900ML",
-    price: 44.99,
-    image: "https://i0.wp.com/lojasaquitem.com/wp-content/uploads/2023/01/stain900.jpg?fit=350%2C350&ssl=1",
-    category: "verniz",
-    description: "Verniz Stain incolor 900ml",
-    rating: 4.6
-  },
-  {
-    id: 14,
-    name: "VERNIZ STAIN INC 3,6LT",
-    price: 159.99,
-    image: "https://images.tcdn.com.br/img/img_prod/861603/verniz_stain_acetinado_3_6l_incolor_iquine_99469_1_b1b4838019fda5c82563678f3da0d7bf.jpg",
-    category: "verniz",
-    description: "Verniz Stain incolor 3,6 litros",
-    rating: 4.8
-  },
-  // Ferramentas
-  {
-    id: 15,
-    name: "CAVADEIRA ART 1,45MT C/CABO",
-    price: 94.99,
-    image: "https://http2.mlstatic.com/D_NQ_NP_881414-MLB49546877901_042022-O-cavadeira-articulada-tramontina-cabo-madeira-145-mt.webp",
-    category: "ferramentas",
-    description: "Cavadeira articulada 1,45m com cabo",
-    rating: 4.7
-  },
-  {
-    id: 16,
-    name: "CAVADEIRA ART 1,20MT C/CABO",
-    price: 74.99,
-    image: "https://http2.mlstatic.com/D_NQ_NP_881414-MLB49546877901_042022-O-cavadeira-articulada-tramontina-cabo-madeira-145-mt.webp",
-    category: "ferramentas",
-    description: "Cavadeira articulada 1,20m com cabo",
-    rating: 4.6
-  },
-  // Arames
-  {
-    id: 17,
-    name: "ARAME RECONZIDO 12.2.77 MM APROX. 5KG",
-    price: 84.99,
-    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
-    category: "arames",
-    description: "Arame recozido 12 - 2.77mm aproximadamente 5kg",
-    rating: 4.5
-  },
-  {
-    id: 18,
-    name: "ARAME RECONZIDO 14.2.11 MM 1KG",
-    price: 15.99,
-    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
-    category: "arames",
-    description: "Arame recozido 14 - 2.11mm - 1kg",
-    rating: 4.4
-  },
-  {
-    id: 19,
-    name: "ARAME RECONZIDO 18.1.24 MM 1KG",
-    price: 17.49,
-    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
-    category: "arames",
-    description: "Arame recozido 18 - 1.24mm - 1kg",
-    rating: 4.3
-  },
-  {
-    id: 20,
-    name: "ARAME RECONZIDO 16.1.65 MM 1KG",
-    price: 16.99,
-    image: "https://http2.mlstatic.com/D_668166-MLB82097102369_012025-O.jpg",
-    category: "arames",
-    description: "Arame recozido 16 - 1.65mm - 1kg",
-    rating: 4.4
-  },
-  {
-    id: 21,
-    name: "CHAVE P/ESTICADOR TP BOBS 1X1 UN",
-    price: 9.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/2a55ee276b9798f5b056e78a9ab4e8b6.webp",
-    category: "ferramentas",
-    description: "Chave para esticador tipo bobs 1x1 - unidade",
-    rating: 4.2
-  },
-  {
-    id: 22,
-    name: "Catraca p/cerca UN",
-    price: 14.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4ff19b841ff892e44de2e29eeb98b384.webp",
-    category: "ferramentas",
-    description: "Catraca para cerca - unidade",
-    rating: 4.3
-  },
-  {
-    id: 23,
-    name: "ESPICHADEIRA P/ ARAME LISO C/CORRENTE",
-    price: 219.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/81027bf89b4502d4ff256d706c69f07c.webp",
-    category: "ferramentas",
-    description: "Espichadeira para arame liso com corrente",
-    rating: 4.8
-  },
-  // Dobradiças
-  {
-    id: 24,
-    name: "Dobradiça N1 UN",
-    price: 24.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
-    category: "ferragens",
-    description: "Dobradiça número 1 - unidade",
-    rating: 4.5
-  },
-  {
-    id: 25,
-    name: "Dobradiça N3 UN",
-    price: 34.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
-    category: "ferragens",
-    description: "Dobradiça número 3 - unidade",
-    rating: 4.7
-  },
-  {
-    id: 26,
-    name: "Dobradiça N2 UN",
-    price: 29.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
-    category: "ferragens",
-    description: "Dobradiça número 2 - unidade",
-    rating: 4.6
-  },
-  {
-    id: 27,
-    name: "Dobradiça N0 UN",
-    price: 19.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/0b05b3e35ea479dda7defc61c7410b18.webp",
-    category: "ferragens",
-    description: "Dobradiça número 0 - unidade",
-    rating: 4.4
-  },
-  // Pregos
-  {
-    id: 28,
-    name: "Prego 26x72 1kg",
-    price: 27.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 26x72 - 1kg",
-    rating: 4.5
-  },
-  {
-    id: 29,
-    name: "Prego 24x60 1kg",
-    price: 27.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 24x60 - 1kg",
-    rating: 4.5
-  },
-  {
-    id: 30,
-    name: "Prego 22x48 1kg",
-    price: 27.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 22x48 - 1kg",
-    rating: 4.5
-  },
-  {
-    id: 31,
-    name: "Prego 22x42 1kg",
-    price: 27.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 22x42 - 1kg",
-    rating: 4.5
-  },
-  {
-    id: 32,
-    name: "Prego 19x36 1kg",
-    price: 19.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 19x36 - 1kg",
-    rating: 4.4
-  },
-  {
-    id: 33,
-    name: "Prego 18x30 1 kg",
-    price: 19.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 18x30 - 1kg",
-    rating: 4.4
-  },
-  {
-    id: 34,
-    name: "Prego 17x27 1kg",
-    price: 19.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 17x27 - 1kg",
-    rating: 4.4
-  },
-  {
-    id: 35,
-    name: "Prego 17x21 1kg",
-    price: 19.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 17x21 - 1kg",
-    rating: 4.4
-  },
-  {
-    id: 36,
-    name: "Prego 15x15 1kg",
-    price: 17.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp",
-    category: "ferragens",
-    description: "Prego 15x15 - 1kg",
-    rating: 4.3
-  },
-  {
-    id: 37,
-    name: "Grampo polido p/ cerca 1,X9 3,75 MM",
-    price: 19.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/409bc956785617c1ab0727fa46a58a59.webp",
-    category: "ferragens",
-    description: "Grampo polido para cerca 1x9 - 3,75mm",
-    rating: 4.4
-  },
-  // Telas
-  {
-    id: 38,
-    name: "TELA HEXAGONAL MANGUEIRÃO 1.50MT X 50MT",
-    price: 600.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
-    category: "telas",
-    description: "Tela hexagonal mangueirão 1,50m x 50m",
-    rating: 4.8
-  },
-  {
-    id: 39,
-    name: "TELA HEX PINTEIRO",
-    price: 280.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
-    category: "telas",
-    description: "Tela hexagonal pinteiro",
-    rating: 4.6
-  },
-  {
-    id: 40,
-    name: "TELA HEX GALINHEIRO",
-    price: 320.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/4bb65c058b016a9f9be83fbe8c439c35.webp",
-    category: "telas",
-    description: "Tela hexagonal galinheiro",
-    rating: 4.7
-  },
-  // Tubos
-  {
-    id: 41,
-    name: "TUBO KRONA SOLD 25MM",
-    price: 20.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0cafe220991befb9ebba8e17502a375b.webp",
-    category: "tubos",
-    description: "Tubo Krona soldável 25mm",
-    rating: 4.4
-  },
-  {
-    id: 42,
-    name: "TUBO ESG 40MM KRONA",
-    price: 44.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/3bde6ab84a3c4a461b01a2fe2d8d177c.webp",
-    category: "tubos",
-    description: "Tubo esgoto 40mm Krona",
-    rating: 4.5
-  },
-  {
-    id: 43,
-    name: "TUBO ESGOTO CLASSE B - 75MM 6MTS",
-    price: 34.90,
-    image: "https://images-offstore.map.azionedge.net/compressed/301afa1ba86652ba1ea4b3ee11501ec8.webp",
-    category: "tubos",
-    description: "Tubo esgoto classe B 75mm - 6 metros",
-    rating: 4.6
-  },
-  {
-    id: 44,
-    name: "TUBO ESG 100MM KRONA",
-    price: 65.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/5f234bacf5c0843d4a91f9547c6d6264.webp",
-    category: "tubos",
-    description: "Tubo esgoto 100mm Krona",
-    rating: 4.7
-  },
-  {
-    id: 45,
-    name: "TUBO DE ESGOTO 50MM NBR CLASSE - B",
-    price: 31.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/d624346b2016c2b04553b6eec5a2d966.webp",
-    category: "tubos",
-    description: "Tubo de esgoto 50mm NBR classe B",
-    rating: 4.5
-  },
-  {
-    id: 46,
-    name: "TUBO DE ESGOTO 40MM NBR CLASSE - B",
-    price: 22.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/c6e775733fbcfc2f2d4116b4e1b65253.webp",
-    category: "tubos",
-    description: "Tubo de esgoto 40mm NBR classe B",
-    rating: 4.4
-  },
-  {
-    id: 47,
-    name: "TUBO DE ESGOTO 200 NBR CLASSE -B",
-    price: 270.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/d363c8d39d812f85b3287c93a205b859.webp",
-    category: "tubos",
-    description: "Tubo de esgoto 200mm NBR classe B",
-    rating: 4.8
-  },
-  {
-    id: 48,
-    name: "TUBO DE ESGOTO 150 NBR CLASSE -B",
-    price: 126.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/9b1887fedc773da16862b06d59d61ac7.webp",
-    category: "tubos",
-    description: "Tubo de esgoto 150mm NBR classe B",
-    rating: 4.7
-  },
-  {
-    id: 49,
-    name: "TUBO DE ESGOTO 100 NBR CLASSE - B (6 METROS)",
-    price: 34.90,
-    image: "https://images-offstore.map.azionedge.net/compressed/459256c0a10d73eb64c03bbcd22c4b31.webp",
-    category: "tubos",
-    description: "Tubo de esgoto 100mm NBR classe B - 6 metros",
-    rating: 4.6
-  },
-  // Postes
-  {
-    id: 50,
-    name: "POSTE 14/16 5 MT",
-    price: 260.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 14/16 - 5 metros",
-    rating: 4.9
-  },
-  {
-    id: 51,
-    name: "POSTE 14/16 4 MT",
-    price: 170.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 14/16 - 4 metros",
-    rating: 4.8
-  },
-  {
-    id: 52,
-    name: "POSTE 12/14 7 MT",
-    price: 230.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 12/14 - 7 metros",
-    rating: 4.9
-  },
-  {
-    id: 53,
-    name: "POSTE 12/14 6 MT",
-    price: 180.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 12/14 - 6 metros",
-    rating: 4.8
-  },
-  {
-    id: 54,
-    name: "POSTE 12/14 5 MT",
-    price: 160.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 12/14 - 5 metros",
-    rating: 4.7
-  },
-  {
-    id: 55,
-    name: "POSTE 12/14 4 MT",
-    price: 130.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 12/14 - 4 metros",
-    rating: 4.6
-  },
-  {
-    id: 56,
-    name: "POSTE 10/12 7MT",
-    price: 180.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 10/12 - 7 metros",
-    rating: 4.8
-  },
-  {
-    id: 57,
-    name: "POSTE 10/12 6MT",
-    price: 149.99,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 10/12 - 6 metros",
-    rating: 4.7
-  },
-  {
-    id: 58,
-    name: "POSTE 10/12 5 MT",
-    price: 125.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 10/12 - 5 metros",
-    rating: 4.6
-  },
-  {
-    id: 59,
-    name: "POSTE 10/12 4 MT",
-    price: 100.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 10/12 - 4 metros",
-    rating: 4.5
-  },
-  {
-    id: 60,
-    name: "POSTE 08/10 8 MT",
-    price: 230.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 08/10 - 8 metros",
-    rating: 4.9
-  },
-  {
-    id: 61,
-    name: "POSTE 08/10 7 MT",
-    price: 125.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 08/10 - 7 metros",
-    rating: 4.7
-  },
-  {
-    id: 62,
-    name: "POSTE 08/10 5 MT",
-    price: 95.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 08/10 - 5 metros",
-    rating: 4.6
-  },
-  {
-    id: 63,
-    name: "POSTE 08/10 4 MT",
-    price: 75.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 08/10 - 4 metros",
-    rating: 4.5
-  },
-  {
-    id: 64,
-    name: "POSTE 06/08 7 MT",
-    price: 120.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 06/08 - 7 metros",
-    rating: 4.7
-  },
-  {
-    id: 65,
-    name: "POSTE 06/08 6 MT eucalipto tratado",
-    price: 65.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 06/08 eucalipto tratado - 6 metros",
-    rating: 4.6
-  },
-  {
-    id: 66,
-    name: "Poste de Eucalipto Tratado 6/8 – 4.00m",
-    price: 55.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste de eucalipto tratado 6/8 - 4 metros",
-    rating: 4.5
-  },
-  {
-    id: 67,
-    name: "Poste de Eucalipto Tratado 4/6 – 6.00m",
-    price: 75.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste de eucalipto tratado 4/6 - 6 metros",
-    rating: 4.6
-  },
-  {
-    id: 68,
-    name: "Poste de Eucalipto Tratado 4/6 – 5.00m",
-    price: 65.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste de eucalipto tratado 4/6 - 5 metros",
-    rating: 4.5
-  },
-  {
-    id: 69,
-    name: "Poste 04/06 eucalipto tratado 4mt",
-    price: 45.00,
-    image: "https://images-offstore.map.azionedge.net/compressed/0583842b7925ec1c4fdeb5e3b5e9fea3.webp",
-    category: "postes",
-    description: "Poste 04/06 eucalipto tratado - 4 metros",
-    rating: 4.4
-  }
-];
-
-const categories = [
-  { value: '', label: 'Todas as Categorias' },
-  { value: 'madeira', label: 'Madeira' },
-  { value: 'madeirite', label: 'Madeirite' },
-  { value: 'telhas', label: 'Telhas' },
-  { value: 'verniz', label: 'Verniz' },
-  { value: 'ferramentas', label: 'Ferramentas' },
-  { value: 'arames', label: 'Arames' },
-  { value: 'ferragens', label: 'Ferragens' },
-  { value: 'telas', label: 'Telas' },
-  { value: 'tubos', label: 'Tubos' },
-  { value: 'postes', label: 'Postes' },
-];
+import { 
+  FirebaseProduct, 
+  subscribeToProducts, 
+  addProduct, 
+  updateProduct, 
+  deleteProduct 
+} from '../services/productService';
+import ProductForm from '../components/ProductForm';
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(products);
-  const [suggestions, setSuggestions] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<FirebaseProduct[]>([]);
+  const [suggestions, setSuggestions] = useState<FirebaseProduct[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [products, setProducts] = useState<FirebaseProduct[]>([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [editingProduct, setEditingProduct] = useState<FirebaseProduct | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   
-  const { currentUser } = useAuth();
+  const { currentUser, isAdmin } = useAuth();
   const { addItem } = useCart();
   const navigate = useNavigate();
 
-  // Group products by category for organized display
-  const productSections = [
-    {
-      title: 'Madeiras & Postes',
-      categories: ['madeira', 'postes'],
-      products: products.filter(p => ['madeira', 'postes'].includes(p.category))
-    },
-    {
-      title: 'Telhas',
-      categories: ['telhas'],
-      products: products.filter(p => p.category === 'telhas')
-    },
-    {
-      title: 'Vernizes',
-      categories: ['verniz'],
-      products: products.filter(p => p.category === 'verniz')
-    },
-    {
-      title: 'Ferragens & Ferramentas',
-      categories: ['ferragens', 'ferramentas', 'arames'],
-      products: products.filter(p => ['ferragens', 'ferramentas', 'arames'].includes(p.category))
-    },
-    {
-      title: 'Telas & Tubos',
-      categories: ['telas', 'tubos'],
-      products: products.filter(p => ['telas', 'tubos'].includes(p.category))
-    },
-    {
-      title: 'Madeirite',
-      categories: ['madeirite'],
-      products: products.filter(p => p.category === 'madeirite')
-    }
-  ];
-
+  // Subscribe to products from Firestore
   useEffect(() => {
-    let filtered = products;
+    const unsubscribe = subscribeToProducts((productsData) => {
+      setProducts(productsData);
+      setFilteredProducts(productsData);
+      setIsLoading(false);
+    });
 
-    // Filter by search term
-    if (searchTerm) {
-      filtered = filtered.filter(product =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+    return () => unsubscribe();
+  }, []);
+
+  // Filter products based on search term
+  useEffect(() => {
+    if (!searchTerm) {
+      setFilteredProducts(products);
+      return;
     }
 
-    // Filter by category
-    if (selectedCategory) {
-      filtered = filtered.filter(product => product.category === selectedCategory);
-    }
-
+    const filtered = products.filter(product =>
+      product.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.descricao.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     setFilteredProducts(filtered);
-  }, [searchTerm, selectedCategory]);
+  }, [searchTerm, products]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -733,7 +58,7 @@ export default function Products() {
 
     if (value.length > 0) {
       const productSuggestions = products.filter(product =>
-        product.name.toLowerCase().includes(value.toLowerCase())
+        product.nome.toLowerCase().includes(value.toLowerCase())
       ).slice(0, 5);
       setSuggestions(productSuggestions);
       setShowSuggestions(true);
@@ -742,37 +67,116 @@ export default function Products() {
     }
   };
 
-  const handleSuggestionClick = (suggestion: Product) => {
-    setSearchTerm(suggestion.name);
+  const handleSuggestionClick = (suggestion: FirebaseProduct) => {
+    setSearchTerm(suggestion.nome);
     setShowSuggestions(false);
   };
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: FirebaseProduct) => {
     if (!currentUser) {
       navigate('/login');
       return;
     }
-    addItem(product);
+
+    // Convert FirebaseProduct to cart format
+    const cartProduct = {
+      id: product.id,
+      name: product.nome,
+      description: product.descricao,
+      image: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp', // Default image
+      price: product.preco,
+      category: 'produto'
+    };
+    
+    addItem(cartProduct);
   };
+
+  const handleSaveProduct = async (productData: Omit<FirebaseProduct, 'id'> | FirebaseProduct) => {
+    try {
+      if ('id' in productData) {
+        // Update existing product
+        await updateProduct(productData.id, productData);
+      } else {
+        // Add new product
+        await addProduct(productData);
+      }
+      setIsFormOpen(false);
+      setEditingProduct(null);
+    } catch (error) {
+      console.error('Error saving product:', error);
+      throw error;
+    }
+  };
+
+  const handleDeleteProduct = async (id: string) => {
+    try {
+      await deleteProduct(id);
+      setDeleteConfirm(null);
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
+
+  const handleEditProduct = (product: FirebaseProduct) => {
+    setEditingProduct(product);
+    setIsFormOpen(true);
+  };
+
+  const handleAddProduct = () => {
+    setEditingProduct(null);
+    setIsFormOpen(true);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando produtos...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Nossos Produtos
-          </h1>
+          <div className="flex items-center justify-center mb-4">
+            <h1 className="text-4xl font-bold text-gray-900">
+              Nossos Produtos
+            </h1>
+            {isAdmin && (
+              <div className="ml-4 flex items-center space-x-2">
+                <Shield className="h-5 w-5 text-emerald-600" />
+                <span className="text-sm text-emerald-600 font-medium">Admin</span>
+              </div>
+            )}
+          </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Descubra nossa linha completa de produtos de eucalipto de alta qualidade
           </p>
+          
+          {/* Admin Add Button */}
+          {isAdmin && (
+            <div className="mt-6">
+              <button
+                onClick={handleAddProduct}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2 mx-auto"
+              >
+                <Plus className="w-5 h-5" />
+                Adicionar Produto
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Search and Filter Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="flex flex-col lg:flex-row gap-4">
+          <div className="flex flex-col gap-4">
             {/* Search Bar */}
-            <div className="flex-1 relative">
+            <div className="relative">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
@@ -794,30 +198,12 @@ export default function Products() {
                       onClick={() => handleSuggestionClick(suggestion)}
                       className="w-full px-4 py-2 text-left hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg"
                     >
-                      <div className="font-medium text-gray-900">{suggestion.name}</div>
-                      <div className="text-sm text-gray-500">R$ {suggestion.price.toFixed(2)}</div>
+                      <div className="font-medium text-gray-900">{suggestion.nome}</div>
+                      <div className="text-sm text-gray-500">R$ {suggestion.preco.toFixed(2)}</div>
                     </button>
                   ))}
                 </div>
               )}
-            </div>
-
-            {/* Category Filter */}
-            <div className="lg:w-64">
-              <div className="relative">
-                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent appearance-none bg-white"
-                >
-                  {categories.map((category) => (
-                    <option key={category.value} value={category.value}>
-                      {category.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
             </div>
           </div>
         </div>
@@ -827,131 +213,69 @@ export default function Products() {
           <p className="text-gray-600">
             Mostrando {filteredProducts.length} produto{filteredProducts.length !== 1 ? 's' : ''}
             {searchTerm && ` para "${searchTerm}"`}
-            {selectedCategory && ` na categoria "${categories.find(c => c.value === selectedCategory)?.label}"`}
           </p>
         </div>
 
         {/* Products Grid */}
-        {/* Show organized sections when no filters are applied */}
-        {!searchTerm && !selectedCategory ? (
-          <div className="space-y-12">
-            {productSections.map((section, sectionIndex) => (
-              <div key={sectionIndex}>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-emerald-600 pb-2">
-                  {section.title}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {section.products.map((product) => (
-                    <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                      <div className="aspect-w-1 aspect-h-1">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-48 object-cover"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          {product.name}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-3">
-                          {product.description}
-                        </p>
-                        
-                        {/* Rating */}
-                        <div className="flex items-center mb-3">
-                          <div className="flex items-center">
-                            {[...Array(5)].map((_, i) => (
-                              <Star
-                                key={i}
-                                className={`w-4 h-4 ${
-                                  i < Math.floor(product.rating)
-                                    ? 'text-yellow-400 fill-current'
-                                    : 'text-gray-300'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                          <span className="ml-2 text-sm text-gray-600">
-                            {product.rating}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <span className="text-2xl font-bold text-emerald-600">
-                            R$ {product.price.toFixed(2)}
-                          </span>
-                          <button
-                            onClick={() => handleAddToCart(product)}
-                            className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center gap-2"
-                          >
-                            <ShoppingCart className="w-4 h-4" />
-                            Adicionar
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-w-1 aspect-h-1">
+                <img
+                  src="https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp"
+                  alt={product.nome}
+                  className="w-full h-48 object-cover"
+                />
               </div>
-            ))}
-          </div>
-        ) : (
-          /* Show filtered results when search or category filter is applied */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-w-1 aspect-h-1">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-48 object-cover"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-3">
-                    {product.description}
-                  </p>
-                  
-                  {/* Rating */}
-                  <div className="flex items-center mb-3">
-                    <div className="flex items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(product.rating)
-                              ? 'text-yellow-400 fill-current'
-                              : 'text-gray-300'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <span className="ml-2 text-sm text-gray-600">
-                      {product.rating}
-                    </span>
-                  </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {product.nome}
+                </h3>
+                <p className="text-gray-600 text-sm mb-2">
+                  {product.descricao}
+                </p>
+                <p className="text-gray-500 text-xs mb-3">
+                  Peso/Unidade: {product.peso}
+                </p>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-emerald-600">
-                      R$ {product.price.toFixed(2)}
-                    </span>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-2xl font-bold text-emerald-600">
+                    R$ {product.preco.toFixed(2)}
+                  </span>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2">
+                  {!isAdmin ? (
                     <button
                       onClick={() => handleAddToCart(product)}
-                      className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center gap-2"
+                      className="flex-1 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
                     >
                       <ShoppingCart className="w-4 h-4" />
                       Adicionar
                     </button>
-                  </div>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => handleEditProduct(product)}
+                        className="flex-1 bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                      >
+                        <Edit className="w-4 h-4" />
+                        Editar
+                      </button>
+                      <button
+                        onClick={() => setDeleteConfirm(product.id)}
+                        className="bg-red-600 text-white px-3 py-2 rounded-lg hover:bg-red-700 transition-colors duration-200 flex items-center justify-center"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
-        )}
+            </div>
+          ))}
+        </div>
 
         {/* No Results */}
         {filteredProducts.length === 0 && (
@@ -968,7 +292,6 @@ export default function Products() {
             <button
               onClick={() => {
                 setSearchTerm('');
-                setSelectedCategory('');
               }}
               className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200"
             >
@@ -977,6 +300,46 @@ export default function Products() {
           </div>
         )}
       </div>
+
+      {/* Product Form Modal */}
+      <ProductForm
+        isOpen={isFormOpen}
+        onClose={() => {
+          setIsFormOpen(false);
+          setEditingProduct(null);
+        }}
+        onSave={handleSaveProduct}
+        product={editingProduct}
+        isEditing={!!editingProduct}
+      />
+
+      {/* Delete Confirmation Modal */}
+      {deleteConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Confirmar Exclusão
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.
+            </p>
+            <div className="flex space-x-3">
+              <button
+                onClick={() => setDeleteConfirm(null)}
+                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => handleDeleteProduct(deleteConfirm)}
+                className="flex-1 py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
+              >
+                Excluir
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
