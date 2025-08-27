@@ -158,19 +158,17 @@ const Header: React.FC = () => {
       </header>
 
       {/* Fixed Cart Button */}
-      {currentUser && (
-        <button
-          onClick={() => setIsCartOpen(true)}
-          className="fixed top-20 right-4 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-        >
-          <ShoppingCart className="h-6 w-6" />
-          {getItemCount() > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
-              {getItemCount()}
-            </span>
-          )}
-        </button>
-      )}
+      <button
+        onClick={() => setIsCartOpen(true)}
+        className="fixed top-4 right-4 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+      >
+        <ShoppingCart className="h-6 w-6" />
+        {getItemCount() > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
+            {getItemCount()}
+          </span>
+        )}
+      </button>
 
       {/* Cart Sidebar */}
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />

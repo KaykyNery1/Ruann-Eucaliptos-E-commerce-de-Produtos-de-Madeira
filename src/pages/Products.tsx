@@ -274,34 +274,46 @@ export default function Products() {
                 <div className="flex gap-2">
                   {!isAdmin ? (
                     <div className="flex-1">
-                      {/* Quantity Selector */}
-                      <div className="flex items-center justify-center mb-2 bg-gray-50 rounded-lg p-2">
+                      {currentUser ? (
+                        <>
+                          {/* Quantity Selector */}
+                          <div className="flex items-center justify-center mb-2 bg-gray-50 rounded-lg p-2">
+                            <button
+                              onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) - 1)}
+                              className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                              disabled={(quantities[product.id] || 1) <= 1}
+                            >
+                              <Minus className="h-4 w-4" />
+                            </button>
+                            <span className="mx-4 font-semibold text-lg min-w-[2rem] text-center">
+                              {quantities[product.id] || 1}
+                            </span>
+                            <button
+                              onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) + 1)}
+                              className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                            >
+                              <Plus className="h-4 w-4" />
+                            </button>
+                          </div>
+                          
+                          {/* Add to Cart Button */}
+                          <button
+                            onClick={() => handleAddToCart(product)}
+                            className="w-full bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                          >
+                            <ShoppingCart className="w-4 h-4" />
+                            Adicionar ({quantities[product.id] || 1})
+                          </button>
+                        </>
+                      ) : (
                         <button
-                          onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) - 1)}
-                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
-                          disabled={(quantities[product.id] || 1) <= 1}
+                          onClick={() => navigate('/login')}
+                          className="w-full bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
                         >
-                          <Minus className="h-4 w-4" />
+                          <ShoppingCart className="w-4 h-4" />
+                          Fazer Login para Comprar
                         </button>
-                        <span className="mx-4 font-semibold text-lg min-w-[2rem] text-center">
-                          {quantities[product.id] || 1}
-                        </span>
-                        <button
-                          onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) + 1)}
-                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
-                        >
-                          <Plus className="h-4 w-4" />
-                        </button>
-                      </div>
-                      
-                      {/* Add to Cart Button */}
-                      <button
-                        onClick={() => handleAddToCart(product)}
-                        className="w-full bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
-                      >
-                        <ShoppingCart className="w-4 h-4" />
-                        Adicionar ao Carrinho
-                      </button>
+                      )}
                     </div>
                   ) : (
                     <>

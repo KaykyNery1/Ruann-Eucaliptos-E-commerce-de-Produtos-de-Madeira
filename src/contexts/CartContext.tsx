@@ -8,11 +8,12 @@ export interface Product {
   image: string;
   price: number;
   category: string;
-  weight?: string; // Add weight field
+  weight?: string;
 }
 
 export interface CartItem extends Product {
   quantity: number;
+  weightPerUnit?: number; // Weight in kg per unit
 }
 
 interface CartState {

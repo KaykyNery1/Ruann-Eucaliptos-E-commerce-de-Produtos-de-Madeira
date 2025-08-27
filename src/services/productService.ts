@@ -97,6 +97,22 @@ export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => v
       peso: '10kg',
       descricao: 'Carvão vegetal de eucalipto, ideal para churrascos e aquecimento.',
       imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    },
+    {
+      id: '5',
+      nome: 'Lenha Seca Premium',
+      preco: 18.50,
+      peso: '12kg',
+      descricao: 'Lenha seca de eucalipto, ideal para lareiras e fornos a lenha.',
+      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    },
+    {
+      id: '6',
+      nome: 'Estacas de Eucalipto',
+      preco: 15.90,
+      peso: '8kg',
+      descricao: 'Estacas de eucalipto para jardim e construção rural.',
+      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
     }
   ];
 
