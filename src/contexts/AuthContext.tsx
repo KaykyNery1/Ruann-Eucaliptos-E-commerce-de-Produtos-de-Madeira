@@ -60,10 +60,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const resetPassword = async (email: string) => {
     await sendPasswordResetEmail(auth, email);
   };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      setIsAdmin(user?.email === ADMIN_EMAIL);
+      // Check if user is admin
+      const userIsAdmin = user?.email === ADMIN_EMAIL;
+      setIsAdmin(userIsAdmin);
+      console.log('Auth state changed:', { 
+        user: user?.email, 
+        isAdmin: userIsAdmin, 
+        adminEmail: ADMIN_EMAIL 
+      });
       setLoading(false);
     });
 

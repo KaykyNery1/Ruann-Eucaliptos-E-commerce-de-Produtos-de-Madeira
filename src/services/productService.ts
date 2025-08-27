@@ -63,44 +63,43 @@ export const getProducts = async (): Promise<FirebaseProduct[]> => {
 
 // Subscribe to products changes
 export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => void) => {
-  let firestoreUnsubscribe: (() => void) | null = null;
-  
-  // Wait for auth state to be determined
-  const authUnsubscribe = onAuthStateChanged(auth, (user) => {
-    // Clean up previous Firestore subscription if it exists
-    if (firestoreUnsubscribe) {
-      firestoreUnsubscribe();
+  // For now, return some sample products to test the interface
+  const sampleProducts: FirebaseProduct[] = [
+    {
+      id: '1',
+      nome: 'Eucalipto Tratado Premium',
+      preco: 45.90,
+      peso: '20kg',
+      descricao: 'Eucalipto tratado de alta qualidade, ideal para construção e projetos externos.'
+    },
+    {
+      id: '2',
+      nome: 'Toras de Eucalipto',
+      preco: 35.50,
+      peso: '15kg',
+      descricao: 'Toras de eucalipto natural, perfeitas para lenha e aquecimento.'
+    },
+    {
+      id: '3',
+      nome: 'Mourões de Eucalipto',
+      preco: 28.00,
+      peso: '3 metros',
+      descricao: 'Mourões resistentes para cercas e delimitações rurais.'
+    },
+    {
+      id: '4',
+      nome: 'Carvão Vegetal Premium',
+      preco: 22.90,
+      peso: '10kg',
+      descricao: 'Carvão vegetal de eucalipto, ideal para churrascos e aquecimento.'
     }
-    
-    const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
-    firestoreUnsubscribe = onSnapshot(q, 
-      (querySnapshot) => {
-        const products = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        } as FirebaseProduct));
-        callback(products);
-      },
-      (error) => {
-        console.error('Error in products subscription:', error);
-        // Return empty array if permission denied
-        if (error.code === 'permission-denied' || error.message?.includes('Missing or insufficient permissions')) {
-          callback([]);
-        } else {
-          // For other errors, still call callback with empty array to prevent crashes
-          callback([]);
-        }
-      }
-    );
-  });
-  
-  // Return a function that unsubscribes from both auth and firestore
-  return () => {
-    authUnsubscribe();
-    if (firestoreUnsubscribe) {
-      firestoreUnsubscribe();
-    }
-  };
+  ];
+
+  // Call callback immediately with sample data
+  callback(sampleProducts);
+
+  // Return empty unsubscribe function
+  return () => {};
 };
 
 // Add new product

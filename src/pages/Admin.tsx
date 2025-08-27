@@ -66,11 +66,8 @@ const Admin: React.FC = () => {
     try {
       await login(formData.email, formData.password);
       
-      if (formData.email === ADMIN_EMAIL) {
-        navigate('/products');
-      } else {
-        navigate('/');
-      }
+      // The navigation will be handled by the useEffect hook
+      // after the auth state changes
     } catch (error: any) {
       console.error('Erro no login:', error);
       let errorMessage = 'Erro ao fazer login. Tente novamente.';

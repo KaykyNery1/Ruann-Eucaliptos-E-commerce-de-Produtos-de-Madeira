@@ -293,9 +293,9 @@ export default function Products() {
               onClick={() => {
                 setSearchTerm('');
               }}
-              className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200"
+              className="w-full bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
             >
-              Limpar Filtros
+              Adicionar ao Carrinho
             </button>
           </div>
         )}
