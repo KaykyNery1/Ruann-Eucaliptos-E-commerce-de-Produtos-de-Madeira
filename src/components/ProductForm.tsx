@@ -191,11 +191,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             <div className="space-y-2">
               {imagePreview && (
                 <div className="relative">
-                  <img
-                    
-                    alt="Preview"
-                    className="w-full h-32 object-cover rounded-md border"
-                  />
+                  
                 </div>
               )}
               <div className="flex items-center space-x-2">
