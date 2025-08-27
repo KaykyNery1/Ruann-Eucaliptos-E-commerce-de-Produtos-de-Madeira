@@ -63,10 +63,17 @@ export const getProducts = async (): Promise<FirebaseProduct[]> => {
 
 // Subscribe to products changes
 export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => void) => {
+  let firestoreUnsubscribe: (() => void) | null = null;
+  
   // Wait for auth state to be determined
-  const unsubscribe = onAuthStateChanged(auth, (user) => {
+  const authUnsubscribe = onAuthStateChanged(auth, (user) => {
+    // Clean up previous Firestore subscription if it exists
+    if (firestoreUnsubscribe) {
+      firestoreUnsubscribe();
+    }
+    
     const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
-    return onSnapshot(q, 
+    firestoreUnsubscribe = onSnapshot(q, 
       (querySnapshot) => {
         const products = querySnapshot.docs.map(doc => ({
           id: doc.id,
@@ -84,7 +91,13 @@ export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => v
     );
   });
   
-  return unsubscribe;
+  // Return a function that unsubscribes from both auth and firestore
+  return () => {
+    authUnsubscribe();
+    if (firestoreUnsubscribe) {
+      firestoreUnsubscribe();
+    }
+  };
 };
 
 // Add new product
