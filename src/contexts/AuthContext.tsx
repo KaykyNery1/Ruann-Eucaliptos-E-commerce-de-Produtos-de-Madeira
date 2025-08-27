@@ -72,6 +72,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAdmin: userIsAdmin, 
         adminEmail: ADMIN_EMAIL 
       });
+      
+      // Debug adicional para verificar o problema
+      if (user) {
+        console.log('Usuário logado:', {
+          email: user.email,
+          emailVerified: user.emailVerified,
+          uid: user.uid,
+          isAdmin: userIsAdmin
+        });
+      }
+      
       setLoading(false);
     });
 

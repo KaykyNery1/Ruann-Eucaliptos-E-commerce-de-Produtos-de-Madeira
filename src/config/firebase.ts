@@ -24,4 +24,7 @@ export const db = getFirestore(app);
 // Admin email configuration
 export const ADMIN_EMAIL = 'ruanneucaliptos@gmail.com';
 
+// Debug para verificar se o email está correto
+console.log('Admin email configurado:', ADMIN_EMAIL);
+
 export default app;

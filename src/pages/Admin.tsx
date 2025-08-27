@@ -59,27 +59,36 @@ const Admin: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Verificar se é o email admin antes de tentar fazer login
+    if (formData.email !== ADMIN_EMAIL) {
+      setErrors({ general: 'Acesso negado. Este não é um email de administrador.' });
+      return;
+    }
+
     if (!validateForm()) return;
 
     setIsLoading(true);
     
     try {
       await login(formData.email, formData.password);
-      
-      // The navigation will be handled by the useEffect hook
-      // after the auth state changes
+      // Aguardar um pouco para o estado de autenticação ser atualizado
+      setTimeout(() => {
+        navigate('/products');
+      }, 1000);
     } catch (error: any) {
       console.error('Erro no login:', error);
       let errorMessage = 'Erro ao fazer login. Tente novamente.';
       
       if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-        errorMessage = 'Email ou senha incorretos';
+        errorMessage = 'Email ou senha incorretos. Verifique suas credenciais de administrador.';
       } else if (error.code === 'auth/invalid-email') {
         errorMessage = 'Email inválido';
       } else if (error.code === 'auth/user-disabled') {
         errorMessage = 'Conta desabilitada';
       } else if (error.code === 'auth/too-many-requests') {
         errorMessage = 'Muitas tentativas. Tente novamente mais tarde.';
+      } else if (error.code === 'auth/invalid-credential') {
+        errorMessage = 'Credenciais inválidas. Verifique o email e senha do administrador.';
       }
       
       setErrors({ general: errorMessage });
