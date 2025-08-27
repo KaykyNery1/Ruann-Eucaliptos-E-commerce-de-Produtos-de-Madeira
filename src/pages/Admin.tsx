@@ -59,28 +59,21 @@ const Admin: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Verificar se é o email admin antes de tentar fazer login
-    if (formData.email !== ADMIN_EMAIL) {
-      setErrors({ general: 'Acesso negado. Este não é um email de administrador.' });
-      return;
-    }
-
     if (!validateForm()) return;
 
     setIsLoading(true);
     
     try {
       await login(formData.email, formData.password);
-      // Aguardar um pouco para o estado de autenticação ser atualizado
-      setTimeout(() => {
-        navigate('/products');
-      }, 1000);
+      navigate('/products');
     } catch (error: any) {
       console.error('Erro no login:', error);
       let errorMessage = 'Erro ao fazer login. Tente novamente.';
       
-      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-        errorMessage = 'Email ou senha incorretos. Verifique suas credenciais de administrador.';
+      if (error.code === 'auth/user-not-found') {
+        errorMessage = 'Usuário não encontrado. O administrador precisa ser criado no Firebase.';
+      } else if (error.code === 'auth/wrong-password') {
+        errorMessage = 'Senha incorreta.';
       } else if (error.code === 'auth/invalid-email') {
         errorMessage = 'Email inválido';
       } else if (error.code === 'auth/user-disabled') {
@@ -88,7 +81,7 @@ const Admin: React.FC = () => {
       } else if (error.code === 'auth/too-many-requests') {
         errorMessage = 'Muitas tentativas. Tente novamente mais tarde.';
       } else if (error.code === 'auth/invalid-credential') {
-        errorMessage = 'Credenciais inválidas. Verifique o email e senha do administrador.';
+        errorMessage = 'Credenciais inválidas. O usuário admin precisa ser criado no Firebase primeiro.';
       }
       
       setErrors({ general: errorMessage });
