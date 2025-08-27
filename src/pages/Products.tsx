@@ -191,8 +191,7 @@ export default function Products() {
                 onClick={handleAddProduct}
                 
               >
-                <Plus className="w-5 h-5" />
-                Adicionar Produto
+                
               </button>
             </div>
           )}
