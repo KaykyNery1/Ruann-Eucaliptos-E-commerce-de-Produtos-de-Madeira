@@ -26,8 +26,8 @@ const Contact: React.FC = () => {
     {
       icon: <Mail className="h-6 w-6 text-emerald-600" />,
       title: "E-mail",
-      info: "contato@ruanneucaliptos.com",
-      action: () => window.open("mailto:contato@ruanneucaliptos.com")
+      info: "ruanneucaliptos@gmail.com",
+      action: () => window.open("mailto:ruanneucaliptos@gmail.com")
     },
     {
       icon: <MapPin className="h-6 w-6 text-emerald-600" />,
