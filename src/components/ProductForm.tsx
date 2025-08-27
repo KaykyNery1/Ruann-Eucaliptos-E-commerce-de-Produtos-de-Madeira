@@ -186,7 +186,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Imagem do Produto
+              
             </label>
             <div className="space-y-2">
               {imagePreview && (
