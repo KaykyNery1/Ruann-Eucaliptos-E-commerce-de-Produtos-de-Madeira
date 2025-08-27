@@ -189,7 +189,7 @@ export default function Products() {
             <div className="mt-6">
               <button
                 onClick={handleAddProduct}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2 mx-auto"
+                
               >
                 <Plus className="w-5 h-5" />
                 Adicionar Produto
