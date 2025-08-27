@@ -160,7 +160,7 @@ const Header: React.FC = () => {
       {/* Fixed Cart Button */}
       <button
         onClick={() => setIsCartOpen(true)}
-        className="fixed top-4 right-20 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        className="fixed top-4 right-40 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
       >
         <ShoppingCart className="h-6 w-6" />
         {getItemCount() > 0 && (
