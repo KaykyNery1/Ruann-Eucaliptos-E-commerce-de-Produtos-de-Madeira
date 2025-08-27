@@ -200,7 +200,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               )}
               <div className="flex items-center space-x-2">
                 <label className="flex-1 cursor-pointer">
-                 
+                  <div>
                     
                     <span className="text-sm">
                       
