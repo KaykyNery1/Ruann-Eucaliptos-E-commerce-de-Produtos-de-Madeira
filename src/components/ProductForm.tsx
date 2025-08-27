@@ -218,7 +218,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 <p className="text-red-600 text-xs mt-1">{errors.image}</p>
               )}
               <p className="text-xs text-gray-500">
-                Formatos aceitos: JPG, PNG, GIF. Máximo 5MB.
+               
               </p>
             </div>
           </div>
