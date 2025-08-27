@@ -192,8 +192,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
               {imagePreview && (
                 <div className="relative">
                   <img
-                    src={imagePreview}
-                    alt=""
+                    
+                    alt="Preview"
                     className="w-full h-32 object-cover rounded-md border"
                   />
                 </div>
