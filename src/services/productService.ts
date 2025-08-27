@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 export interface FirebaseProduct {
   id: string;
@@ -118,6 +119,9 @@ export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => v
     }
     
     try {
+      const auth = getAuth();
+      console.log('Auth state:', auth.currentUser);
+      
       const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
       firestoreUnsubscribe = onSnapshot(q, (querySnapshot) => {
         const products = querySnapshot.docs.map(doc => ({
@@ -130,7 +134,15 @@ export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => v
         callback(localProducts);
       }, (error) => {
         console.error('Error in products subscription:', error);
-        callback(localProducts);
+        
+        // Se for erro de permissão, usar produtos locais
+        if (error.code === 'permission-denied') {
+          console.log('Using local products due to permission error');
+          callback(localProducts);
+        } else {
+          // Para outros erros, usar produtos de exemplo
+          callback(localProducts);
+        }
       });
     } catch (error) {
       console.error('Error setting up products subscription:', error);
