@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 
-export interface CartProduct {
+export interface Product {
   id: string;
   name: string;
   description: string;
@@ -11,7 +11,7 @@ export interface CartProduct {
   weight?: string;
 }
 
-export interface CartItem extends CartProduct {
+export interface CartItem extends Product {
   quantity: number;
   weightPerUnit?: number; // Weight in kg per unit
 }
@@ -22,14 +22,14 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: 'ADD_ITEM'; payload: CartProduct }
+  | { type: 'ADD_ITEM'; payload: Product }
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
   | { type: 'CLEAR_CART' };
 
 interface CartContextType {
   state: CartState;
-  addItem: (product: CartProduct) => void;
+  addItem: (product: Product) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -131,7 +131,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [currentUser]);
 
-  const addItem = (product: CartProduct) => {
+  const addItem = (product: Product) => {
     dispatch({ type: 'ADD_ITEM', payload: product });
   };
 
