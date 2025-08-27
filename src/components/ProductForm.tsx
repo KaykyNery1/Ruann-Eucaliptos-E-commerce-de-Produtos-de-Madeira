@@ -201,7 +201,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               <div className="flex items-center space-x-2">
                 <label className="flex-1 cursor-pointer">
                   <div className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
-                    <Upload className="h-4 w-4 mr-2" />
+                    
                     <span className="text-sm">
                       
                     </span>
