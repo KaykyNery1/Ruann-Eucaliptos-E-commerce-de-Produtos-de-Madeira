@@ -453,6 +453,14 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
 // In-memory storage for products (fallback when Firebase fails)
 let localProducts: FirebaseProduct[] = [...SAMPLE_PRODUCTS];
 
+// Event listeners for product updates
+const productUpdateListeners: ((products: FirebaseProduct[]) => void)[] = [];
+
+// Notify all listeners when products change
+const notifyProductUpdate = () => {
+  productUpdateListeners.forEach(listener => listener([...localProducts]));
+};
+
 // Get all products
 export const getProducts = async (): Promise<FirebaseProduct[]> => {
   try {
@@ -481,28 +489,17 @@ export const getProducts = async (): Promise<FirebaseProduct[]> => {
 
 // Subscribe to products changes
 export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => void) => {
-  let firestoreUnsubscribe: (() => void) | null = null;
+  // Add callback to listeners
+  productUpdateListeners.push(callback);
   
-  const authUnsubscribe = onAuthStateChanged(auth, async (user) => {
-    if (firestoreUnsubscribe) {
-      firestoreUnsubscribe();
-      firestoreUnsubscribe = null;
-    }
-    
-    try {
-      // Always use local products to avoid permission issues
-      console.log('Using local products to avoid Firebase permission issues');
-      callback(localProducts);
-    } catch (error) {
-      console.error('Error setting up products subscription:', error);
-      callback(localProducts);
-    }
-  });
+  // Send initial data
+  callback([...localProducts]);
   
+  // Return unsubscribe function
   return () => {
-    authUnsubscribe();
-    if (firestoreUnsubscribe) {
-      firestoreUnsubscribe();
+    const index = productUpdateListeners.indexOf(callback);
+    if (index > -1) {
+      productUpdateListeners.splice(index, 1);
     }
   };
 };
@@ -540,6 +537,9 @@ export const updateProduct = async (id: string, updates: Partial<Omit<FirebasePr
     if (index !== -1) {
       localProducts[index] = { ...localProducts[index], ...updates };
       console.log('Produto atualizado com sucesso:', localProducts[index]);
+      
+      // Notify all subscribers about the update
+      notifyProductUpdate();
     } else {
       throw new Error('Produto não encontrado');
     }
@@ -562,5 +562,8 @@ export const deleteProduct = async (id: string): Promise<void> => {
     // Fallback: remove from local storage
     localProducts = localProducts.filter(p => p.id !== id);
     console.log('Produto removido localmente');
+    
+    // Notify all subscribers about the deletion
+    notifyProductUpdate();
   }
 };
