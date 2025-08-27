@@ -189,9 +189,11 @@ export default function Products() {
             <div className="mt-6">
               <button
                 onClick={handleAddProduct}
-                
+              
               >
-                
+                <Plus className="w-5 h-5" />
+                Adicionar Produto
+              </button>
             </div>
           )}
         </div>
