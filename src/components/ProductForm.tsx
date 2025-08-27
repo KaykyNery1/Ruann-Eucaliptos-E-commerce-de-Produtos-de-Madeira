@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, Plus } from 'lucide-react';
+import { X, Save, Plus, Upload, Image as ImageIcon } from 'lucide-react';
 import { FirebaseProduct } from '../services/productService';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage } from '../config/firebase';
 
 interface ProductFormProps {
   isOpen: boolean;
@@ -21,10 +23,14 @@ const ProductForm: React.FC<ProductFormProps> = ({
     nome: '',
     preco: '',
     peso: '',
-    descricao: ''
+    descricao: '',
+    imagemUrl: ''
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>('');
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
     if (product && isEditing) {
@@ -32,18 +38,56 @@ const ProductForm: React.FC<ProductFormProps> = ({
         nome: product.nome,
         preco: product.preco.toString(),
         peso: product.peso,
-        descricao: product.descricao
+        descricao: product.descricao,
+        imagemUrl: product.imagemUrl || ''
       });
+      setImagePreview(product.imagemUrl || '');
     } else {
       setFormData({
         nome: '',
         preco: '',
         peso: '',
-        descricao: ''
+        descricao: '',
+        imagemUrl: ''
       });
+      setImagePreview('');
     }
     setErrors({});
+    setImageFile(null);
   }, [product, isEditing, isOpen]);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadImage = async (): Promise<string> => {
+    if (!imageFile) return formData.imagemUrl;
+
+    setUploadingImage(true);
+    try {
+      const timestamp = Date.now();
+      const fileName = `produtos/${timestamp}_${imageFile.name}`;
+      const storageRef = ref(storage, fileName);
+      
+      await uploadBytes(storageRef, imageFile);
+      const downloadURL = await getDownloadURL(storageRef);
+      
+      return downloadURL;
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw new Error('Erro ao fazer upload da imagem');
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {};
@@ -68,11 +112,15 @@ const ProductForm: React.FC<ProductFormProps> = ({
     setIsLoading(true);
     
     try {
+      // Upload image if there's a new one
+      const imagemUrl = await uploadImage();
+
       const productData = {
         nome: formData.nome.trim(),
         preco: Number(formData.preco),
         peso: formData.peso.trim(),
-        descricao: formData.descricao.trim()
+        descricao: formData.descricao.trim(),
+        imagemUrl
       };
 
       if (isEditing && product) {
@@ -131,6 +179,40 @@ const ProductForm: React.FC<ProductFormProps> = ({
               {errors.general}
             </div>
           )}
+
+          {/* Image Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Imagem do Produto
+            </label>
+            <div className="space-y-2">
+              {imagePreview && (
+                <div className="relative">
+                  <img
+                    src={imagePreview}
+                    alt="Preview"
+                    className="w-full h-32 object-cover rounded-md border"
+                  />
+                </div>
+              )}
+              <div className="flex items-center space-x-2">
+                <label className="flex-1 cursor-pointer">
+                  <div className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+                    <Upload className="h-4 w-4 mr-2" />
+                    <span className="text-sm">
+                      {imageFile ? imageFile.name : 'Escolher imagem'}
+                    </span>
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -212,17 +294,17 @@ const ProductForm: React.FC<ProductFormProps> = ({
             </button>
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || uploadingImage}
               className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
-                isLoading
+                isLoading || uploadingImage
                   ? 'bg-gray-400 cursor-not-allowed text-white'
                   : 'bg-emerald-600 hover:bg-emerald-700 text-white'
               }`}
             >
-              {isLoading ? (
+              {isLoading || uploadingImage ? (
                 <div className="flex items-center justify-center">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  Salvando...
+                  {uploadingImage ? 'Enviando imagem...' : 'Salvando...'}
                 </div>
               ) : (
                 isEditing ? 'Salvar Alterações' : 'Adicionar Produto'

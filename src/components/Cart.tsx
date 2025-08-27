@@ -226,11 +226,25 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     message += `*Forma de Pagamento:* ${paymentText}\n`;
     message += `*Itens do Pedido:*\n`;
     
+    let totalKg = 0;
+    
     state.items.forEach((item) => {
       message += `${item.quantity}x ${item.name} - R$ ${item.price.toFixed(2)} cada\n`;
+      
+      // Extract weight from product data (assuming it's stored in the cart item)
+      // For now, we'll use a simple extraction from the product name or description
+      // In a real scenario, you'd want to store weight info in the cart item
+      const weightMatch = item.description?.match(/(\d+(?:\.\d+)?)\s*kg/i);
+      if (weightMatch) {
+        const weightPerUnit = parseFloat(weightMatch[1]);
+        totalKg += weightPerUnit * item.quantity;
+      }
     });
     
     message += `\n*TOTAL: R$ ${state.total.toFixed(2)}*\n\n`;
+    if (totalKg > 0) {
+      message += `*PESO TOTAL: ${totalKg.toFixed(1)}kg*\n`;
+    }
     message += `Gostaria de finalizar este pedido. Aguardo retorno para combinar entrega e pagamento.`;
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;

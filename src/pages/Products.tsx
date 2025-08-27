@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Filter, ShoppingCart, Star, Plus, Edit, Trash2, Shield } from 'lucide-react';
+import { Search, Filter, ShoppingCart, Star, Plus, Edit, Trash2, Shield, Minus } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
@@ -22,6 +22,7 @@ export default function Products() {
   const [editingProduct, setEditingProduct] = useState<FirebaseProduct | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [quantities, setQuantities] = useState<{[key: string]: number}>({});
   
   const { currentUser, isAdmin } = useAuth();
   const { addItem } = useCart();
@@ -32,6 +33,12 @@ export default function Products() {
     const unsubscribe = subscribeToProducts((productsData) => {
       setProducts(productsData);
       setFilteredProducts(productsData);
+      // Initialize quantities for all products
+      const initialQuantities: {[key: string]: number} = {};
+      productsData.forEach(product => {
+        initialQuantities[product.id] = 1;
+      });
+      setQuantities(initialQuantities);
       setIsLoading(false);
     });
 
@@ -72,23 +79,42 @@ export default function Products() {
     setShowSuggestions(false);
   };
 
+  const updateQuantity = (productId: string, newQuantity: number) => {
+    if (newQuantity < 1) return;
+    setQuantities(prev => ({
+      ...prev,
+      [productId]: newQuantity
+    }));
+  };
+
   const handleAddToCart = (product: FirebaseProduct) => {
     if (!currentUser) {
       navigate('/login');
       return;
     }
 
+    const quantity = quantities[product.id] || 1;
+
     // Convert FirebaseProduct to cart format
     const cartProduct = {
       id: product.id,
       name: product.nome,
       description: product.descricao,
-      image: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp', // Default image
+      image: product.imagemUrl || 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
       price: product.preco,
       category: 'produto'
     };
     
-    addItem(cartProduct);
+    // Add multiple items based on quantity
+    for (let i = 0; i < quantity; i++) {
+      addItem(cartProduct);
+    }
+
+    // Reset quantity to 1 after adding
+    setQuantities(prev => ({
+      ...prev,
+      [product.id]: 1
+    }));
   };
 
   const handleSaveProduct = async (productData: Omit<FirebaseProduct, 'id'> | FirebaseProduct) => {
@@ -222,7 +248,7 @@ export default function Products() {
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="aspect-w-1 aspect-h-1">
                 <img
-                  src="https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp"
+                  src={product.imagemUrl || "https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp"}
                   alt={product.nome}
                   className="w-full h-48 object-cover"
                 />
@@ -247,13 +273,36 @@ export default function Products() {
                 {/* Action Buttons */}
                 <div className="flex gap-2">
                   {!isAdmin ? (
-                    <button
-                      onClick={() => handleAddToCart(product)}
-                      className="flex-1 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
-                    >
-                      <ShoppingCart className="w-4 h-4" />
-                      Adicionar
-                    </button>
+                    <div className="flex-1">
+                      {/* Quantity Selector */}
+                      <div className="flex items-center justify-center mb-2 bg-gray-50 rounded-lg p-2">
+                        <button
+                          onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) - 1)}
+                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                          disabled={(quantities[product.id] || 1) <= 1}
+                        >
+                          <Minus className="h-4 w-4" />
+                        </button>
+                        <span className="mx-4 font-semibold text-lg min-w-[2rem] text-center">
+                          {quantities[product.id] || 1}
+                        </span>
+                        <button
+                          onClick={() => updateQuantity(product.id, (quantities[product.id] || 1) + 1)}
+                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                        >
+                          <Plus className="h-4 w-4" />
+                        </button>
+                      </div>
+                      
+                      {/* Add to Cart Button */}
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="w-full bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                      >
+                        <ShoppingCart className="w-4 h-4" />
+                        Adicionar ao Carrinho
+                      </button>
+                    </div>
                   ) : (
                     <>
                       <button

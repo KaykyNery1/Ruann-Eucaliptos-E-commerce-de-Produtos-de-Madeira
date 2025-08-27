@@ -8,6 +8,7 @@ export interface Product {
   image: string;
   price: number;
   category: string;
+  weight?: string; // Add weight field
 }
 
 export interface CartItem extends Product {

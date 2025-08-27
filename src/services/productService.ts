@@ -19,6 +19,7 @@ export interface FirebaseProduct {
   preco: number;
   peso: string;
   descricao: string;
+  imagemUrl?: string;
   createdAt?: any;
   updatedAt?: any;
 }
@@ -70,28 +71,32 @@ export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => v
       nome: 'Eucalipto Tratado Premium',
       preco: 45.90,
       peso: '20kg',
-      descricao: 'Eucalipto tratado de alta qualidade, ideal para construção e projetos externos.'
+      descricao: 'Eucalipto tratado de alta qualidade, ideal para construção e projetos externos.',
+      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
     },
     {
       id: '2',
       nome: 'Toras de Eucalipto',
       preco: 35.50,
       peso: '15kg',
-      descricao: 'Toras de eucalipto natural, perfeitas para lenha e aquecimento.'
+      descricao: 'Toras de eucalipto natural, perfeitas para lenha e aquecimento.',
+      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
     },
     {
       id: '3',
       nome: 'Mourões de Eucalipto',
       preco: 28.00,
-      peso: '3 metros',
-      descricao: 'Mourões resistentes para cercas e delimitações rurais.'
+      peso: '25kg',
+      descricao: 'Mourões resistentes para cercas e delimitações rurais.',
+      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
     },
     {
       id: '4',
       nome: 'Carvão Vegetal Premium',
       preco: 22.90,
       peso: '10kg',
-      descricao: 'Carvão vegetal de eucalipto, ideal para churrascos e aquecimento.'
+      descricao: 'Carvão vegetal de eucalipto, ideal para churrascos e aquecimento.',
+      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
     }
   ];
 
