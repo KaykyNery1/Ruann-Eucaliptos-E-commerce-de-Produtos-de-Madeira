@@ -7,9 +7,11 @@ import {
   deleteDoc, 
   onSnapshot,
   query,
-  orderBy
+  orderBy,
+  where
 } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { db, auth } from '../config/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export interface FirebaseProduct {
   id: string;
@@ -26,28 +28,63 @@ const COLLECTION_NAME = 'produtos';
 // Get all products
 export const getProducts = async (): Promise<FirebaseProduct[]> => {
   try {
-    const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
-    const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    } as FirebaseProduct));
+    // Wait for auth state to be determined
+    return new Promise((resolve, reject) => {
+      const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        unsubscribe();
+        try {
+          const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
+          const querySnapshot = await getDocs(q);
+          const products = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          } as FirebaseProduct));
+          resolve(products);
+        } catch (error) {
+          console.error('Error fetching products:', error);
+          // Return empty array if permission denied
+          if (error.code === 'permission-denied') {
+            resolve([]);
+          } else {
+            reject(error);
+          }
+        }
+      });
+    });
   } catch (error) {
     console.error('Error fetching products:', error);
+    // Return empty array if permission denied
+    if (error.code === 'permission-denied') {
+      return [];
+    }
     throw error;
   }
 };
 
 // Subscribe to products changes
 export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => void) => {
-  const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
-  return onSnapshot(q, (querySnapshot) => {
-    const products = querySnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    } as FirebaseProduct));
-    callback(products);
+  // Wait for auth state to be determined
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
+    return onSnapshot(q, 
+      (querySnapshot) => {
+        const products = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        } as FirebaseProduct));
+        callback(products);
+      },
+      (error) => {
+        console.error('Error in products subscription:', error);
+        // Return empty array if permission denied
+        if (error.code === 'permission-denied') {
+          callback([]);
+        }
+      }
+    );
   });
+  
+  return unsubscribe;
 };
 
 // Add new product
