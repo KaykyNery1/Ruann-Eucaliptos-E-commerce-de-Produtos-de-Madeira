@@ -4,22 +4,23 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { 
-  FirebaseProduct, 
+  Product, 
   subscribeToProducts, 
   addProduct, 
   updateProduct, 
-  deleteProduct 
+  deleteProduct,
+  toggleProductStatus
 } from '../services/productService';
 import ProductForm from '../components/ProductForm';
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState<FirebaseProduct[]>([]);
-  const [suggestions, setSuggestions] = useState<FirebaseProduct[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [suggestions, setSuggestions] = useState<Product[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [products, setProducts] = useState<FirebaseProduct[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [editingProduct, setEditingProduct] = useState<FirebaseProduct | null>(null);
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [quantities, setQuantities] = useState<{[key: string]: number}>({});
@@ -74,7 +75,7 @@ export default function Products() {
     }
   };
 
-  const handleSuggestionClick = (suggestion: FirebaseProduct) => {
+  const handleSuggestionClick = (suggestion: Product) => {
     setSearchTerm(suggestion.nome);
     setShowSuggestions(false);
   };
@@ -87,7 +88,7 @@ export default function Products() {
     }));
   };
 
-  const handleAddToCart = (product: FirebaseProduct) => {
+  const handleAddToCart = (product: Product) => {
     if (!currentUser) {
       navigate('/login');
       return;
@@ -95,12 +96,12 @@ export default function Products() {
 
     const quantity = quantities[product.id] || 1;
 
-    // Convert FirebaseProduct to cart format
+    // Convert Product to cart format
     const cartProduct = {
       id: product.id,
       name: product.nome,
       description: product.descricao,
-      image: product.imagemUrl || 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+      image: product.imagem_url || 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
       price: product.preco,
       category: 'produto'
     };
@@ -117,13 +118,11 @@ export default function Products() {
     }));
   };
 
-  const handleSaveProduct = async (productData: Omit<FirebaseProduct, 'id'> | FirebaseProduct) => {
+  const handleSaveProduct = async (productData: Omit<Product, 'id'> | Product) => {
     try {
       if ('id' in productData) {
         // Update existing product
         await updateProduct(productData.id, productData);
-        // Force re-render by updating the products state
-        setProducts(prev => prev.map(p => p.id === productData.id ? productData : p));
       } else {
         // Add new product
         await addProduct(productData);
@@ -145,7 +144,7 @@ export default function Products() {
     }
   };
 
-  const handleEditProduct = (product: FirebaseProduct) => {
+  const handleEditProduct = (product: Product) => {
     setEditingProduct(product);
     setIsFormOpen(true);
   };
@@ -191,10 +190,10 @@ export default function Products() {
             <div className="mt-6">
               <button
                 onClick={handleAddProduct}
-              
+                className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center gap-2 mx-auto"
               >
-                
-               
+                <Plus className="w-5 h-5" />
+                Adicionar Produto
               </button>
             </div>
           )}
@@ -250,7 +249,7 @@ export default function Products() {
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="aspect-w-1 aspect-h-1">
                 <img
-                  src={product.imagemUrl || "https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp"}
+                  src={product.imagem_url || "https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp"}
                   alt={product.nome}
                   className="w-full h-48 object-cover"
                 />
@@ -356,9 +355,9 @@ export default function Products() {
               onClick={() => {
                 setSearchTerm('');
               }}
-              className="w-full bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-200 flex items-center justify-center gap-2"
+              className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors duration-200"
             >
-              Adicionar ao Carrinho
+              Limpar Filtros
             </button>
           </div>
         )}
