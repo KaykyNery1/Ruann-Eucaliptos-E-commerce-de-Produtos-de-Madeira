@@ -200,7 +200,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
               )}
               <div className="flex items-center space-x-2">
                 <label className="flex-1 cursor-pointer">
-                  <div className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+                 
                     
                     <span className="text-sm">
                       
