@@ -183,7 +183,19 @@ const ProductForm: React.FC<ProductFormProps> = ({
             </div>
           )}
 
-          
+          {/* Image Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              
+            </label>
+            <div className="space-y-2">
+              {imagePreview && (
+                <div className="relative">
+                  <img
+                    src={imagePreview}
+                    alt=""
+                    className="w-full h-32 object-cover rounded-md border"
+                  />
                 </div>
               )}
               <div className="flex items-center space-x-2">
