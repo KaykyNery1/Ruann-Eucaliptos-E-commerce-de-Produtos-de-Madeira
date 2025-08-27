@@ -74,16 +74,29 @@ const ProductForm: React.FC<ProductFormProps> = ({
     setUploadingImage(true);
     try {
       const timestamp = Date.now();
-      const fileName = `produtos/${timestamp}_${imageFile.name}`;
+      const sanitizedFileName = imageFile.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+      const fileName = `produtos/${timestamp}_${sanitizedFileName}`;
       const storageRef = ref(storage, fileName);
       
-      await uploadBytes(storageRef, imageFile);
-      const downloadURL = await getDownloadURL(storageRef);
+      console.log('Uploading image to:', fileName);
+      const uploadResult = await uploadBytes(storageRef, imageFile);
+      console.log('Upload successful:', uploadResult);
+      
+      const downloadURL = await getDownloadURL(uploadResult.ref);
+      console.log('Download URL:', downloadURL);
       
       return downloadURL;
     } catch (error) {
       console.error('Error uploading image:', error);
-      throw new Error('Erro ao fazer upload da imagem');
+      if (error.code === 'storage/unauthorized') {
+        throw new Error('Sem permissão para fazer upload. Verifique as regras do Firebase Storage.');
+      } else if (error.code === 'storage/canceled') {
+        throw new Error('Upload cancelado.');
+      } else if (error.code === 'storage/unknown') {
+        throw new Error('Erro desconhecido no upload. Tente novamente.');
+      } else {
+        throw new Error(`Erro ao fazer upload: ${error.message || 'Tente novamente'}`);
+      }
     } finally {
       setUploadingImage(false);
     }
@@ -113,7 +126,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
     
     try {
       // Upload image if there's a new one
-      const imagemUrl = await uploadImage();
+      let imagemUrl = formData.imagemUrl;
+      
+      if (imageFile) {
+        imagemUrl = await uploadImage();
+      }
 
       const productData = {
         nome: formData.nome.trim(),
@@ -132,7 +149,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       onClose();
     } catch (error) {
       console.error('Error saving product:', error);
-      setErrors({ general: 'Erro ao salvar produto. Tente novamente.' });
+      setErrors({ general: error.message || 'Erro ao salvar produto. Tente novamente.' });
     } finally {
       setIsLoading(false);
     }

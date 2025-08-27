@@ -64,63 +64,95 @@ export const getProducts = async (): Promise<FirebaseProduct[]> => {
 
 // Subscribe to products changes
 export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => void) => {
-  // For now, return some sample products to test the interface
-  const sampleProducts: FirebaseProduct[] = [
-    {
-      id: '1',
-      nome: 'Eucalipto Tratado Premium',
-      preco: 45.90,
-      peso: '20kg',
-      descricao: 'Eucalipto tratado de alta qualidade, ideal para construção e projetos externos.',
-      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
-    },
-    {
-      id: '2',
-      nome: 'Toras de Eucalipto',
-      preco: 35.50,
-      peso: '15kg',
-      descricao: 'Toras de eucalipto natural, perfeitas para lenha e aquecimento.',
-      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
-    },
-    {
-      id: '3',
-      nome: 'Mourões de Eucalipto',
-      preco: 28.00,
-      peso: '25kg',
-      descricao: 'Mourões resistentes para cercas e delimitações rurais.',
-      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
-    },
-    {
-      id: '4',
-      nome: 'Carvão Vegetal Premium',
-      preco: 22.90,
-      peso: '10kg',
-      descricao: 'Carvão vegetal de eucalipto, ideal para churrascos e aquecimento.',
-      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
-    },
-    {
-      id: '5',
-      nome: 'Lenha Seca Premium',
-      preco: 18.50,
-      peso: '12kg',
-      descricao: 'Lenha seca de eucalipto, ideal para lareiras e fornos a lenha.',
-      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
-    },
-    {
-      id: '6',
-      nome: 'Estacas de Eucalipto',
-      preco: 15.90,
-      peso: '8kg',
-      descricao: 'Estacas de eucalipto para jardim e construção rural.',
-      imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+  let firestoreUnsubscribe: (() => void) | null = null;
+  
+  const authUnsubscribe = onAuthStateChanged(auth, async (user) => {
+    // Clean up previous Firestore subscription
+    if (firestoreUnsubscribe) {
+      firestoreUnsubscribe();
+      firestoreUnsubscribe = null;
     }
-  ];
-
-  // Call callback immediately with sample data
-  callback(sampleProducts);
-
-  // Return empty unsubscribe function
-  return () => {};
+    
+    try {
+      const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
+      firestoreUnsubscribe = onSnapshot(q, (querySnapshot) => {
+        const products = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        } as FirebaseProduct));
+        callback(products);
+      }, (error) => {
+        console.error('Error in products subscription:', error);
+        // If permission denied or any error, show sample products
+        if (error.code === 'permission-denied' || error.message?.includes('Missing or insufficient permissions')) {
+          const sampleProducts: FirebaseProduct[] = [
+            {
+              id: '1',
+              nome: 'Eucalipto Tratado Premium',
+              preco: 45.90,
+              peso: '20kg',
+              descricao: 'Eucalipto tratado de alta qualidade, ideal para construção e projetos externos.',
+              imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+            },
+            {
+              id: '2',
+              nome: 'Toras de Eucalipto',
+              preco: 35.50,
+              peso: '15kg',
+              descricao: 'Toras de eucalipto natural, perfeitas para lenha e aquecimento.',
+              imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+            },
+            {
+              id: '3',
+              nome: 'Mourões de Eucalipto',
+              preco: 28.00,
+              peso: '25kg',
+              descricao: 'Mourões resistentes para cercas e delimitações rurais.',
+              imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+            },
+            {
+              id: '4',
+              nome: 'Carvão Vegetal Premium',
+              preco: 22.90,
+              peso: '10kg',
+              descricao: 'Carvão vegetal de eucalipto, ideal para churrascos e aquecimento.',
+              imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+            },
+            {
+              id: '5',
+              nome: 'Lenha Seca Premium',
+              preco: 18.50,
+              peso: '12kg',
+              descricao: 'Lenha seca de eucalipto, ideal para lareiras e fornos a lenha.',
+              imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+            },
+            {
+              id: '6',
+              nome: 'Estacas de Eucalipto',
+              preco: 15.90,
+              peso: '8kg',
+              descricao: 'Estacas de eucalipto para jardim e construção rural.',
+              imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+            }
+          ];
+          callback(sampleProducts);
+        } else {
+          callback([]);
+        }
+      });
+    } catch (error) {
+      console.error('Error setting up products subscription:', error);
+      callback([]);
+    }
+  });
+  
+  // Return cleanup function
+  return () => {
+    authUnsubscribe();
+    if (firestoreUnsubscribe) {
+      firestoreUnsubscribe();
+    }
+  };
 };
 
 // Add new product
