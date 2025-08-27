@@ -192,8 +192,8 @@ export default function Products() {
               
               >
                 <Plus className="w-5 h-5" />
-                Adicionar Produto
-             
+               
+              </button>
             </div>
           )}
         </div>
