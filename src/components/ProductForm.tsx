@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { X, Save, Plus, Upload, Image as ImageIcon } from 'lucide-react';
-import { FirebaseProduct } from '../services/productService';
+import { Product } from '../services/productService';
 
 interface ProductFormProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (product: Omit<FirebaseProduct, 'id'> | FirebaseProduct) => Promise<void>;
-  product?: FirebaseProduct | null;
+  onSave: (product: Omit<Product, 'id'> | Product) => Promise<void>;
+  product?: Product | null;
   isEditing?: boolean;
 }
 
@@ -36,16 +36,16 @@ const ProductForm: React.FC<ProductFormProps> = ({
         preco: product.preco.toString(),
         peso: product.peso,
         descricao: product.descricao,
-        imagemUrl: product.imagemUrl || ''
+        imagemUrl: product.imagem_url || ''
       });
-      setImagePreview(product.imagemUrl || '');
+      setImagePreview(product.imagem_url || '');
     } else {
       setFormData({
         nome: '',
         preco: '',
         peso: '',
         descricao: '',
-        imagemUrl: ''
+        imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
       });
       setImagePreview('');
     }
@@ -105,28 +105,21 @@ const ProductForm: React.FC<ProductFormProps> = ({
       console.log('Iniciando salvamento do produto...');
       
       // Prepare product data without image upload for now
-      let imagemUrl = formData.imagemUrl;
+      let imagem_url = formData.imagemUrl || 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp';
       
-      // If there's a new image file, convert to base64 or use a placeholder
-      if (imageFile) {
-        console.log('Nova imagem detectada, usando placeholder...');
-        // For now, use a placeholder URL since Firebase Storage might have permission issues
-        imagemUrl = 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp';
-      }
-
       const productData = {
         nome: formData.nome.trim(),
         preco: Number(formData.preco),
         peso: formData.peso.trim(),
         descricao: formData.descricao.trim(),
-        imagemUrl
+        imagem_url
       };
 
       console.log('Dados do produto:', productData);
 
       if (isEditing && product) {
         console.log('Atualizando produto existente...');
-        await onSave({ ...productData, id: product.id } as FirebaseProduct);
+        await onSave({ ...productData, id: product.id } as Product);
       } else {
         console.log('Criando novo produto...');
         await onSave(productData);
@@ -186,20 +179,25 @@ const ProductForm: React.FC<ProductFormProps> = ({
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              
+              Imagem do Produto
             </label>
             <div className="space-y-2">
               {imagePreview && (
                 <div className="relative">
-                  
+                  <img 
+                    src={imagePreview} 
+                    alt="Preview" 
+                    className="w-full h-32 object-cover rounded-md border"
+                  />
+                  Adicionar Produto
                 </div>
               )}
               <div className="flex items-center space-x-2">
                 <label className="flex-1 cursor-pointer">
-                  <div>
-                    
+                  <div className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+                    <Upload className="h-4 w-4 mr-2" />
                     <span className="text-sm">
-                      
+                      Escolher imagem
                     </span>
                   </div>
                   <input
@@ -214,7 +212,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 <p className="text-red-600 text-xs mt-1">{errors.image}</p>
               )}
               <p className="text-xs text-gray-500">
-               
+                Formatos aceitos: JPG, PNG, GIF. Tamanho máximo: 5MB
               </p>
             </div>
           </div>

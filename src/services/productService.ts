@@ -1,34 +1,30 @@
-import { 
-  collection, 
-  getDocs, 
-  doc, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  onSnapshot,
-  query,
-  orderBy,
-  where
-} from 'firebase/firestore';
-import { db, auth } from '../config/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import { getAuth } from 'firebase/auth';
+import { createClient } from '@supabase/supabase-js';
 
-export interface FirebaseProduct {
+// Supabase configuration
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+let supabase: any = null;
+
+// Initialize Supabase client if environment variables are available
+if (supabaseUrl && supabaseAnonKey) {
+  supabase = createClient(supabaseUrl, supabaseAnonKey);
+}
+
+export interface Product {
   id: string;
   nome: string;
   preco: number;
   peso: string;
   descricao: string;
-  imagemUrl?: string;
-  createdAt?: any;
-  updatedAt?: any;
+  imagem_url?: string;
+  ativo?: boolean;
+  created_at?: string;
+  updated_at?: string;
 }
 
-const COLLECTION_NAME = 'produtos';
-
-// Sample products for fallback
-const SAMPLE_PRODUCTS: FirebaseProduct[] = [
+// Fallback products for when Supabase is not available
+const FALLBACK_PRODUCTS: Product[] = [
   // Arame Farpado
   {
     id: 'arame-farpado-100',
@@ -36,7 +32,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 125.00,
     peso: '100 metros',
     descricao: 'Arame farpado galvanizado de alta qualidade para cercamento rural.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-farpado-250',
@@ -44,7 +41,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 250.00,
     peso: '250 metros',
     descricao: 'Arame farpado galvanizado de alta qualidade para cercamento rural.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-farpado-500',
@@ -52,7 +50,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 400.00,
     peso: '500 metros',
     descricao: 'Arame farpado galvanizado de alta qualidade para cercamento rural.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Arame Oval Liso
   {
@@ -61,7 +60,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 500.00,
     peso: '500 metros',
     descricao: 'Arame oval liso galvanizado 15/17 para cercamento.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-oval-liso-1000-14',
@@ -69,7 +69,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 630.00,
     peso: '1000 metros',
     descricao: 'Arame oval liso galvanizado 14/16 com resistência de 700KGF.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-oval-liso-1000-15',
@@ -77,7 +78,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 730.00,
     peso: '1000 metros',
     descricao: 'Arame oval liso galvanizado 15/17 com resistência de 700KGF.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Arame Galvanizado
   {
@@ -86,7 +88,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 30.00,
     peso: '1kg',
     descricao: 'Arame galvanizado 14 BWG para uso geral.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-galvanizado-16',
@@ -94,7 +97,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 28.50,
     peso: '1kg',
     descricao: 'Arame galvanizado 16 BWG para uso geral.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Arame Recozido
   {
@@ -103,7 +107,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 85.00,
     peso: '5kg',
     descricao: 'Arame recozido calibre 12 com 2,77mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-recozido-14',
@@ -111,7 +116,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 16.50,
     peso: '1kg',
     descricao: 'Arame recozido calibre 14 com 2,11mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-recozido-16',
@@ -119,7 +125,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 17.00,
     peso: '1kg',
     descricao: 'Arame recozido calibre 16 com 0,65mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'arame-recozido-18',
@@ -127,7 +134,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 18.00,
     peso: '1kg',
     descricao: 'Arame recozido calibre 18 com 1,24mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Telas Hexagonais
   {
@@ -136,7 +144,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 280.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para pinteiro 1x24 com 1,00m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'tela-hex-pinteiro-150',
@@ -144,7 +153,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 385.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para pinteiro com 1,50m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'tela-hex-galinheiro-150',
@@ -152,7 +162,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 305.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para galinheiro com 1,5m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'tela-hex-galinheiro-180',
@@ -160,7 +171,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 310.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para galinheiro com 1,80m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'tela-hex-mangueiro-080',
@@ -168,7 +180,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 330.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para mangueirão F18 com 0,80m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'tela-hex-mangueiro-120',
@@ -176,7 +189,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 500.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para mangueirão F18 com 1,20m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'tela-hex-mangueiro-150',
@@ -184,7 +198,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 600.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para mangueirão F18 com 1,5m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'tela-hex-mangueiro-180',
@@ -192,7 +207,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 1000.00,
     peso: '50 metros',
     descricao: 'Tela hexagonal para mangueirão F16 com 1,80m de altura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Grampo
   {
@@ -201,7 +217,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 25.00,
     peso: '1kg',
     descricao: 'Grampo polido para cerca 1x9 com 3,75mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Pregos
   {
@@ -210,7 +227,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 21.99,
     peso: '1kg',
     descricao: 'Prego com cabeça 15/15mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-cabeca-17-21',
@@ -218,7 +236,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 24.00,
     peso: '1kg',
     descricao: 'Prego com cabeça 17/21mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-cabeca-17-27',
@@ -226,7 +245,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 24.00,
     peso: '1kg',
     descricao: 'Prego com cabeça 17/27mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-cabeca-18-30',
@@ -234,7 +254,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 24.00,
     peso: '1kg',
     descricao: 'Prego com cabeça 18/30mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-cabeca-19-36',
@@ -242,7 +263,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 24.00,
     peso: '1kg',
     descricao: 'Prego com cabeça 19/36mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-22-42',
@@ -250,7 +272,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 30.00,
     peso: '1kg',
     descricao: 'Prego 22/42mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-22-48',
@@ -258,7 +281,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 30.00,
     peso: '1kg',
     descricao: 'Prego 22/48mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-24-60',
@@ -266,7 +290,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 30.00,
     peso: '1kg',
     descricao: 'Prego 24/60mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-25-72',
@@ -274,7 +299,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 30.00,
     peso: '1kg',
     descricao: 'Prego 25/72mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'prego-26-72',
@@ -282,7 +308,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 30.00,
     peso: '1kg',
     descricao: 'Prego 26/72mm vendido por quilograma.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Vernizes
   {
@@ -291,7 +318,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 130.00,
     peso: '3,6 litros',
     descricao: 'Verniz copal brilhante 3,6 litros cor incolor.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'verniz-extrarapido-imbuia',
@@ -299,7 +327,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 180.00,
     peso: '3,6 litros',
     descricao: 'Verniz extrarrápido brilhante 3,6 litros cor imbuia.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'verniz-extrarapido-mogno',
@@ -307,7 +336,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 180.00,
     peso: '3,6 litros',
     descricao: 'Verniz extrarrápido brilhante 3,6 litros cor mogno.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'verniz-extrarapido-nogueira',
@@ -315,7 +345,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 180.00,
     peso: '3,6 litros',
     descricao: 'Verniz extrarrápido brilhante 3,6 litros cor nogueira.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'verniz-extrarapido-cedro',
@@ -323,7 +354,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 180.00,
     peso: '3,6 litros',
     descricao: 'Verniz extrarrápido brilhante 3,6 litros cor cedro.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'verniz-stain-inc',
@@ -331,7 +363,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 210.00,
     peso: '3,6 litros',
     descricao: 'Verniz stain 3,6 litros cor incolor.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'verniz-osmocolor-stain',
@@ -339,7 +372,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 300.00,
     peso: '3,6 litros',
     descricao: 'Verniz osmocolor stain 3,6 litros de alta qualidade.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Dobradiças
   {
@@ -348,7 +382,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 25.00,
     peso: '1 unidade',
     descricao: 'Dobradiça galvanizada tipo ferradura número 1 polegada.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'dobradica-ferradura-n2',
@@ -356,7 +391,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 30.00,
     peso: '1 unidade',
     descricao: 'Dobradiça galvanizada tipo ferradura número 2 polegadas.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'dobradica-ferradura-n3',
@@ -364,7 +400,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 35.00,
     peso: '1 unidade',
     descricao: 'Dobradiça galvanizada tipo ferradura número 3 polegadas.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Madeirite Cola Branca
   {
@@ -373,7 +410,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 40.00,
     peso: '1 chapa',
     descricao: 'Madeirite cola branca 2,20x1,10m com 5mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-branca-08mm',
@@ -381,7 +419,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 55.00,
     peso: '1 chapa',
     descricao: 'Madeirite cola branca 2,20x1,10m com 8mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-branca-10mm',
@@ -389,7 +428,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 85.00,
     peso: '1 chapa',
     descricao: 'Madeirite cola branca 2,20x1,10m com 10mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-branca-12mm',
@@ -397,7 +437,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 95.00,
     peso: '1 chapa',
     descricao: 'Madeirite cola branca 2,20x1,10m com 12mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-branca-14mm',
@@ -405,7 +446,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 115.00,
     peso: '1 chapa',
     descricao: 'Madeirite cola branca 2,20x1,10m com 14mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   // Madeirite Plastificado
   {
@@ -414,7 +456,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 105.00,
     peso: '1 chapa',
     descricao: 'Madeirite plastificado 2,20x1,10m com 10mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-plastificado-12mm',
@@ -422,7 +465,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 125.00,
     peso: '1 chapa',
     descricao: 'Madeirite plastificado 2,20x1,10m com 12mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-plastificado-14mm',
@@ -430,7 +474,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 140.00,
     peso: '1 chapa',
     descricao: 'Madeirite plastificado 2,20x1,10m com 14mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-plastificado-17mm',
@@ -438,7 +483,8 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 160.00,
     peso: '1 chapa',
     descricao: 'Madeirite plastificado 2,20x1,10m com 17mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   },
   {
     id: 'madeirite-plastificado-19mm',
@@ -446,124 +492,198 @@ const SAMPLE_PRODUCTS: FirebaseProduct[] = [
     preco: 180.00,
     peso: '1 chapa',
     descricao: 'Madeirite plastificado 2,20x1,10m com 19mm de espessura.',
-    imagemUrl: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp'
+    imagem_url: 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+    ativo: true
   }
 ];
 
-// In-memory storage for products (fallback when Firebase fails)
-let localProducts: FirebaseProduct[] = [...SAMPLE_PRODUCTS];
-
-// Event listeners for product updates
-const productUpdateListeners: ((products: FirebaseProduct[]) => void)[] = [];
+// Event listeners for real-time updates
+const productUpdateListeners: ((products: Product[]) => void)[] = [];
 
 // Notify all listeners when products change
-const notifyProductUpdate = () => {
-  productUpdateListeners.forEach(listener => listener([...localProducts]));
+const notifyProductUpdate = (products: Product[]) => {
+  productUpdateListeners.forEach(listener => listener(products));
 };
 
 // Get all products
-export const getProducts = async (): Promise<FirebaseProduct[]> => {
+export const getProducts = async (): Promise<Product[]> => {
+  if (!supabase) {
+    console.log('Supabase not configured, using fallback products');
+    return FALLBACK_PRODUCTS;
+  }
+
   try {
-    return new Promise((resolve, reject) => {
-      const unsubscribe = onAuthStateChanged(auth, async (user) => {
-        unsubscribe();
-        try {
-          const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
-          const querySnapshot = await getDocs(q);
-          const products = querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          } as FirebaseProduct));
-          resolve(products);
-        } catch (error) {
-          console.error('Error fetching products:', error);
-          resolve(localProducts);
-        }
-      });
-    });
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('ativo', true)
+      .order('nome');
+
+    if (error) {
+      console.error('Error fetching products from Supabase:', error);
+      return FALLBACK_PRODUCTS;
+    }
+
+    return data || FALLBACK_PRODUCTS;
   } catch (error) {
     console.error('Error fetching products:', error);
-    return localProducts;
+    return FALLBACK_PRODUCTS;
   }
 };
 
-// Subscribe to products changes
-export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => void) => {
+// Subscribe to products changes with real-time updates
+export const subscribeToProducts = (callback: (products: Product[]) => void) => {
   // Add callback to listeners
   productUpdateListeners.push(callback);
-  
-  // Send initial data
-  callback([...localProducts]);
-  
+
+  if (!supabase) {
+    console.log('Supabase not configured, using fallback products');
+    callback(FALLBACK_PRODUCTS);
+    return () => {
+      const index = productUpdateListeners.indexOf(callback);
+      if (index > -1) {
+        productUpdateListeners.splice(index, 1);
+      }
+    };
+  }
+
+  // Initial fetch
+  getProducts().then(callback);
+
+  // Set up real-time subscription
+  const subscription = supabase
+    .channel('products_changes')
+    .on('postgres_changes', 
+      { 
+        event: '*', 
+        schema: 'public', 
+        table: 'products' 
+      }, 
+      async () => {
+        // Refetch products when any change occurs
+        const products = await getProducts();
+        notifyProductUpdate(products);
+      }
+    )
+    .subscribe();
+
   // Return unsubscribe function
   return () => {
     const index = productUpdateListeners.indexOf(callback);
     if (index > -1) {
       productUpdateListeners.splice(index, 1);
     }
+    if (subscription) {
+      supabase.removeChannel(subscription);
+    }
   };
 };
 
 // Add new product
-export const addProduct = async (product: Omit<FirebaseProduct, 'id'>): Promise<string> => {
-  try {
-    console.log('Tentando adicionar produto ao Firestore:', product);
-    const docRef = await addDoc(collection(db, COLLECTION_NAME), {
-      ...product,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    });
-    console.log('Produto adicionado com sucesso, ID:', docRef.id);
-    return docRef.id;
-  } catch (error) {
-    console.error('Erro ao adicionar produto no Firestore:', error);
-    
-    // Fallback: add to local storage
-    const newId = `local-${Date.now()}`;
-    const newProduct = { ...product, id: newId };
-    localProducts.push(newProduct);
-    console.log('Produto adicionado localmente:', newProduct);
-    return newId;
+export const addProduct = async (product: Omit<Product, 'id'>): Promise<string> => {
+  if (!supabase) {
+    console.log('Supabase not configured, cannot add product');
+    throw new Error('Database not configured');
   }
-};
 
-// Update product
-export const updateProduct = async (id: string, updates: Partial<Omit<FirebaseProduct, 'id'>>): Promise<void> => {
   try {
-    console.log('Atualizando produto localmente:', id, updates);
-    
-    // Update in local storage
-    const index = localProducts.findIndex(p => p.id === id);
-    if (index !== -1) {
-      localProducts[index] = { ...localProducts[index], ...updates };
-      console.log('Produto atualizado com sucesso:', localProducts[index]);
-      
-      // Notify all subscribers about the update
-      notifyProductUpdate();
-    } else {
-      throw new Error('Produto não encontrado');
+    const { data, error } = await supabase
+      .from('products')
+      .insert([{
+        ...product,
+        imagem_url: product.imagem_url || 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp',
+        ativo: true
+      }])
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error adding product:', error);
+      throw error;
     }
+
+    console.log('Product added successfully:', data);
+    return data.id;
   } catch (error) {
-    console.error('Erro ao atualizar produto:', error);
+    console.error('Error adding product:', error);
     throw error;
   }
 };
 
-// Delete product
-export const deleteProduct = async (id: string): Promise<void> => {
+// Update product
+export const updateProduct = async (id: string, updates: Partial<Omit<Product, 'id'>>): Promise<void> => {
+  if (!supabase) {
+    console.log('Supabase not configured, cannot update product');
+    throw new Error('Database not configured');
+  }
+
   try {
-    console.log('Tentando deletar produto do Firestore:', id);
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await deleteDoc(docRef);
-    console.log('Produto deletado com sucesso do Firestore');
+    const { error } = await supabase
+      .from('products')
+      .update({
+        ...updates,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error updating product:', error);
+      throw error;
+    }
+
+    console.log('Product updated successfully');
   } catch (error) {
-    console.error('Erro ao deletar produto do Firestore:', error);
-    
-    // Fallback: remove from local storage
-    localProducts = localProducts.filter(p => p.id !== id);
-    console.log('Produto removido localmente');
-    
-    // Notify all subscribers about the deletion
-    notifyProductUpdate();
+    console.error('Error updating product:', error);
+    throw error;
+  }
+};
+
+// Delete product (soft delete by setting ativo = false)
+export const deleteProduct = async (id: string): Promise<void> => {
+  if (!supabase) {
+    console.log('Supabase not configured, cannot delete product');
+    throw new Error('Database not configured');
+  }
+
+  try {
+    const { error } = await supabase
+      .from('products')
+      .update({ ativo: false })
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting product:', error);
+      throw error;
+    }
+
+    console.log('Product deleted successfully');
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    throw error;
+  }
+};
+
+// Toggle product active status
+export const toggleProductStatus = async (id: string, ativo: boolean): Promise<void> => {
+  if (!supabase) {
+    console.log('Supabase not configured, cannot toggle product status');
+    throw new Error('Database not configured');
+  }
+
+  try {
+    const { error } = await supabase
+      .from('products')
+      .update({ ativo, updated_at: new Date().toISOString() })
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error toggling product status:', error);
+      throw error;
+    }
+
+    console.log('Product status toggled successfully');
+  } catch (error) {
+    console.error('Error toggling product status:', error);
+    throw error;
   }
 };
