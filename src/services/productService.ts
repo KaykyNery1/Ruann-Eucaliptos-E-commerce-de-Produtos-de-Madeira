@@ -84,7 +84,10 @@ export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => v
       (error) => {
         console.error('Error in products subscription:', error);
         // Return empty array if permission denied
-        if (error.code === 'permission-denied') {
+        if (error.code === 'permission-denied' || error.message?.includes('Missing or insufficient permissions')) {
+          callback([]);
+        } else {
+          // For other errors, still call callback with empty array to prevent crashes
           callback([]);
         }
       }
