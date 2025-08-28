@@ -127,7 +127,7 @@ const Products: React.FC = () => {
       id: '13',
       name: 'Tela hex pinteiro 1x24x1,00x50MT F24',
       description: 'Tela hexagonal para pinteiros e aves',
-      image: 'https://static.wixstatic.com/media/2ec953_eda1deeddada49b59a4d342c3f432a15~mv2.png/v1/fill/w_560,h_560,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2ec953_eda1deeddada49b59a4d342c3f432a15~mv2.png',
+      image: 'https://cdn.leroymerlin.com.br/products/tela_plastica_hexagonal_pinteiro_linha_leve_1,0_m_x_50_m_no_1566846253_4fc9_600x600.jpg',
       price: 280.00,
       weight: 15,
       category: 'Telas'
