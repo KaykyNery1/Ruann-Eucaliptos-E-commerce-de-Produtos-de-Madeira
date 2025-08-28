@@ -7,6 +7,7 @@ export interface Product {
   description: string;
   image: string;
   price: number;
+  weight: number;
   category: string;
 }
 
@@ -17,6 +18,7 @@ export interface CartItem extends Product {
 interface CartState {
   items: CartItem[];
   total: number;
+  totalWeight: number;
 }
 
 type CartAction =
@@ -49,13 +51,15 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         );
         return {
           items: updatedItems,
-          total: updatedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+          total: updatedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+          totalWeight: updatedItems.reduce((sum, item) => sum + (item.weight * item.quantity), 0)
         };
       } else {
         const newItems = [...state.items, { ...action.payload, quantity: 1 }];
         return {
           items: newItems,
-          total: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+          total: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+          totalWeight: newItems.reduce((sum, item) => sum + (item.weight * item.quantity), 0)
         };
       }
     }
@@ -64,7 +68,8 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       const newItems = state.items.filter(item => item.id !== action.payload);
       return {
         items: newItems,
-        total: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+        total: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        totalWeight: newItems.reduce((sum, item) => sum + (item.weight * item.quantity), 0)
       };
     }
     
@@ -73,7 +78,8 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         const newItems = state.items.filter(item => item.id !== action.payload.id);
         return {
           items: newItems,
-          total: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+          total: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+          totalWeight: newItems.reduce((sum, item) => sum + (item.weight * item.quantity), 0)
         };
       }
       
@@ -84,12 +90,13 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       );
       return {
         items: updatedItems,
-        total: updatedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+        total: updatedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        totalWeight: updatedItems.reduce((sum, item) => sum + (item.weight * item.quantity), 0)
       };
     }
     
     case 'CLEAR_CART':
-      return { items: [], total: 0 };
+      return { items: [], total: 0, totalWeight: 0 };
     
     default:
       return state;
@@ -98,7 +105,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { currentUser } = useAuth();
-  const [state, dispatch] = useReducer(cartReducer, { items: [], total: 0 });
+  const [state, dispatch] = useReducer(cartReducer, { items: [], total: 0, totalWeight: 0 });
 
   // Load cart from localStorage on mount
   useEffect(() => {
