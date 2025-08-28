@@ -17,7 +17,7 @@ const Products: React.FC = () => {
       id: '1',
       name: 'Arame farpado 100 MT',
       description: 'Arame farpado de alta qualidade para cercas',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://m.media-amazon.com/images/I/61BhEZw3ejL._AC_.jpg',
       price: 125.00,
       weight: 8,
       category: 'Arames'
@@ -26,7 +26,7 @@ const Products: React.FC = () => {
       id: '2',
       name: 'Arame farpado 250 MT',
       description: 'Arame farpado de alta qualidade para cercas',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://m.media-amazon.com/images/I/61BhEZw3ejL._AC_.jpg',
       price: 250.00,
       weight: 20,
       category: 'Arames'
@@ -35,7 +35,7 @@ const Products: React.FC = () => {
       id: '3',
       name: 'Arame farpado 500 MT',
       description: 'Arame farpado de alta qualidade para cercas',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://m.media-amazon.com/images/I/61BhEZw3ejL._AC_.jpg',
       price: 400.00,
       weight: 40,
       category: 'Arames'
