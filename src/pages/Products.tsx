@@ -255,7 +255,7 @@ const Products: React.FC = () => {
       id: '27',
       name: 'Prego 22/42 kg',
       description: 'Prego para construção pesada',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 30.00,
       weight: 1,
       category: 'Ferragens'
@@ -264,7 +264,7 @@ const Products: React.FC = () => {
       id: '28',
       name: 'Prego 22/48 kg',
       description: 'Prego para construção pesada',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 30.00,
       weight: 1,
       category: 'Ferragens'
@@ -273,7 +273,7 @@ const Products: React.FC = () => {
       id: '29',
       name: 'Prego 24/60 kg',
       description: 'Prego para construção pesada',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 30.00,
       weight: 1,
       category: 'Ferragens'
@@ -282,7 +282,7 @@ const Products: React.FC = () => {
       id: '30',
       name: 'Prego 25/72 kg',
       description: 'Prego para construção pesada',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 30.00,
       weight: 1,
       category: 'Ferragens'
@@ -291,7 +291,7 @@ const Products: React.FC = () => {
       id: '31',
       name: 'Prego 26/72 kg',
       description: 'Prego para construção pesada',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 30.00,
       weight: 1,
       category: 'Ferragens'
