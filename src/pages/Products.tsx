@@ -154,7 +154,7 @@ const Products: React.FC = () => {
       id: '16',
       name: 'Tela hex galinheiro 1,80Mx50M F23',
       description: 'Tela hexagonal para galinheiros',
-      image: 'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://cdn.leroymerlin.com.br/products/tela_plastica_hexagonal_pinteiro_linha_leve_1,0_m_x_50_m_no_1566846253_4fc9_600x600.jpg',
       price: 310.00,
       weight: 22,
       category: 'Telas'
