@@ -7,7 +7,7 @@ import { Product } from '../contexts/CartContext';
 const Products: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const { state, addItem } = useCart();
+  const { addItem } = useCart();
   const { currentUser } = useAuth();
 
   // Lista completa de 51 produtos conforme especificado
