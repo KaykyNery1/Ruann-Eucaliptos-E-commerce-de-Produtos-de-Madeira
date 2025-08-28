@@ -201,7 +201,7 @@ const Products: React.FC = () => {
       id: '21',
       name: 'Grampo polido p/cerca 1x9 3,75MM',
       description: 'Grampo polido para fixação de cercas',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_986711-MLB69945459848_062023-O-prego-grampo-para-cerca-1-x-9-polido-1kg-gerdau.jpg',
       price: 25.00,
       weight: 1,
       category: 'Ferragens'
