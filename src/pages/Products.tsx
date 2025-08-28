@@ -343,7 +343,7 @@ export default function Products() {
               </button>
               <button
                 onClick={() => handleDeleteProduct(deleteConfirm)}
-                className="flex-1 py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
+                className="flex-1 py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
               >
                 Excluir
               </button>
@@ -351,6 +351,16 @@ export default function Products() {
           </div>
         </div>
       )}
+
+        {/* No products message */}
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">
+              Nenhum produto encontrado com os filtros aplicados.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
