@@ -22,6 +22,7 @@ const Products: React.FC = () => {
       weight: 3.80,
       category: 'Arames'
     },
+    <br>
     {
       id: '2',
       name: 'Arame farpado 250 MT',
