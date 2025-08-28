@@ -226,38 +226,11 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
     message += `*Forma de Pagamento:* ${paymentText}\n`;
     message += `*Itens do Pedido:*\n`;
     
-    let totalWeight = 0;
-    
     state.items.forEach((item) => {
       message += `${item.quantity}x ${item.name} - R$ ${item.price.toFixed(2)} cada\n`;
-      
-      // Extract weight from product weight field or description
-      let weightPerUnit = 0;
-      
-      if (item.weight) {
-        const weightMatch = item.weight.match(/(\d+(?:\.\d+)?)/);
-        if (weightMatch) {
-          weightPerUnit = parseFloat(weightMatch[1]);
-        }
-      } else {
-        // Fallback: try to extract from description
-        const weightMatch = item.description?.match(/(\d+(?:\.\d+)?)\s*kg/i);
-        if (weightMatch) {
-          weightPerUnit = parseFloat(weightMatch[1]);
-        }
-      }
-      
-      if (weightMatch) {
-        const itemTotalWeight = weightPerUnit * item.quantity;
-        totalWeight += itemTotalWeight;
-        message += `  (${weightPerUnit}kg cada = ${itemTotalWeight}kg total)\n`;
-      }
     });
     
     message += `\n*TOTAL: R$ ${state.total.toFixed(2)}*\n\n`;
-    if (totalWeight > 0) {
-      message += `*PESO TOTAL: ${totalWeight.toFixed(1)}kg*\n\n`;
-    }
     message += `Gostaria de finalizar este pedido. Aguardo retorno para combinar entrega e pagamento.`;
 
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;

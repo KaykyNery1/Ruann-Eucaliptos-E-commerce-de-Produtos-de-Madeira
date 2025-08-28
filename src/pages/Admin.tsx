@@ -65,23 +65,24 @@ const Admin: React.FC = () => {
     
     try {
       await login(formData.email, formData.password);
-      navigate('/products');
+      
+      if (formData.email === ADMIN_EMAIL) {
+        navigate('/products');
+      } else {
+        navigate('/');
+      }
     } catch (error: any) {
       console.error('Erro no login:', error);
       let errorMessage = 'Erro ao fazer login. Tente novamente.';
       
-      if (error.code === 'auth/user-not-found') {
-        errorMessage = 'Usuário não encontrado. O administrador precisa ser criado no Firebase.';
-      } else if (error.code === 'auth/wrong-password') {
-        errorMessage = 'Senha incorreta.';
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        errorMessage = 'Email ou senha incorretos';
       } else if (error.code === 'auth/invalid-email') {
         errorMessage = 'Email inválido';
       } else if (error.code === 'auth/user-disabled') {
         errorMessage = 'Conta desabilitada';
       } else if (error.code === 'auth/too-many-requests') {
         errorMessage = 'Muitas tentativas. Tente novamente mais tarde.';
-      } else if (error.code === 'auth/invalid-credential') {
-        errorMessage = 'Credenciais inválidas. O usuário admin precisa ser criado no Firebase primeiro.';
       }
       
       setErrors({ general: errorMessage });

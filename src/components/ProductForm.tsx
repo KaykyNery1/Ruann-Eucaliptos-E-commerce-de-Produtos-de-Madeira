@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, Plus, Upload, Image as ImageIcon } from 'lucide-react';
+import { X, Save, Plus } from 'lucide-react';
 import { FirebaseProduct } from '../services/productService';
 
 interface ProductFormProps {
@@ -21,13 +21,10 @@ const ProductForm: React.FC<ProductFormProps> = ({
     nome: '',
     preco: '',
     peso: '',
-    descricao: '',
-    imagemUrl: ''
+    descricao: ''
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isLoading, setIsLoading] = useState(false);
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string>('');
 
   useEffect(() => {
     if (product && isEditing) {
@@ -35,49 +32,18 @@ const ProductForm: React.FC<ProductFormProps> = ({
         nome: product.nome,
         preco: product.preco.toString(),
         peso: product.peso,
-        descricao: product.descricao,
-        imagemUrl: product.imagemUrl || ''
+        descricao: product.descricao
       });
-      setImagePreview(product.imagemUrl || '');
     } else {
       setFormData({
         nome: '',
         preco: '',
         peso: '',
-        descricao: '',
-        imagemUrl: ''
+        descricao: ''
       });
-      setImagePreview('');
     }
     setErrors({});
-    setImageFile(null);
   }, [product, isEditing, isOpen]);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // Validate file size (max 5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors(prev => ({ ...prev, image: 'Imagem deve ter no máximo 5MB' }));
-        return;
-      }
-
-      // Validate file type
-      if (!file.type.startsWith('image/')) {
-        setErrors(prev => ({ ...prev, image: 'Arquivo deve ser uma imagem' }));
-        return;
-      }
-
-      setImageFile(file);
-      setErrors(prev => ({ ...prev, image: '' }));
-      
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImagePreview(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {};
@@ -102,41 +68,23 @@ const ProductForm: React.FC<ProductFormProps> = ({
     setIsLoading(true);
     
     try {
-      console.log('Iniciando salvamento do produto...');
-      
-      // Prepare product data without image upload for now
-      let imagemUrl = formData.imagemUrl;
-      
-      // If there's a new image file, convert to base64 or use a placeholder
-      if (imageFile) {
-        console.log('Nova imagem detectada, usando placeholder...');
-        // For now, use a placeholder URL since Firebase Storage might have permission issues
-        imagemUrl = 'https://images-offstore.map.azionedge.net/compressed/504a912acb3e15ae04cdb96da83f506c.webp';
-      }
-
       const productData = {
         nome: formData.nome.trim(),
         preco: Number(formData.preco),
         peso: formData.peso.trim(),
-        descricao: formData.descricao.trim(),
-        imagemUrl
+        descricao: formData.descricao.trim()
       };
 
-      console.log('Dados do produto:', productData);
-
       if (isEditing && product) {
-        console.log('Atualizando produto existente...');
         await onSave({ ...productData, id: product.id } as FirebaseProduct);
       } else {
-        console.log('Criando novo produto...');
         await onSave(productData);
       }
       
-      console.log('Produto salvo com sucesso!');
       onClose();
-    } catch (error: any) {
-      console.error('Erro ao salvar produto:', error);
-      setErrors({ general: 'Erro ao salvar produto. Verifique sua conexão e tente novamente.' });
+    } catch (error) {
+      console.error('Error saving product:', error);
+      setErrors({ general: 'Erro ao salvar produto. Tente novamente.' });
     } finally {
       setIsLoading(false);
     }
@@ -164,7 +112,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
               </>
             ) : (
               <>
-                
+                <Plus className="h-5 w-5 mr-2" />
+                Adicionar Produto
               </>
             )}
           </h3>
@@ -182,42 +131,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
               {errors.general}
             </div>
           )}
-
-          {/* Image Upload */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              
-            </label>
-            <div className="space-y-2">
-              {imagePreview && (
-                <div className="relative">
-                  
-                </div>
-              )}
-              <div className="flex items-center space-x-2">
-                <label className="flex-1 cursor-pointer">
-                  <div>
-                    
-                    <span className="text-sm">
-                      
-                    </span>
-                  </div>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className="hidden"
-                  />
-                </label>
-              </div>
-              {errors.image && (
-                <p className="text-red-600 text-xs mt-1">{errors.image}</p>
-              )}
-              <p className="text-xs text-gray-500">
-               
-              </p>
-            </div>
-          </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">

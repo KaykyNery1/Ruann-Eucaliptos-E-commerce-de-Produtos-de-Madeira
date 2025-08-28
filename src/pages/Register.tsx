@@ -57,12 +57,7 @@ const Register: React.FC = () => {
     setIsLoading(true);
     
     try {
-      // Se for o email admin, criar com as credenciais específicas
-      if (formData.email === 'ruanneucaliptos@gmail.com') {
-        await register(formData.email, 'ruann2025euc', 'Administrador RUANN');
-      } else {
-        await register(formData.email, formData.password, formData.name);
-      }
+      await register(formData.email, formData.password, formData.name);
       navigate('/');
     } catch (error: any) {
       console.error('Erro no registro:', error);

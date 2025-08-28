@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmFrUkWrdMc2A5rHpLxyy4DGXj_TyUWxY",
@@ -22,13 +21,7 @@ export const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
 
-// Initialize Firebase Storage and get a reference to the service
-export const storage = getStorage(app);
-
 // Admin email configuration
 export const ADMIN_EMAIL = 'ruanneucaliptos@gmail.com';
-
-// Debug para verificar se o email está correto
-console.log('Admin email configurado:', ADMIN_EMAIL);
 
 export default app;
