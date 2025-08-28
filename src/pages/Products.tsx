@@ -338,7 +338,7 @@ const Products: React.FC = () => {
       id: '36',
       name: 'Verniz extrarrápido bril 3,6LT imbuia',
       description: 'Verniz extrarrápido brilhante cor imbuia',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://montana.com.br/wp-content/uploads/2024/05/maritimo-base-solvente.jpg',
       price: 180.00,
       weight: 3.6,
       category: 'Vernizes'
@@ -347,7 +347,7 @@ const Products: React.FC = () => {
       id: '37',
       name: 'Verniz extrarrápido bril 3,6LT mogno',
       description: 'Verniz extrarrápido brilhante cor mogno',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://montana.com.br/wp-content/uploads/2024/05/maritimo-base-solvente.jpg',
       price: 180.00,
       weight: 3.6,
       category: 'Vernizes'
@@ -356,7 +356,7 @@ const Products: React.FC = () => {
       id: '38',
       name: 'Verniz extrarrápido bril 3,6LT nogueira',
       description: 'Verniz extrarrápido brilhante cor nogueira',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://montana.com.br/wp-content/uploads/2024/05/maritimo-base-solvente.jpg',
       price: 180.00,
       weight: 3.6,
       category: 'Vernizes'
@@ -365,7 +365,7 @@ const Products: React.FC = () => {
       id: '39',
       name: 'Verniz extrarrápido bril 3,6LT cedro',
       description: 'Verniz extrarrápido brilhante cor cedro',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://montana.com.br/wp-content/uploads/2024/05/maritimo-base-solvente.jpg',
       price: 180.00,
       weight: 3.6,
       category: 'Vernizes'
@@ -374,7 +374,7 @@ const Products: React.FC = () => {
       id: '40',
       name: 'Verniz stain INC 3,6LT',
       description: 'Verniz stain incolor',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://montana.com.br/wp-content/uploads/2024/05/maritimo-base-solvente.jpg',
       price: 210.00,
       weight: 3.6,
       category: 'Vernizes'
@@ -383,7 +383,7 @@ const Products: React.FC = () => {
       id: '41',
       name: 'Verniz osmocolor stain 3,6LT',
       description: 'Verniz osmocolor stain premium',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://montana.com.br/wp-content/uploads/2024/05/maritimo-base-solvente.jpg',
       price: 300.00,
       weight: 3.6,
       category: 'Vernizes'
