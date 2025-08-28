@@ -1,6 +1,8 @@
 Projeto de e-commerce para facilitar a compra de produtos de madeira e derivados.
 Permite navegar por categorias, adicionar produtos ao carrinho e finalizar pedidos via WhatsApp.
 
+Site oficial: https://ruanneucaliptos.com.br
+
 Funcionalidades
 
 Carrinho de compras com quantidade de itens.
@@ -13,4 +15,4 @@ Tecnologias
 
 HTML, CSS, JavaScript, React.
 Firebase (Authentication, Realtime Database).
-Hospedagem: Netlify.
+Hospedagem: Netlify com domínio personalizado ruanneucaliptos.com.br
