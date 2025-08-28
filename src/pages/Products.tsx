@@ -19,7 +19,7 @@ const Products: React.FC = () => {
       description: 'Arame farpado de alta qualidade para cercas',
       image: 'https://m.media-amazon.com/images/I/61BhEZw3ejL._AC_.jpg',
       price: 125.00,
-      weight: 8,
+      weight: 3.80,
       category: 'Arames'
     },
     {
@@ -28,7 +28,7 @@ const Products: React.FC = () => {
       description: 'Arame farpado de alta qualidade para cercas',
       image: 'https://m.media-amazon.com/images/I/61BhEZw3ejL._AC_.jpg',
       price: 250.00,
-      weight: 11,
+      weight: 10.45,
       category: 'Arames'
     },
     {
@@ -468,7 +468,7 @@ const Products: React.FC = () => {
       description: 'Madeirite plastificado 17mm',
       image: 'https://tb1131.vtexassets.com/arquivos/ids/241523-800-auto?v=638615926050800000&width=800&height=auto&aspect=true',
       price: 160.00,
-      weight: 40,
+      weight: 36.83,
       category: 'Madeirites'
     },
     {
