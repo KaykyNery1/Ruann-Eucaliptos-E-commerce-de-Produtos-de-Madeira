@@ -403,7 +403,7 @@ const Products: React.FC = () => {
       id: '43',
       name: 'Madeirite cola branca 2,20x1,10 08MM',
       description: 'Madeirite cola branca 8mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.tcdn.com.br/img/img_prod/1243088/maderite_110x220_12mm_cola_branca_2949_1_59f3203ef43923dc4cd0e1ffce584cbf.jpg',
       price: 55.00,
       weight: 15,
       category: 'Madeirites'
@@ -412,7 +412,7 @@ const Products: React.FC = () => {
       id: '44',
       name: 'Madeirite cola branca 2,20x1,10 10MM',
       description: 'Madeirite cola branca 10mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.tcdn.com.br/img/img_prod/1243088/maderite_110x220_12mm_cola_branca_2949_1_59f3203ef43923dc4cd0e1ffce584cbf.jpg',
       price: 85.00,
       weight: 20,
       category: 'Madeirites'
@@ -421,7 +421,7 @@ const Products: React.FC = () => {
       id: '45',
       name: 'Madeirite cola branca 2,20x1,10 12MM',
       description: 'Madeirite cola branca 12mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.tcdn.com.br/img/img_prod/1243088/maderite_110x220_12mm_cola_branca_2949_1_59f3203ef43923dc4cd0e1ffce584cbf.jpg',
       price: 95.00,
       weight: 25,
       category: 'Madeirites'
@@ -430,7 +430,7 @@ const Products: React.FC = () => {
       id: '46',
       name: 'Madeirite cola branca 2,20x1,10 14MM',
       description: 'Madeirite cola branca 14mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.tcdn.com.br/img/img_prod/1243088/maderite_110x220_12mm_cola_branca_2949_1_59f3203ef43923dc4cd0e1ffce584cbf.jpg',
       price: 115.00,
       weight: 30,
       category: 'Madeirites'
@@ -439,7 +439,7 @@ const Products: React.FC = () => {
       id: '47',
       name: 'Madeirite plastificado 2,20x1,10 10MM',
       description: 'Madeirite plastificado 10mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://tb1131.vtexassets.com/arquivos/ids/241523-800-auto?v=638615926050800000&width=800&height=auto&aspect=true',
       price: 105.00,
       weight: 25,
       category: 'Madeirites'
@@ -448,7 +448,7 @@ const Products: React.FC = () => {
       id: '48',
       name: 'Madeirite plastificado 2,20x1,10 12MM',
       description: 'Madeirite plastificado 12mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://tb1131.vtexassets.com/arquivos/ids/241523-800-auto?v=638615926050800000&width=800&height=auto&aspect=true',
       price: 125.00,
       weight: 30,
       category: 'Madeirites'
@@ -457,7 +457,7 @@ const Products: React.FC = () => {
       id: '49',
       name: 'Madeirite plastificado 2,20x1,10 14MM',
       description: 'Madeirite plastificado 14mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://tb1131.vtexassets.com/arquivos/ids/241523-800-auto?v=638615926050800000&width=800&height=auto&aspect=true',
       price: 140.00,
       weight: 35,
       category: 'Madeirites'
@@ -466,7 +466,7 @@ const Products: React.FC = () => {
       id: '50',
       name: 'Madeirite plastificado 2,20x1,10 17MM',
       description: 'Madeirite plastificado 17mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://tb1131.vtexassets.com/arquivos/ids/241523-800-auto?v=638615926050800000&width=800&height=auto&aspect=true',
       price: 160.00,
       weight: 40,
       category: 'Madeirites'
@@ -475,7 +475,7 @@ const Products: React.FC = () => {
       id: '51',
       name: 'Madeirite plastificado 2,20x1,10 19MM',
       description: 'Madeirite plastificado 19mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://tb1131.vtexassets.com/arquivos/ids/241523-800-auto?v=638615926050800000&width=800&height=auto&aspect=true',
       price: 180.00,
       weight: 45,
       category: 'Madeirites'
