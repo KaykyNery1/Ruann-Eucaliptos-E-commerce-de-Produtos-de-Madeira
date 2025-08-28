@@ -219,7 +219,7 @@ const Products: React.FC = () => {
       id: '23',
       name: 'Prego c/ cabeça 17/21MM kg',
       description: 'Prego com cabeça para construção',
-      image: 'https://http2.mlstatic.com/D_NQ_NP_845816-MLB79991228525_102024-O.jpg',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 24.00,
       weight: 1,
       category: 'Ferragens'
@@ -228,7 +228,7 @@ const Products: React.FC = () => {
       id: '24',
       name: 'Prego c/ cabeça 17/27MM kg',
       description: 'Prego com cabeça para construção',
-      image: 'https://http2.mlstatic.com/D_NQ_NP_845816-MLB79991228525_102024-O.jpg',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 24.00,
       weight: 1,
       category: 'Ferragens'
