@@ -163,7 +163,7 @@ const Products: React.FC = () => {
       id: '17',
       name: 'Tela hex mangueirão F18 x 0,80x50MT',
       description: 'Tela hexagonal para mangueirão',
-      image: 'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://t74920.vteximg.com.br/arquivos/ids/159774-900-900/Tela-Hexagonal-Mangueirao.png?v=637517001301870000',
       price: 330.00,
       weight: 25,
       category: 'Telas'
@@ -172,7 +172,7 @@ const Products: React.FC = () => {
       id: '18',
       name: 'Tela hex mangueirão 1,20Mx50M F18',
       description: 'Tela hexagonal para mangueirão',
-      image: 'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://t74920.vteximg.com.br/arquivos/ids/159774-900-900/Tela-Hexagonal-Mangueirao.png?v=637517001301870000',
       price: 500.00,
       weight: 30,
       category: 'Telas'
@@ -181,7 +181,7 @@ const Products: React.FC = () => {
       id: '19',
       name: 'Tela hex mangueirão 1,5Mx50M F18',
       description: 'Tela hexagonal para mangueirão',
-      image: 'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://t74920.vteximg.com.br/arquivos/ids/159774-900-900/Tela-Hexagonal-Mangueirao.png?v=637517001301870000',
       price: 600.00,
       weight: 35,
       category: 'Telas'
@@ -190,7 +190,7 @@ const Products: React.FC = () => {
       id: '20',
       name: 'Tela hex mangueirão 1,80x50M F16',
       description: 'Tela hexagonal para mangueirão',
-      image: 'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://t74920.vteximg.com.br/arquivos/ids/159774-900-900/Tela-Hexagonal-Mangueirao.png?v=637517001301870000',
       price: 1000.00,
       weight: 50,
       category: 'Telas'
