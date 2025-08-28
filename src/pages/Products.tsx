@@ -37,7 +37,7 @@ const Products: React.FC = () => {
       description: 'Arame farpado de alta qualidade para cercas',
       image: 'https://m.media-amazon.com/images/I/61BhEZw3ejL._AC_.jpg',
       price: 400.00,
-      weight: 40,
+      weight: 21,
       category: 'Arames'
     },
     {
