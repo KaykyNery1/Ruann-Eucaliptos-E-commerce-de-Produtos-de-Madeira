@@ -309,7 +309,7 @@ const Products: React.FC = () => {
       id: '33',
       name: 'Dobradiça galvanizada ferradura N2"',
       description: 'Dobradiça galvanizada resistente',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_619892-MLB79491914743_092024-O.webp',
       price: 30.00,
       weight: 0.3,
       category: 'Ferragens'
