@@ -394,7 +394,7 @@ const Products: React.FC = () => {
       id: '42',
       name: 'Madeirite cola branca 2,20x1,10 05MM',
       description: 'Madeirite cola branca 5mm',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://images.tcdn.com.br/img/img_prod/1243088/maderite_110x220_12mm_cola_branca_2949_1_59f3203ef43923dc4cd0e1ffce584cbf.jpg',
       price: 40.00,
       weight: 10,
       category: 'Madeirites'
