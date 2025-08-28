@@ -329,7 +329,7 @@ const Products: React.FC = () => {
       id: '35',
       name: 'Verniz copal bril 3,6LT INC',
       description: 'Verniz copal brilhante incolor',
-      image: 'https://s3.satintas.com.br/wp-content/uploads/2023/03/19180056/verniz-maritimo-eucatex-acetinado-brilhante-225-ml-para-madeira-decks-pergolados-casa.jpg',
+      image: 'https://montana.com.br/wp-content/uploads/2024/05/maritimo-base-solvente.jpg',
       price: 130.00,
       weight: 3.6,
       category: 'Vernizes'
