@@ -127,7 +127,7 @@ const Products: React.FC = () => {
       id: '13',
       name: 'Tela hex pinteiro 1x24x1,00x50MT F24',
       description: 'Tela hexagonal para pinteiros e aves',
-      image: 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQpWSFfya1OPef2LNyudYOTzzARFPZFgJ-TJQkvML7jmfduLqA9ckFXDC15lAyvwIwuix0gWa7g8MwDs6MsiiJwPtjZDUxdZDqVb7IGbU6pOBplr5XnFI2fte_yTUYhAJstEYDbAbM-GQI&usqp=CAc',
+      image: 'https://static.wixstatic.com/media/2ec953_eda1deeddada49b59a4d342c3f432a15~mv2.png/v1/fill/w_560,h_560,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2ec953_eda1deeddada49b59a4d342c3f432a15~mv2.png',
       price: 280.00,
       weight: 15,
       category: 'Telas'
