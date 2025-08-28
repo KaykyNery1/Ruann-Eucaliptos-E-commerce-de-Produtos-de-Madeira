@@ -74,7 +74,7 @@ const products: Product[] = [
 { id: 44, name: "Madeirite cola branca 2,20x1,10 10MM", price: 85.00, weight: 20, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_colabranca.webp", category: "madeirite", description: "Madeirite cola branca 2,20x1,10 10MM", rating: 4.7 },
 { id: 45, name: "Madeirite cola branca 2,20x1,10 12MM", price: 95.00, weight: 25, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_colabranca.webp", category: "madeirite", description: "Madeirite cola branca 2,20x1,10 12MM", rating: 4.7 },
 { id: 46, name: "Madeirite cola branca 2,20x1,10 14MM", price: 115.00, weight: 30, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_colabranca.webp", category: "madeirite", description: "Madeirite cola branca 2,20x1,10 14MM", rating: 4.7 },
-  {
+  
 // Madeirite plastificado
 { id: 47, name: "Madeirite plastificado 2,20x1,10 10MM", price: 105.00, weight: 25, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 10MM", rating: 4.7 },
 { id: 48, name: "Madeirite plastificado 2,20x1,10 12MM", price: 125.00, weight: 30, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 12MM", rating: 4.7 },
