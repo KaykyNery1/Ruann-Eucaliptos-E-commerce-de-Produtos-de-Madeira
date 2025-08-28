@@ -541,44 +541,101 @@ const Products: React.FC = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                  {product.description}
-                </p>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-2xl font-bold text-emerald-600">
-                    R$ {product.price.toFixed(2)}
-                  </span>
-                  <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                    Peso: {product.weight}kg
-                  </span>
+        <div>
+          {selectedCategory === 'Todos' ? (
+            // Show products grouped by category with separators
+            categories.slice(1).map((category, categoryIndex) => {
+              const categoryProducts = filteredProducts.filter(product => product.category === category);
+              if (categoryProducts.length === 0) return null;
+              
+              return (
+                <div key={category}>
+                  {categoryIndex > 0 && <hr className="border-gray-300 my-8" />}
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">{category}</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                    {categoryProducts.map((product) => (
+                      <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-48 object-cover"
+                        />
+                        <div className="p-6">
+                          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                            {product.name}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                            {product.description}
+                          </p>
+                          <div className="flex items-center justify-between mb-3">
+                            <span className="text-2xl font-bold text-emerald-600">
+                              R$ {product.price.toFixed(2)}
+                            </span>
+                            <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                              Peso: {product.weight}kg
+                            </span>
+                          </div>
+                          <button
+                            onClick={() => handleAddToCart(product)}
+                            disabled={!currentUser}
+                            className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 ${
+                              currentUser
+                                ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            }`}
+                          >
+                            <Plus className="h-4 w-4" />
+                            <span>Adicionar ao Carrinho</span>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <button
-                  onClick={() => handleAddToCart(product)}
-                  disabled={!currentUser}
-                  className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 ${
-                    currentUser
-                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
-                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  }`}
-                >
-                  <Plus className="h-4 w-4" />
-                  <span>Adicionar ao Carrinho</span>
-                </button>
-              </div>
+              );
+            })
+          ) : (
+            // Show filtered products in grid when specific category is selected
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredProducts.map((product) => (
+                <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                      {product.description}
+                    </p>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-2xl font-bold text-emerald-600">
+                        R$ {product.price.toFixed(2)}
+                      </span>
+                      <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                        Peso: {product.weight}kg
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      disabled={!currentUser}
+                      className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 ${
+                        currentUser
+                          ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                          : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      }`}
+                    >
+                      <Plus className="h-4 w-4" />
+                      <span>Adicionar ao Carrinho</span>
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
 
         {/* No products found */}
