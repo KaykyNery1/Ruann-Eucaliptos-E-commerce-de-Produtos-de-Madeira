@@ -9,6 +9,7 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const location = useLocation();
   const { currentUser, logout } = useAuth();
   const { getItemCount } = useCart();
@@ -38,6 +39,13 @@ const Header: React.FC = () => {
     }
   };
 
+  const handleCartClick = () => {
+    if (currentUser) {
+      setIsCartOpen(true);
+    } else {
+      setShowLoginPrompt(true);
+    }
+  };
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
@@ -76,7 +84,7 @@ const Header: React.FC = () => {
               <div className="flex items-center space-x-4">
                 {/* Cart Icon */}
                 <button
-                  onClick={() => setIsCartOpen(true)}
+                  onClick={handleCartClick}
                   className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
                 >
                   <ShoppingCart className="h-6 w-6" />
@@ -99,6 +107,18 @@ const Header: React.FC = () => {
               </div>
             ) : (
               <Link
+                {/* Cart Icon for non-logged users */}
+                <button
+                  onClick={handleCartClick}
+                  className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+                >
+                  <ShoppingCart className="h-6 w-6" />
+                  {getItemCount() > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                      {getItemCount()}
+                    </span>
+                  )}
+                </button>
                 to="/login"
                 className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
               >
@@ -165,25 +185,65 @@ const Header: React.FC = () => {
                   className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span>Sair</span>
-                </button>
-              </div>
-            ) : (
-              <Link
-                to="/login"
-                className="block py-2 text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <User className="h-4 w-4" />
-                <span>Entrar</span>
-              </Link>
-            )}
+            {/* Mobile Cart Icon */}
+            <button
+              onClick={handleCartClick}
+              className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              <ShoppingCart className="h-6 w-6" />
+              {getItemCount() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  {getItemCount()}
+                </span>
+              )}
+            </button>
           </nav>
         )}
       </div>
 
       {/* Cart Sidebar */}
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+     {/* Login Prompt Modal */}
+     {showLoginPrompt && (
+       <div className="fixed inset-0 z-60 flex items-center justify-center bg-black bg-opacity-50">
+         <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+           <div className="text-center">
+             <ShoppingCart className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
+             <h3 className="text-xl font-semibold text-gray-900 mb-2">
+               Acesse sua conta
+             </h3>
+             <p className="text-gray-600 mb-6">
+               Para visualizar seu carrinho e finalizar pedidos, você precisa estar logado.
+             </p>
+             
+             <div className="space-y-3">
+               <Link
+                 to="/login"
+                 onClick={() => setShowLoginPrompt(false)}
+                 className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-lg font-semibold transition-colors block text-center"
+               >
+                 Fazer Login
+               </Link>
+               
+               <Link
+                 to="/register"
+                 onClick={() => setShowLoginPrompt(false)}
+                 className="w-full border border-emerald-600 text-emerald-600 hover:bg-emerald-50 py-3 px-4 rounded-lg font-semibold transition-colors block text-center"
+               >
+                 Criar Conta
+               </Link>
+               
+               <button
+                 onClick={() => setShowLoginPrompt(false)}
+                 className="w-full text-gray-500 hover:text-gray-700 py-2 transition-colors"
+               >
+                 Continuar navegando
+               </button>
+             </div>
+           </div>
+         </div>
+       </div>
+     )}
     </header>
   );
 };
