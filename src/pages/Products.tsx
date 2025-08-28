@@ -329,7 +329,7 @@ const Products: React.FC = () => {
       id: '35',
       name: 'Verniz copal bril 3,6LT INC',
       description: 'Verniz copal brilhante incolor',
-      image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTXqPyZMcOBmBwuJtKBqsqtjFOIGKGmD81yDtlfpSDHk6OgqYDkeNct6rDn1VhkdpgWSX3egeeeySaOVJa8yxgEynBr-Gmp7PgkCsAF7YEoepwi-scJ08aJjlCIEHQldNrj5-BP_2A&usqp=CAc',
       price: 130.00,
       weight: 3.6,
       category: 'Vernizes'
