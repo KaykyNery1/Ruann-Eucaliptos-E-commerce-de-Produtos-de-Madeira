@@ -7,7 +7,8 @@ import {
   deleteDoc, 
   onSnapshot,
   query,
-  orderBy
+  orderBy,
+  serverTimestamp
 } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
@@ -40,14 +41,27 @@ export const getProducts = async (): Promise<FirebaseProduct[]> => {
 
 // Subscribe to products changes
 export const subscribeToProducts = (callback: (products: FirebaseProduct[]) => void) => {
-  const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
-  return onSnapshot(q, (querySnapshot) => {
-    const products = querySnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    } as FirebaseProduct));
-    callback(products);
-  });
+  try {
+    const q = query(collection(db, COLLECTION_NAME), orderBy('nome'));
+    return onSnapshot(q, 
+      (querySnapshot) => {
+        const products = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        } as FirebaseProduct));
+        callback(products);
+      },
+      (error) => {
+        console.error('Error in products subscription:', error);
+        // Fallback to empty array on permission error
+        callback([]);
+      }
+    );
+  } catch (error) {
+    console.error('Error setting up products subscription:', error);
+    // Return a dummy unsubscribe function
+    return () => {};
+  }
 };
 
 // Add new product
@@ -55,8 +69,8 @@ export const addProduct = async (product: Omit<FirebaseProduct, 'id'>): Promise<
   try {
     const docRef = await addDoc(collection(db, COLLECTION_NAME), {
       ...product,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
     });
     return docRef.id;
   } catch (error) {
@@ -71,7 +85,7 @@ export const updateProduct = async (id: string, updates: Partial<Omit<FirebasePr
     const docRef = doc(db, COLLECTION_NAME, id);
     await updateDoc(docRef, {
       ...updates,
-      updatedAt: new Date()
+      updatedAt: serverTimestamp()
     });
   } catch (error) {
     console.error('Error updating product:', error);

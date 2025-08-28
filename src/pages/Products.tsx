@@ -29,13 +29,24 @@ export default function Products() {
 
   // Subscribe to products from Firestore
   useEffect(() => {
-    const unsubscribe = subscribeToProducts((productsData) => {
-      setProducts(productsData);
-      setFilteredProducts(productsData);
+    let unsubscribe: (() => void) | undefined;
+    
+    try {
+      unsubscribe = subscribeToProducts((productsData) => {
+        setProducts(productsData);
+        setFilteredProducts(productsData);
+        setIsLoading(false);
+      });
+    } catch (error) {
+      console.error('Failed to subscribe to products:', error);
       setIsLoading(false);
-    });
+    }
 
-    return () => unsubscribe();
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, []);
 
   // Filter products based on search term
