@@ -185,6 +185,12 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   };
 
   const handleCheckout = async () => {
+    if (!currentUser) {
+      // Redirect to login if not logged in
+      window.location.href = '/login';
+      return;
+    }
+    
     if (!showAddressForm) {
       setShowAddressForm(true);
       return;
@@ -351,10 +357,12 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                 className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
                   isProcessing
                     ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 hover:bg-green-600 text-white'
+                    : currentUser 
+                      ? 'bg-green-500 hover:bg-green-600 text-white'
+                      : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                 }`}
               >
-                Continuar para Endereço
+                {currentUser ? 'Continuar para Endereço' : 'Fazer Login para Continuar'}
               </button>
               
               <button
