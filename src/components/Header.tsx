@@ -106,7 +106,7 @@ const Header: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <Link
+              <div className="flex items-center space-x-4">
                 {/* Cart Icon for non-logged users */}
                 <button
                   onClick={handleCartClick}
@@ -119,12 +119,14 @@ const Header: React.FC = () => {
                     </span>
                   )}
                 </button>
-                to="/login"
-                className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
-              >
-                <User className="h-4 w-4" />
-                <span>Entrar</span>
-              </Link>
+                <Link
+                  to="/login"
+                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+                >
+                  <User className="h-4 w-4" />
+                  <span>Entrar</span>
+                </Link>
+              </div>
             )}
           </div>
 
@@ -185,6 +187,21 @@ const Header: React.FC = () => {
                   className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
                 >
                   <LogOut className="h-4 w-4" />
+                  <span>Sair</span>
+                </button>
+              </div>
+            ) : (
+              <div className="py-2">
+                <Link
+                  to="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+                >
+                  <User className="h-4 w-4" />
+                  <span>Entrar</span>
+                </Link>
+              </div>
+            )}
             {/* Mobile Cart Icon */}
             <button
               onClick={handleCartClick}
