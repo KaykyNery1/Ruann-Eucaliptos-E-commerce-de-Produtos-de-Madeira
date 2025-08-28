@@ -40,12 +40,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isAdmin, setIsAdmin] = useState(false);
 
   const register = async (email: string, password: string, name: string) => {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(userCredential.user, { displayName: name });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
+    } catch (error: any) {
+      console.error('Erro no registro:', error);
+      throw error;
+    }
   };
 
   const login = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error: any) {
+      console.error('Erro no login:', error);
+      throw error;
+    }
   };
 
   const logout = async () => {
@@ -60,10 +70,29 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const resetPassword = async (email: string) => {
     await sendPasswordResetEmail(auth, email);
   };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      setIsAdmin(user?.email === ADMIN_EMAIL);
+      // Check if user is admin
+      const userIsAdmin = user?.email === ADMIN_EMAIL;
+      setIsAdmin(userIsAdmin);
+      console.log('Auth state changed:', { 
+        user: user?.email, 
+        isAdmin: userIsAdmin, 
+        adminEmail: ADMIN_EMAIL 
+      });
+      
+      // Debug adicional para verificar o problema
+      if (user) {
+        console.log('Usuário logado:', {
+          email: user.email,
+          emailVerified: user.emailVerified,
+          uid: user.uid,
+          isAdmin: userIsAdmin
+        });
+      }
+      
       setLoading(false);
     });
 
