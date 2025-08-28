@@ -255,10 +255,10 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[99999] overflow-hidden">
+    <div className="fixed inset-0 z-[99999] overflow-hidden" style={{ zIndex: 99999 }}>
       <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
       
-      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-[99999]">
+      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl" style={{ zIndex: 100000 }}>
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
