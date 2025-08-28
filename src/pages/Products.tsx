@@ -16,6 +16,7 @@ interface Product {
 }
 
 const products: Product[] = [
+  const products: Product[] = [
   // Arames
   { id: 1, name: "Arame farpado 100 MT", price: 125.00, weight: 8, image: "https://images-offstore.map.azionedge.net/compressed/2a55ee276b9798f5b056e78a9ab4e8b6.webp", category: "arames", description: "Arame farpado 100 metros", rating: 4.7 },
   { id: 2, name: "Arame farpado 250 MT", price: 250.00, weight: 20, image: "https://images-offstore.map.azionedge.net/compressed/2a55ee276b9798f5b056e78a9ab4e8b6.webp", category: "arames", description: "Arame farpado 250 metros", rating: 4.7 },
@@ -52,6 +53,7 @@ const products: Product[] = [
   { id: 29, name: "Prego 24/60 kg", price: 30.00, weight: 1, image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp", category: "ferragens", description: "Prego 24/60 - 1kg", rating: 4.4 },
   { id: 30, name: "Prego 25/72 kg", price: 30.00, weight: 1, image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp", category: "ferragens", description: "Prego 25/72 - 1kg", rating: 4.4 },
   { id: 31, name: "Prego 26/72 kg", price: 30.00, weight: 1, image: "https://images-offstore.map.azionedge.net/compressed/4008abac5bac04234c60b40bde6179f4.webp", category: "ferragens", description: "Prego 26/72 - 1kg", rating: 4.4 },
+
   // Vernizes
 { id: 32, name: "Verniz copal bril 3,6LT INC", price: 130.00, weight: 3.6, image: "https://images-offstore.map.azionedge.net/compressed/verniz_copal.webp", category: "verniz", description: "Verniz copal brilhante 3,6LT INC", rating: 4.6 },
 { id: 33, name: "Verniz extrarrápido bril 3,6LT imbuia", price: 180.00, weight: 3.6, image: "https://images-offstore.map.azionedge.net/compressed/verniz_extrarrapido.webp", category: "verniz", description: "Verniz extrarrápido brilhante 3,6LT imbuia", rating: 4.7 },
@@ -79,12 +81,9 @@ const products: Product[] = [
 { id: 49, name: "Madeirite plastificado 2,20x1,10 14MM", price: 140.00, weight: 35, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 14MM", rating: 4.8 },
 { id: 50, name: "Madeirite plastificado 2,20x1,10 17MM", price: 160.00, weight: 40, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 17MM", rating: 4.8 },
 { id: 51, name: "Madeirite plastificado 2,20x1,10 19MM", price: 180.00, weight: 45, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 19MM", rating: 4.9 },
-  }
 
-
-  // Vernizes, madeirites e dobradiças seguem o mesmo padrão...
+  
 ];
-
 
 ];
 
