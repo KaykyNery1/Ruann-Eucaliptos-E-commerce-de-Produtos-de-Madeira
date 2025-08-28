@@ -71,7 +71,7 @@ const Products: React.FC = () => {
       id: '7',
       name: 'Arame galvanizado 14 Bwg 1kg',
       description: 'Arame galvanizado resistente à corrosão',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://m.media-amazon.com/images/I/714AfSqTgyL._AC_SY300_SX300_QL70_ML2_.jpg',
       price: 30.00,
       weight: 1,
       category: 'Arames'
@@ -80,7 +80,7 @@ const Products: React.FC = () => {
       id: '8',
       name: 'Arame galvanizado 16 Bwg 1kg',
       description: 'Arame galvanizado resistente à corrosão',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://m.media-amazon.com/images/I/714AfSqTgyL._AC_SY300_SX300_QL70_ML2_.jpg',
       price: 28.50,
       weight: 1,
       category: 'Arames'
@@ -89,7 +89,7 @@ const Products: React.FC = () => {
       id: '9',
       name: 'Arame recozido 12 – 2,77MM aprox 5kg',
       description: 'Arame recozido maleável para diversas aplicações',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9iglhb1s6ruhWurXJqwGKYKC3GK6uYKNeIQ&s',
       price: 85.00,
       weight: 5,
       category: 'Arames'
@@ -98,7 +98,7 @@ const Products: React.FC = () => {
       id: '10',
       name: 'Arame recozido 14 – 2,11MM aprox 1kg',
       description: 'Arame recozido maleável para diversas aplicações',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9iglhb1s6ruhWurXJqwGKYKC3GK6uYKNeIQ&s',
       price: 16.50,
       weight: 1,
       category: 'Arames'
@@ -107,7 +107,7 @@ const Products: React.FC = () => {
       id: '11',
       name: 'Arame recozido 16 – 0,65MM aprox 1kg',
       description: 'Arame recozido maleável para diversas aplicações',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9iglhb1s6ruhWurXJqwGKYKC3GK6uYKNeIQ&s',
       price: 17.00,
       weight: 1,
       category: 'Arames'
@@ -116,7 +116,7 @@ const Products: React.FC = () => {
       id: '12',
       name: 'Arame recozido 18 – 1,24MM aprox 1kg',
       description: 'Arame recozido maleável para diversas aplicações',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9iglhb1s6ruhWurXJqwGKYKC3GK6uYKNeIQ&s',
       price: 18.00,
       weight: 1,
       category: 'Arames'
