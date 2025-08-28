@@ -246,7 +246,7 @@ const Products: React.FC = () => {
       id: '26',
       name: 'Prego c/ cabeça 19/36MM kg',
       description: 'Prego com cabeça para construção',
-      image: 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_993451-MLB89654413352_082025-O.webp',
       price: 24.00,
       weight: 1,
       category: 'Ferragens'
