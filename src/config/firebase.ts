@@ -21,7 +21,4 @@ export const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
 
-// Admin email configuration
-export const ADMIN_EMAIL = 'ruanneucaliptos@gmail.com';
-
 export default app;
