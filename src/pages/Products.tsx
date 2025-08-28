@@ -493,6 +493,10 @@ const Products: React.FC = () => {
   });
 
   const handleAddToCart = (product: Product) => {
+    if (!currentUser) {
+      alert('Você precisa estar logado para adicionar produtos ao carrinho.');
+      return;
+    }
     addItem(product);
   };
 
@@ -573,8 +577,11 @@ const Products: React.FC = () => {
                           </div>
                           <button
                             onClick={() => handleAddToCart(product)}
+                            disabled={!currentUser}
                             className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 ${
-                              'bg-emerald-600 hover:bg-emerald-700 text-white'
+                              currentUser
+                                ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                             }`}
                           >
                             <Plus className="h-4 w-4" />
@@ -614,8 +621,11 @@ const Products: React.FC = () => {
                     </div>
                     <button
                       onClick={() => handleAddToCart(product)}
+                      disabled={!currentUser}
                       className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 ${
-                        'bg-emerald-600 hover:bg-emerald-700 text-white'
+                        currentUser
+                          ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                          : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                       }`}
                     >
                       <Plus className="h-4 w-4" />
@@ -642,19 +652,19 @@ const Products: React.FC = () => {
         )}
 
         {/* Login reminder */}
-        {!currentUser && state.items.length > 0 && (
+        {!currentUser && (
           <div className="mt-12 bg-emerald-50 border border-emerald-200 rounded-lg p-6 text-center">
             <h3 className="text-lg font-semibold text-emerald-800 mb-2">
-              Produtos no carrinho!
+              Faça login para comprar
             </h3>
             <p className="text-emerald-600 mb-4">
-              Você tem {state.items.length} produto(s) no carrinho. Faça login para finalizar seu pedido.
+              Para adicionar produtos ao carrinho e fazer pedidos, você precisa estar logado.
             </p>
             <a
               href="/login"
               className="inline-flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
             >
-              Fazer Login para Finalizar
+              Fazer Login
             </a>
           </div>
         )}

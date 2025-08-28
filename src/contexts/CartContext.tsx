@@ -106,7 +106,6 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { currentUser } = useAuth();
   const [state, dispatch] = useReducer(cartReducer, { items: [], total: 0, totalWeight: 0 });
-  const [guestCart, setGuestCart] = useState<CartItem[]>([]);
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -120,31 +119,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
           }
         });
       }
-      // Transfer guest cart to user cart when logging in
-      const savedGuestCart = localStorage.getItem('guest_cart');
-      if (savedGuestCart) {
-        const guestCartData = JSON.parse(savedGuestCart);
-        guestCartData.forEach((item: CartItem) => {
-          for (let i = 0; i < item.quantity; i++) {
-            dispatch({ type: 'ADD_ITEM', payload: item });
-          }
-        });
-        localStorage.removeItem('guest_cart');
-      }
-    } else {
-      // Load guest cart when not logged in
-      const savedGuestCart = localStorage.getItem('guest_cart');
-      if (savedGuestCart) {
-        const guestCartData = JSON.parse(savedGuestCart);
-        setGuestCart(guestCartData);
-        // Populate the cart state with guest items
-        dispatch({ type: 'CLEAR_CART' });
-        guestCartData.forEach((item: CartItem) => {
-          for (let i = 0; i < item.quantity; i++) {
-            dispatch({ type: 'ADD_ITEM', payload: item });
-          }
-        });
-      }
     }
   }, [currentUser]);
 
@@ -152,12 +126,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     if (currentUser) {
       localStorage.setItem(`cart_${currentUser.uid}`, JSON.stringify(state));
-    } else {
-      // Save guest cart
-      localStorage.setItem('guest_cart', JSON.stringify(state.items));
     }
   }, [state, currentUser]);
 
+  // Clear cart when user logs out
+  useEffect(() => {
+    if (!currentUser) {
+      dispatch({ type: 'CLEAR_CART' });
+    }
+  }, [currentUser]);
 
   const addItem = (product: Product) => {
     dispatch({ type: 'ADD_ITEM', payload: product });
