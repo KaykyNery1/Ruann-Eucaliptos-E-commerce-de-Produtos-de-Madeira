@@ -44,7 +44,7 @@ const Products: React.FC = () => {
       id: '4',
       name: 'Arame oval liso 15/17 500 MT',
       description: 'Arame oval liso para cercas e construção',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_863662-MLB79216069780_092024-O.webp',
       price: 500.00,
       weight: 25,
       category: 'Arames'
@@ -53,7 +53,7 @@ const Products: React.FC = () => {
       id: '5',
       name: 'Arame oval liso 1000 MT 14/16 700KG',
       description: 'Arame oval liso para cercas e construção',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_863662-MLB79216069780_092024-O.webp',
       price: 630.00,
       weight: 700,
       category: 'Arames'
@@ -62,7 +62,7 @@ const Products: React.FC = () => {
       id: '6',
       name: 'Arame oval liso 1000 MT 15/17 700KG',
       description: 'Arame oval liso para cercas e construção',
-      image: 'https://images.pexels.com/photos/416978/pexels-photo-416978.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://http2.mlstatic.com/D_NQ_NP_863662-MLB79216069780_092024-O.webp',
       price: 730.00,
       weight: 700,
       category: 'Arames'
