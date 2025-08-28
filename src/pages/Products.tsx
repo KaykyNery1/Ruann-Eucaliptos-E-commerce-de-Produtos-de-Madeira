@@ -79,6 +79,7 @@ const products: Product[] = [
 { id: 49, name: "Madeirite plastificado 2,20x1,10 14MM", price: 140.00, weight: 35, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 14MM", rating: 4.8 },
 { id: 50, name: "Madeirite plastificado 2,20x1,10 17MM", price: 160.00, weight: 40, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 17MM", rating: 4.8 },
 { id: 51, name: "Madeirite plastificado 2,20x1,10 19MM", price: 180.00, weight: 45, image: "https://images-offstore.map.azionedge.net/compressed/madeirite_plastificado.webp", category: "madeirite", description: "Madeirite plastificado 2,20x1,10 19MM", rating: 4.9 },
+  }
 
 
   // Vernizes, madeirites e dobradiças seguem o mesmo padrão...
