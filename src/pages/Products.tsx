@@ -489,11 +489,11 @@ const Products: React.FC = () => {
       name: 'Estaca 04 á 06 2,20 MT',
       description: 'Estaca de madeira 04 á 06 de diâmetro com 2,20 M',
       image:
-      '     '
+      '     ',
       price: 7.99,
       weight: 10,
       category: 'Madeiras'
-    },
+    }
     
   ];
 
