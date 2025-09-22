@@ -10,7 +10,7 @@ const Products: React.FC = () => {
   const { addItem } = useCart();
   const { currentUser } = useAuth();
 
-  // Lista completa de 51 produtos conforme especificado
+  // Produtos
   const products: Product[] = [
     // Arames (12 produtos)
     {
@@ -480,7 +480,21 @@ const Products: React.FC = () => {
       price: 180.00,
       weight: 45,
       category: 'Madeirites'
+    },
+
+    //Madeiras
+
+    {
+      id: '52',
+      name: 'Estaca 04 á 06 2,20 MT',
+      description: 'Estaca de madeira 04 á 06 de diâmetro com 2,20 M'
+      image:
+      '     '
+      price: 7.99,
+      weight: 10,
+      category: 'madeiras'
     }
+    
   ];
 
   const categories = ['Todos', 'Madeiras', 'Arames', 'Telas', 'Ferragens', 'Vernizes', 'Madeirites'];
