@@ -483,7 +483,7 @@ const Products: React.FC = () => {
     }
   ];
 
-  const categories = ['Todos', 'Arames', 'Telas', 'Ferragens', 'Vernizes', 'Madeirites'];
+  const categories = ['Todos', 'Madeiras', 'Arames', 'Telas', 'Ferragens', 'Vernizes', 'Madeirites'];
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
