@@ -493,7 +493,7 @@ const Products: React.FC = () => {
       price: 7.99,
       weight: 10,
       category: 'Madeiras'
-    }
+    },
     
   ];
 
