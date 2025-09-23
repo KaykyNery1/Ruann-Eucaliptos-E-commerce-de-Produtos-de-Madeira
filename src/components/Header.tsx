@@ -24,11 +24,11 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Início', path: '/' },
-    { name: 'Produtos', path: '/products' },
-    { name: 'Sobre', path: '/about' },
-    { name: 'Depoimentos', path: '/testimonials' },
-    { name: 'Contato', path: '/contact' },
+    { name: 'INICIO', path: '/' },
+    { name: 'PRODUTOS', path: '/products' },
+    { name: 'SOBRE', path: '/about' },
+    { name: 'DEPOIMENTOS', path: '/testimonials' },
+    { name: 'CONTATO', path: '/contact' },
   ];
 
   const handleLogout = async () => {
