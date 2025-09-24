@@ -19,14 +19,20 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   // Prevent body scroll when cart is open
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('cart-open');
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     } else {
-      document.body.classList.remove('cart-open');
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     }
     
     // Cleanup on unmount
     return () => {
-      document.body.classList.remove('cart-open');
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     };
   }, [isOpen]);
 
@@ -270,14 +276,33 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="fixed inset-0 z-[99999] overflow-hidden cart-overlay" 
-      style={{ zIndex: 99999 }}
-      data-cart-overlay="true"
-    >
-      <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
+    <>
+      {/* Cart Overlay - MAXIMUM Z-INDEX */}
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 z-[999999]"
+        style={{ 
+          zIndex: 999999,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        }}
+        onClick={onClose}
+      />
       
-      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out" style={{ zIndex: 99999 }}>
+      {/* Cart Sidebar - ABOVE OVERLAY */}
+      <div 
+        className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-xl z-[999999] transform transition-transform duration-300 ease-in-out"
+        style={{ 
+          zIndex: 999999,
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          height: '100vh',
+          maxWidth: '28rem'
+        }}
+      >
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
@@ -389,7 +414,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
       {/* Address Form Modal */}
       {showAddressForm && (
-        <div className="fixed inset-0 z-[100000] flex items-center justify-center bg-black bg-opacity-50" style={{ zIndex: 100000 }}>
+        <div 
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999999]"
+          style={{ 
+            zIndex: 9999999,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }}
+        >
           <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
@@ -513,7 +548,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       )}
 
       {showPaymentForm && (
-        <div className="fixed inset-0 z-[100000] flex items-center justify-center bg-black bg-opacity-50" style={{ zIndex: 100000 }}>
+        <div 
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999999]"
+          style={{ 
+            zIndex: 9999999,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }}
+        >
           <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Forma de Pagamento</h3>
@@ -617,7 +662,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
       {/* Confirmation Modal */}
       {showConfirmation && (
-        <div className="fixed inset-0 z-[100000] flex items-center justify-center bg-black bg-opacity-50" style={{ zIndex: 100000 }}>
+        <div 
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999999]"
+          style={{ 
+            zIndex: 9999999,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }}
+        >
           <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Confirmar Pedido</h3>
@@ -713,7 +768,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

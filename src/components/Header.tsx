@@ -49,7 +49,7 @@ const Header: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
-    }`} style={{ zIndex: 1000 }}>
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
@@ -222,7 +222,7 @@ const Header: React.FC = () => {
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
      {/* Login Prompt Modal */}
      {showLoginPrompt && (
-       <div className="fixed inset-0 z-[100001] flex items-center justify-center bg-black bg-opacity-50" style={{ zIndex: 100001 }}>
+       <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50">
          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
            <div className="text-center">
              <ShoppingCart className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
