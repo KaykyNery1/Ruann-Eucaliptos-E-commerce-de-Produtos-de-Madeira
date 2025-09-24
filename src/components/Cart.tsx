@@ -290,7 +290,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Cart Items */}
-          <div className="flex-1 overflow-y-auto px-6 py-4">
+          <div className="flex-1 overflow-y-auto px-6 py-4 pb-48">
             {state.items.length === 0 ? (
               <div className="text-center py-12">
                 <ShoppingCart className="h-12 w-12 text-gray-300 mx-auto mb-4" />
@@ -345,7 +345,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
         {/* Footer - Always visible when there are items */}
         {state.items.length > 0 && (
-          <div className="flex-shrink-0 border-t border-gray-200 px-6 py-4 bg-white">
+          <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200 px-6 py-4 bg-white shadow-lg">
             <div className="flex justify-between items-center mb-4">
               <span className="text-lg font-semibold text-gray-900">Total:</span>
               <span className="text-xl font-bold text-emerald-600">
