@@ -56,7 +56,7 @@
 
 /* Ensure cart overlay is always on top */
 .cart-overlay {
-  z-index: 999999 !important;
+  z-index: 999998 !important;
 }
 
 /* Prevent body scroll when cart is open */
@@ -68,5 +68,13 @@ body.cart-open {
 
 /* Ensure modals are above everything */
 .modal-overlay {
-  z-index: 1000000 !important;
+  z-index: 999999 !important;
+}
+
+/* Ensure proper modal centering */
+.modal-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh !important;
 }

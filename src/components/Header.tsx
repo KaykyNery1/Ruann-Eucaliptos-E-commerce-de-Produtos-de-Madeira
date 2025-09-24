@@ -222,8 +222,8 @@ const Header: React.FC = () => {
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
      {/* Login Prompt Modal */}
      {showLoginPrompt && (
-       <div className="fixed inset-0 z-[100001] flex items-center justify-center bg-black bg-opacity-50 p-4">
-         <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+       <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black bg-opacity-50 p-4">
+         <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 my-auto">
            <div className="text-center">
              <ShoppingCart className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
              <h3 className="text-xl font-semibold text-gray-900 mb-2">
