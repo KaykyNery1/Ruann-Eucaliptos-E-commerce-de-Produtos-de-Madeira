@@ -56,15 +56,17 @@
 
 /* Ensure cart overlay is always on top */
 .cart-overlay {
-  z-index: 99999 !important;
+  z-index: 999999 !important;
 }
 
 /* Prevent body scroll when cart is open */
 body.cart-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 /* Ensure modals are above everything */
 .modal-overlay {
-  z-index: 100000 !important;
+  z-index: 1000000 !important;
 }
