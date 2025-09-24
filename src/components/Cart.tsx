@@ -414,21 +414,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
       {/* Address Form Modal */}
       {showAddressForm && (
-        <div 
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999999] p-4"
-          style={{ 
-            zIndex: 9999999,
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999999] overflow-y-auto">
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg p-6 w-full max-w-md my-8 relative">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
@@ -547,25 +535,14 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
           </div>
+          </div>
         </div>
       )}
 
       {showPaymentForm && (
-        <div 
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999999] p-4"
-          style={{ 
-            zIndex: 9999999,
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999999] overflow-y-auto">
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg p-6 w-full max-w-md my-8 relative">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Forma de Pagamento</h3>
               <button
@@ -663,26 +640,15 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
           </div>
+          </div>
         </div>
       )}
 
       {/* Confirmation Modal */}
       {showConfirmation && (
-        <div 
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[9999999] p-4"
-          style={{ 
-            zIndex: 9999999,
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999999] overflow-y-auto">
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg p-6 w-full max-w-md my-8 relative">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Confirmar Pedido</h3>
               <button
@@ -774,6 +740,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                 )}
               </button>
             </div>
+          </div>
           </div>
         </div>
       )}
