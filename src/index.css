@@ -53,3 +53,18 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #059669;
 }
+
+/* Ensure cart overlay is always on top */
+.cart-overlay {
+  z-index: 9999 !important;
+}
+
+/* Prevent body scroll when cart is open */
+body.cart-open {
+  overflow: hidden;
+}
+
+/* Ensure modals are above everything */
+.modal-overlay {
+  z-index: 10000 !important;
+}

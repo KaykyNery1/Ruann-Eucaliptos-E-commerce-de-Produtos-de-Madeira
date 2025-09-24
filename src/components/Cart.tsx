@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { X, Plus, Minus, ShoppingCart, Trash2, MapPin, User, Mail } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
@@ -19,20 +19,14 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   // Prevent body scroll when cart is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
+      document.body.classList.add('cart-open');
     } else {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
+      document.body.classList.remove('cart-open');
     }
     
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
+      document.body.classList.remove('cart-open');
     };
   }, [isOpen]);
 
@@ -276,33 +270,10 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <>
-      {/* Cart Overlay - MAXIMUM Z-INDEX */}
-      <div 
-        className="fixed inset-0 bg-black bg-opacity-50 z-[999999]"
-        style={{ 
-          zIndex: 999999,
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0
-        }}
-        onClick={onClose}
-      />
+    <div className="fixed inset-0 z-[9999] overflow-hidden">
+      <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
       
-      {/* Cart Sidebar - ABOVE OVERLAY */}
-      <div 
-        className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-xl z-[999999] transform transition-transform duration-300 ease-in-out"
-        style={{ 
-          zIndex: 999999,
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          height: '100vh',
-          maxWidth: '28rem'
-        }}
-      >
+      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
@@ -414,9 +385,8 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
       {/* Address Form Modal */}
       {showAddressForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999999] overflow-y-auto">
-          <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md my-8 relative">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
@@ -535,14 +505,12 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
           </div>
-          </div>
         </div>
       )}
 
       {showPaymentForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999999] overflow-y-auto">
-          <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md my-8 relative">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Forma de Pagamento</h3>
               <button
@@ -640,15 +608,13 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
           </div>
-          </div>
         </div>
       )}
 
       {/* Confirmation Modal */}
       {showConfirmation && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999999] overflow-y-auto">
-          <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md my-8 relative">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Confirmar Pedido</h3>
               <button
@@ -741,10 +707,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
           </div>
-          </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
