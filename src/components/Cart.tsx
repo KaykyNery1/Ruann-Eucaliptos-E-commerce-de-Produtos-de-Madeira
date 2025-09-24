@@ -461,7 +461,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     type="text"
                     value={address.number}
                     onChange={(e) => setAddress(prev => ({ ...prev, number: e.target.value }))}
-                    className={`w-full px-3 py-15 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.number ? 'border-red-300' : 'border-gray-300'}`}
+                    className={`w-full px-3 py-13 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.number ? 'border-red-300' : 'border-gray-300'}`}
                     placeholder="123"
                   />
                   {addressErrors.number && <p className="text-red-600 text-xs mt-1">{addressErrors.number}</p>}
