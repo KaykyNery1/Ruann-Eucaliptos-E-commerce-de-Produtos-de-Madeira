@@ -343,43 +343,43 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
             )}
           </div>
 
-          {/* Footer */}
-          {state.items.length > 0 && (
-            <div className="border-t border-gray-200 px-6 py-4">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-lg font-semibold text-gray-900">Total:</span>
-                <span className="text-xl font-bold text-emerald-600">
-                  R$ {state.total.toFixed(2)}
-                </span>
-              </div>
-              
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-sm text-gray-600">Peso total:</span>
-                <span className="text-sm font-medium text-gray-900">
-                  {state.totalWeight.toFixed(1)}kg
-                </span>
-              </div>
-              
-              <button
-                onClick={handleCheckout}
-                disabled={isProcessing}
-                className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
-                  isProcessing
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 hover:bg-green-600 text-white'
-                }`}
-              >
-                Continuar para Endereço
-              </button>
-              
-              <button
-                onClick={clearCart}
-                className="w-full mt-2 py-2 px-4 text-sm text-gray-600 hover:text-red-600 transition-colors"
-              >
-                Limpar Carrinho
-              </button>
+        {/* Footer - Always visible when there are items */}
+        {state.items.length > 0 && (
+          <div className="flex-shrink-0 border-t border-gray-200 px-6 py-4 bg-white">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-lg font-semibold text-gray-900">Total:</span>
+              <span className="text-xl font-bold text-emerald-600">
+                R$ {state.total.toFixed(2)}
+              </span>
             </div>
-          )}
+            
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-sm text-gray-600">Peso total:</span>
+              <span className="text-sm font-medium text-gray-900">
+                {state.totalWeight.toFixed(1)}kg
+              </span>
+            </div>
+            
+            <button
+              onClick={handleCheckout}
+              disabled={isProcessing}
+              className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
+                isProcessing
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-green-500 hover:bg-green-600 text-white'
+              }`}
+            >
+              Continuar para Endereço
+            </button>
+            
+            <button
+              onClick={clearCart}
+              className="w-full mt-2 py-2 px-4 text-sm text-gray-600 hover:text-red-600 transition-colors"
+            >
+              Limpar Carrinho
+            </button>
+          </div>
+        )}
         </div>
       </div>
 
