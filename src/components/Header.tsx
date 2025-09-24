@@ -222,20 +222,9 @@ const Header: React.FC = () => {
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
      {/* Login Prompt Modal */}
      {showLoginPrompt && (
-        <div 
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50 p-4"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <div className="bg-white rounded-lg p-6 w-full max-w-md relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] overflow-y-auto">
+          <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg p-6 w-full max-w-md my-8 relative">
            <div className="text-center">
              <ShoppingCart className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
              <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -270,6 +259,7 @@ const Header: React.FC = () => {
                </button>
              </div>
            </div>
+         </div>
          </div>
        </div>
      )}
