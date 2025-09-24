@@ -23,10 +23,6 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
-  .touch-manipulation {
-    touch-action: manipulation;
-  }
 }
 
 @keyframes fadeInUp {
@@ -56,53 +52,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #059669;
-}
-
-/* Ensure cart overlay is always on top */
-.cart-overlay {
-  z-index: 999998 !important;
-}
-
-/* Prevent body scroll when cart is open */
-body.cart-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-}
-
-/* Ensure modals are above everything */
-.modal-overlay {
-  z-index: 999999 !important;
-}
-
-/* Ensure proper modal centering */
-.modal-container {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 100vh !important;
-}
-
-/* Mobile optimizations */
-@media (max-width: 640px) {
-  /* Improve touch targets */
-  button, a, input, select, textarea {
-    min-height: 44px;
-  }
-  
-  /* Better text readability */
-  body {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-  
-  /* Prevent zoom on input focus */
-  input, select, textarea {
-    font-size: 16px;
-  }
-  
-  /* Smooth scrolling on mobile */
-  html {
-    -webkit-overflow-scrolling: touch;
-  }
 }

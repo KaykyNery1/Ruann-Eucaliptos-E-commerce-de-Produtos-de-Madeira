@@ -47,7 +47,7 @@ const Header: React.FC = () => {
     }
   };
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,38 +131,40 @@ const Header: React.FC = () => {
           </div>
 
           {/* Mobile Actions */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="md:hidden flex items-center space-x-3">
             {/* Mobile Cart Icon - Only show if user is logged in */}
-            <button
-              onClick={handleCartClick}
-              className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {getItemCount() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
-                  {getItemCount()}
-                </span>
-              )}
-            </button>
+            {currentUser && (
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+              >
+                <ShoppingCart className="h-6 w-6" />
+                {getItemCount() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                    {getItemCount()}
+                  </span>
+                )}
+              </button>
+            )}
             
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-emerald-600 transition-colors"
+              className="p-2 rounded-md text-gray-700 hover:text-emerald-600"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200 bg-white">
+          <nav className="md:hidden py-4 border-t border-gray-200">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block py-3 px-4 text-base font-medium transition-colors hover:text-emerald-600 hover:bg-gray-50 ${
+                className={`block py-2 text-sm font-medium transition-colors hover:text-emerald-600 ${
                   location.pathname === item.path
                     ? 'text-emerald-600'
                     : 'text-gray-700'
@@ -173,8 +175,8 @@ const Header: React.FC = () => {
               </Link>
             ))}
             {currentUser ? (
-              <div className="py-3 px-4 border-t border-gray-200 mt-2">
-                <span className="block text-sm text-gray-600 mb-3">
+              <div className="py-2">
+                <span className="block text-sm text-gray-700 mb-2">
                   Olá, {currentUser.displayName || currentUser.email}
                 </span>
                 <button
@@ -182,24 +184,36 @@ const Header: React.FC = () => {
                     handleLogout();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="text-base font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-2"
+                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
                 >
                   <LogOut className="h-4 w-4" />
                   <span>Sair</span>
                 </button>
               </div>
             ) : (
-              <div className="py-3 px-4 border-t border-gray-200 mt-2">
+              <div className="py-2">
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-base font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-2"
+                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
                 >
                   <User className="h-4 w-4" />
                   <span>Entrar</span>
                 </Link>
               </div>
             )}
+            {/* Mobile Cart Icon */}
+            <button
+              onClick={handleCartClick}
+              className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              <ShoppingCart className="h-6 w-6" />
+              {getItemCount() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  {getItemCount()}
+                </span>
+              )}
+            </button>
           </nav>
         )}
       </div>
@@ -208,8 +222,8 @@ const Header: React.FC = () => {
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
      {/* Login Prompt Modal */}
      {showLoginPrompt && (
-       <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black bg-opacity-50 p-4">
-         <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 my-auto">
+       <div className="fixed inset-0 z-60 flex items-center justify-center bg-black bg-opacity-50">
+         <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
            <div className="text-center">
              <ShoppingCart className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
              <h3 className="text-xl font-semibold text-gray-900 mb-2">

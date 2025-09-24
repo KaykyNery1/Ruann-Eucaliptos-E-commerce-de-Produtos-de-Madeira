@@ -519,16 +519,16 @@ const Products: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Nossos Produtos
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Produtos de alta qualidade para suas necessidades de construção e cercamento
           </p>
         </div>
 
         {/* Search and Filter */}
-        <div className="mb-8 flex flex-col sm:flex-row gap-4 px-4 sm:px-0">
+        <div className="mb-8 flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <input
@@ -536,7 +536,7 @@ const Products: React.FC = () => {
               placeholder="Buscar produtos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-base"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
             />
           </div>
           
@@ -545,7 +545,7 @@ const Products: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="pl-10 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white text-base w-full sm:w-auto"
+              className="pl-10 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white"
             >
               {categories.map(category => (
                 <option key={category} value={category}>{category}</option>
@@ -565,24 +565,24 @@ const Products: React.FC = () => {
               return (
                 <div key={category}>
                   {categoryIndex > 0 && <hr className="border-gray-300 my-8" />}
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 px-4 sm:px-0">{category}</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-8 px-4 sm:px-0">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">{category}</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
                     {categoryProducts.map((product) => (
                       <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-40 sm:h-48 object-cover"
+                          className="w-full h-48 object-cover"
                         />
-                        <div className="p-4 sm:p-6">
-                          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                        <div className="p-6">
+                          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                             {product.name}
                           </h3>
                           <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                             {product.description}
                           </p>
                           <div className="flex items-center justify-between mb-3">
-                            <span className="text-lg sm:text-xl font-bold text-emerald-600">
+                            <span className="text-2xl font-bold text-emerald-600">
                               R$ {product.price.toFixed(2)}
                             </span>
                             <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
@@ -592,7 +592,7 @@ const Products: React.FC = () => {
                           <button
                             onClick={() => handleAddToCart(product)}
                             disabled={!currentUser}
-                            className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 touch-manipulation ${
+                            className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 ${
                               currentUser
                                 ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
                                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -610,23 +610,23 @@ const Products: React.FC = () => {
             })
           ) : (
             // Show filtered products in grid when specific category is selected
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 px-4 sm:px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredProducts.map((product) => (
                 <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-40 sm:h-48 object-cover"
+                    className="w-full h-48 object-cover"
                   />
-                  <div className="p-4 sm:p-6">
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                       {product.name}
                     </h3>
                     <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                       {product.description}
                     </p>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-lg sm:text-xl font-bold text-emerald-600">
+                      <span className="text-2xl font-bold text-emerald-600">
                         R$ {product.price.toFixed(2)}
                       </span>
                       <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
@@ -636,7 +636,7 @@ const Products: React.FC = () => {
                     <button
                       onClick={() => handleAddToCart(product)}
                       disabled={!currentUser}
-                      className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 touch-manipulation ${
+                      className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2 ${
                         currentUser
                           ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
                           : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -656,10 +656,10 @@ const Products: React.FC = () => {
         {filteredProducts.length === 0 && (
           <div className="text-center py-12">
             <ShoppingCart className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
               Nenhum produto encontrado
             </h3>
-            <p className="text-sm sm:text-base text-gray-600 px-4">
+            <p className="text-gray-600">
               Tente ajustar sua busca ou filtros para encontrar o que procura.
             </p>
           </div>
@@ -667,16 +667,16 @@ const Products: React.FC = () => {
 
         {/* Login reminder */}
         {!currentUser && (
-          <div className="mt-12 bg-emerald-50 border border-emerald-200 rounded-lg p-4 sm:p-6 text-center mx-4 sm:mx-0">
-            <h3 className="text-base sm:text-lg font-semibold text-emerald-800 mb-2">
+          <div className="mt-12 bg-emerald-50 border border-emerald-200 rounded-lg p-6 text-center">
+            <h3 className="text-lg font-semibold text-emerald-800 mb-2">
               Faça login para comprar
             </h3>
-            <p className="text-sm sm:text-base text-emerald-600 mb-4">
+            <p className="text-emerald-600 mb-4">
               Para adicionar produtos ao carrinho e fazer pedidos, você precisa estar logado.
             </p>
             <a
               href="/login"
-              className="inline-flex items-center px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors touch-manipulation"
+              className="inline-flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
             >
               Fazer Login
             </a>
