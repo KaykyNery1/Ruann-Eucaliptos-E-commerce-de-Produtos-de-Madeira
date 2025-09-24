@@ -274,7 +274,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       <div className="fixed inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
       
       <div className="relative h-screen w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-[99999] overflow-hidden">
-        <div className="flex h-full flex-col">
+        <div className="h-full flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
             <h2 className="text-lg font-semibold text-gray-900 flex items-center">
@@ -290,7 +290,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Cart Items */}
-          <div className="flex-1 overflow-y-auto px-6 py-4 pb-48">
+          <div className="flex-1 overflow-y-auto px-6 py-4" style={{ paddingBottom: state.items.length > 0 ? '200px' : '20px' }}>
             {state.items.length === 0 ? (
               <div className="text-center py-12">
                 <ShoppingCart className="h-12 w-12 text-gray-300 mx-auto mb-4" />
@@ -343,45 +343,74 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
             )}
           </div>
 
-        {/* Footer - Always visible when there are items */}
-        {state.items.length > 0 && (
-          <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200 px-6 py-4 bg-white shadow-lg">
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-lg font-semibold text-gray-900">Total:</span>
-              <span className="text-xl font-bold text-emerald-600">
-                R$ {state.total.toFixed(2)}
-              </span>
-            </div>
-            
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-sm text-gray-600">Peso total:</span>
-              <span className="text-sm font-medium text-gray-900">
-                {state.totalWeight.toFixed(1)}kg
-              </span>
-            </div>
-            
-            <button
-              onClick={handleCheckout}
-              disabled={isProcessing}
-              className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
-                isProcessing
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-green-500 hover:bg-green-600 text-white'
-              }`}
+          {/* Footer - Always visible when there are items */}
+          {state.items.length > 0 && (
+            <div 
+              className="border-t border-gray-200 px-6 py-4 bg-white shadow-lg"
+              style={{
+                position: 'fixed',
+                bottom: '0',
+                left: '0',
+                right: '0',
+                maxWidth: '28rem',
+                marginLeft: 'auto',
+                zIndex: 100000
+              }}
             >
-              Continuar para Endereço
-            </button>
-            
-            <button
-              onClick={clearCart}
-              className="w-full mt-2 py-2 px-4 text-sm text-gray-600 hover:text-red-600 transition-colors"
-            >
-              Limpar Carrinho
-            </button>
-          </div>
-        )}
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-lg font-semibold text-gray-900">Total:</span>
+                <span className="text-xl font-bold text-emerald-600">
+                  R$ {state.total.toFixed(2)}
+                </span>
+              </div>
+              
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-sm text-gray-600">Peso total:</span>
+                <span className="text-sm font-medium text-gray-900">
+                  {state.totalWeight.toFixed(1)}kg
+                </span>
+              </div>
+              
+              <button
+                onClick={handleCheckout}
+                disabled={isProcessing}
+                className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
+                  isProcessing
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-green-500 hover:bg-green-600 text-white'
+                }`}
+              >
+                Continuar para Endereço
+              </button>
+              
+              <button
+                onClick={clearCart}
+                className="w-full mt-2 py-2 px-4 text-sm text-gray-600 hover:text-red-600 transition-colors"
+              >
+                Limpar Carrinho
+              </button>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Backdrop for mobile footer */}
+      {state.items.length > 0 && (
+        <div 
+          className="fixed inset-0 pointer-events-none"
+          style={{ zIndex: 99998 }}
+        >
+          <div 
+            className="absolute bottom-0 left-0 right-0 bg-white"
+            style={{ 
+              height: '180px',
+              maxWidth: '28rem',
+              marginLeft: 'auto',
+              pointerEvents: 'auto'
+            }}
+          </div>
+        </div>
+      )}
 
       {/* Address Form Modal */}
       {showAddressForm && (
