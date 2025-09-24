@@ -131,40 +131,38 @@ const Header: React.FC = () => {
           </div>
 
           {/* Mobile Actions */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="md:hidden flex items-center space-x-2">
             {/* Mobile Cart Icon - Only show if user is logged in */}
-            {currentUser && (
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                <ShoppingCart className="h-6 w-6" />
-                {getItemCount() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
-                    {getItemCount()}
-                  </span>
-                )}
-              </button>
-            )}
+            <button
+              onClick={handleCartClick}
+              className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {getItemCount() > 0 && (
+                <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
+                  {getItemCount()}
+                </span>
+              )}
+            </button>
             
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-emerald-600"
+              className="p-2 rounded-md text-gray-700 hover:text-emerald-600 transition-colors"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-200">
+          <nav className="md:hidden py-4 border-t border-gray-200 bg-white">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block py-2 text-sm font-medium transition-colors hover:text-emerald-600 ${
+                className={`block py-3 px-4 text-base font-medium transition-colors hover:text-emerald-600 hover:bg-gray-50 ${
                   location.pathname === item.path
                     ? 'text-emerald-600'
                     : 'text-gray-700'
@@ -175,8 +173,8 @@ const Header: React.FC = () => {
               </Link>
             ))}
             {currentUser ? (
-              <div className="py-2">
-                <span className="block text-sm text-gray-700 mb-2">
+              <div className="py-3 px-4 border-t border-gray-200 mt-2">
+                <span className="block text-sm text-gray-600 mb-3">
                   Olá, {currentUser.displayName || currentUser.email}
                 </span>
                 <button
@@ -184,36 +182,24 @@ const Header: React.FC = () => {
                     handleLogout();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+                  className="text-base font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-2"
                 >
                   <LogOut className="h-4 w-4" />
                   <span>Sair</span>
                 </button>
               </div>
             ) : (
-              <div className="py-2">
+              <div className="py-3 px-4 border-t border-gray-200 mt-2">
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-1"
+                  className="text-base font-medium text-gray-700 hover:text-emerald-600 transition-colors flex items-center space-x-2"
                 >
                   <User className="h-4 w-4" />
                   <span>Entrar</span>
                 </Link>
               </div>
             )}
-            {/* Mobile Cart Icon */}
-            <button
-              onClick={handleCartClick}
-              className="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              <ShoppingCart className="h-6 w-6" />
-              {getItemCount() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
-                  {getItemCount()}
-                </span>
-              )}
-            </button>
           </nav>
         )}
       </div>

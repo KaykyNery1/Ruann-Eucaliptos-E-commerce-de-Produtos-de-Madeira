@@ -276,21 +276,21 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
         <div className="h-full flex flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
+          <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4 bg-white">
             <h2 className="text-lg font-semibold text-gray-900 flex items-center">
               <ShoppingCart className="h-5 w-5 mr-2" />
               Carrinho ({state.items.length})
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-gray-600 transition-colors p-1"
             >
               <X className="h-6 w-6" />
             </button>
           </div>
 
           {/* Cart Items */}
-          <div className="flex-1 overflow-y-auto px-6 py-4" style={{ paddingBottom: state.items.length > 0 ? '200px' : '20px' }}>
+          <div className="flex-1 overflow-y-auto px-4 py-4" style={{ paddingBottom: state.items.length > 0 ? '180px' : '20px' }}>
             {state.items.length === 0 ? (
               <div className="text-center py-12">
                 <ShoppingCart className="h-12 w-12 text-gray-300 mx-auto mb-4" />
@@ -299,41 +299,41 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
             ) : (
               <div className="space-y-4">
                 {state.items.map((item) => (
-                  <div key={item.id} className="flex items-center space-x-4 bg-gray-50 p-4 rounded-lg">
+                  <div key={item.id} className="flex items-start space-x-3 bg-gray-50 p-3 rounded-lg">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="h-16 w-16 object-cover rounded-md"
+                      className="h-12 w-12 object-cover rounded-md flex-shrink-0"
                     />
                     <div className="flex-1">
-                      <h3 className="font-medium text-gray-900">{item.name}</h3>
+                      <h3 className="font-medium text-gray-900 text-sm leading-tight">{item.name}</h3>
                       <p className="text-sm text-gray-600">R$ {item.price.toFixed(2)}</p>
                       <p className="text-xs text-gray-500">{item.weight}kg cada</p>
                       
-                      <div className="flex items-center space-x-2 mt-2">
+                      <div className="flex items-center space-x-1 mt-2">
                         <button
                           onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors touch-manipulation"
                         >
-                          <Minus className="h-4 w-4" />
+                          <Minus className="h-3 w-3" />
                         </button>
-                        <span className="w-8 text-center font-medium">{item.quantity}</span>
+                        <span className="w-6 text-center font-medium text-sm">{item.quantity}</span>
                         <button
                           onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
+                          className="p-1 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors touch-manipulation"
                         >
-                          <Plus className="h-4 w-4" />
+                          <Plus className="h-3 w-3" />
                         </button>
                         <button
                           onClick={() => removeItem(item.id)}
-                          className="p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-600 transition-colors ml-2"
+                          className="p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-600 transition-colors ml-1 touch-manipulation"
                         >
-                          <Trash2 className="h-4 w-4" />
+                          <Trash2 className="h-3 w-3" />
                         </button>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold text-gray-900">
+                    <div className="text-right flex-shrink-0">
+                      <p className="font-semibold text-gray-900 text-sm">
                         R$ {(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
@@ -346,7 +346,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           {/* Footer - Always visible when there are items */}
           {state.items.length > 0 && (
             <div 
-              className="border-t border-gray-200 px-6 py-4 bg-white shadow-lg"
+              className="border-t border-gray-200 px-4 py-4 bg-white shadow-lg"
               style={{
                 position: 'fixed',
                 bottom: '0',
@@ -357,14 +357,14 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                 zIndex: 100000
               }}
             >
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex justify-between items-center mb-3">
                 <span className="text-lg font-semibold text-gray-900">Total:</span>
                 <span className="text-xl font-bold text-emerald-600">
                   R$ {state.total.toFixed(2)}
                 </span>
               </div>
               
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex justify-between items-center mb-3">
                 <span className="text-sm text-gray-600">Peso total:</span>
                 <span className="text-sm font-medium text-gray-900">
                   {state.totalWeight.toFixed(1)}kg
@@ -374,7 +374,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               <button
                 onClick={handleCheckout}
                 disabled={isProcessing}
-                className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
+                className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors touch-manipulation ${
                   isProcessing
                     ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-green-500 hover:bg-green-600 text-white'
@@ -385,7 +385,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               
               <button
                 onClick={clearCart}
-                className="w-full mt-2 py-2 px-4 text-sm text-gray-600 hover:text-red-600 transition-colors"
+                className="w-full mt-2 py-2 px-4 text-sm text-gray-600 hover:text-red-600 transition-colors touch-manipulation"
               >
                 Limpar Carrinho
               </button>
@@ -403,7 +403,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
           <div 
             className="absolute bottom-0 left-0 right-0 bg-white"
             style={{ 
-              height: '180px',
+              height: '160px',
               maxWidth: '28rem',
               marginLeft: 'auto',
               pointerEvents: 'auto'
@@ -414,22 +414,22 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
       {/* Address Form Modal */}
       {showAddressForm && (
-        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[80vh] overflow-y-auto my-auto">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-white rounded-lg p-4 w-full max-w-sm max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+              <h3 className="text-base font-semibold text-gray-900 flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
                 Endereço de Entrega
               </h3>
               <button
                 onClick={() => setShowAddressForm(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 p-1 touch-manipulation"
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="grid grid-cols-3 gap-2">
                 <div className="col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Rua</label>
@@ -437,7 +437,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     type="text"
                     value={address.street}
                     onChange={(e) => setAddress(prev => ({ ...prev, street: e.target.value }))}
-                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.street ? 'border-red-300' : 'border-gray-300'}`}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm ${addressErrors.street ? 'border-red-300' : 'border-gray-300'}`}
                     placeholder="Nome da rua"
                   />
                   {addressErrors.street && <p className="text-red-600 text-xs mt-1">{addressErrors.street}</p>}
@@ -448,7 +448,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     type="text"
                     value={address.number}
                     onChange={(e) => setAddress(prev => ({ ...prev, number: e.target.value }))}
-                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.number ? 'border-red-300' : 'border-gray-300'}`}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm ${addressErrors.number ? 'border-red-300' : 'border-gray-300'}`}
                     placeholder="123"
                   />
                   {addressErrors.number && <p className="text-red-600 text-xs mt-1">{addressErrors.number}</p>}
@@ -461,7 +461,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   type="text"
                   value={address.neighborhood}
                   onChange={(e) => setAddress(prev => ({ ...prev, neighborhood: e.target.value }))}
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.neighborhood ? 'border-red-300' : 'border-gray-300'}`}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm ${addressErrors.neighborhood ? 'border-red-300' : 'border-gray-300'}`}
                   placeholder="Nome do bairro"
                 />
                 {addressErrors.neighborhood && <p className="text-red-600 text-xs mt-1">{addressErrors.neighborhood}</p>}
@@ -474,7 +474,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                     type="text"
                     value={address.city}
                     onChange={(e) => setAddress(prev => ({ ...prev, city: e.target.value }))}
-                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.city ? 'border-red-300' : 'border-gray-300'}`}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm ${addressErrors.city ? 'border-red-300' : 'border-gray-300'}`}
                     placeholder="Cidade"
                   />
                   {addressErrors.city && <p className="text-red-600 text-xs mt-1">{addressErrors.city}</p>}
@@ -484,7 +484,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   <select
                     value={address.state}
                     onChange={(e) => setAddress(prev => ({ ...prev, state: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
                   >
                     <option value="DF">DF</option>
                     <option value="GO">GO</option>
@@ -499,7 +499,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   type="text"
                   value={address.zipCode}
                   onChange={(e) => setAddress(prev => ({ ...prev, zipCode: e.target.value }))}
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.zipCode ? 'border-red-300' : 'border-gray-300'}`}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm ${addressErrors.zipCode ? 'border-red-300' : 'border-gray-300'}`}
                   placeholder="00000-000"
                 />
                 {addressErrors.zipCode && <p className="text-red-600 text-xs mt-1">{addressErrors.zipCode}</p>}
@@ -512,23 +512,23 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   value={address.document}
                   onChange={handleDocumentChange}
                   maxLength={18}
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${addressErrors.document ? 'border-red-300' : 'border-gray-300'}`}
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm ${addressErrors.document ? 'border-red-300' : 'border-gray-300'}`}
                   placeholder="000.000.000-00 ou 00.000.000/0000-00"
                 />
                 {addressErrors.document && <p className="text-red-600 text-xs mt-1">{addressErrors.document}</p>}
               </div>
             </div>
 
-            <div className="flex space-x-3 mt-6">
+            <div className="flex space-x-2 mt-4">
               <button
                 onClick={() => setShowAddressForm(false)}
-                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex-1 py-3 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors touch-manipulation"
               >
                 Cancelar
               </button>
               <button
                 onClick={handleAddressSubmit}
-                className="flex-1 py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md transition-colors"
+                className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md transition-colors touch-manipulation"
               >
                 Continuar
               </button>
@@ -538,23 +538,23 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
       )}
 
       {showPaymentForm && (
-        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[80vh] overflow-y-auto my-auto">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-white rounded-lg p-4 w-full max-w-sm max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Forma de Pagamento</h3>
+              <h3 className="text-base font-semibold text-gray-900">Forma de Pagamento</h3>
               <button
                 onClick={() => setShowPaymentForm(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 p-1 touch-manipulation"
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Método de Pagamento</label>
-                <div className="space-y-2">
-                  <label className="flex items-center">
+                <div className="space-y-3">
+                  <label className="flex items-center p-2 border rounded-md hover:bg-gray-50 cursor-pointer">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -563,9 +563,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                       onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value, cardBrand: '' }))}
                       className="mr-2"
                     />
-                    PIX
+                    <span className="text-sm">PIX</span>
                   </label>
-                  <label className="flex items-center">
+                  <label className="flex items-center p-2 border rounded-md hover:bg-gray-50 cursor-pointer">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -574,9 +574,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                       onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value }))}
                       className="mr-2"
                     />
-                    Cartão de Crédito
+                    <span className="text-sm">Cartão de Crédito</span>
                   </label>
-                  <label className="flex items-center">
+                  <label className="flex items-center p-2 border rounded-md hover:bg-gray-50 cursor-pointer">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -585,9 +585,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                       onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value }))}
                       className="mr-2"
                     />
-                    Cartão de Débito
+                    <span className="text-sm">Cartão de Débito</span>
                   </label>
-                  <label className="flex items-center">
+                  <label className="flex items-center p-2 border rounded-md hover:bg-gray-50 cursor-pointer">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -596,7 +596,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                       onChange={(e) => setPayment(prev => ({ ...prev, method: e.target.value, cardBrand: '' }))}
                       className="mr-2"
                     />
-                    Dinheiro
+                    <span className="text-sm">Dinheiro</span>
                   </label>
                 </div>
                 {paymentErrors.method && <p className="text-red-600 text-xs mt-1">{paymentErrors.method}</p>}
@@ -608,7 +608,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   <select
                     value={payment.cardBrand}
                     onChange={(e) => setPayment(prev => ({ ...prev, cardBrand: e.target.value }))}
-                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 ${paymentErrors.cardBrand ? 'border-red-300' : 'border-gray-300'}`}
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm ${paymentErrors.cardBrand ? 'border-red-300' : 'border-gray-300'}`}
                   >
                     <option value="">Selecione a bandeira</option>
                     <option value="Visa">Visa</option>
@@ -622,16 +622,16 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               )}
             </div>
 
-            <div className="flex space-x-3 mt-6">
+            <div className="flex space-x-2 mt-4">
               <button
                 onClick={() => setShowPaymentForm(false)}
-                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex-1 py-3 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors touch-manipulation"
               >
                 Voltar
               </button>
               <button
                 onClick={handlePaymentSubmit}
-                className="flex-1 py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md transition-colors"
+                className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md transition-colors touch-manipulation"
               >
                 Continuar
               </button>
@@ -642,23 +642,23 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
 
       {/* Confirmation Modal */}
       {showConfirmation && (
-        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50">
-         <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[80vh] overflow-y-auto my-auto">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black bg-opacity-50 p-4">
+         <div className="bg-white rounded-lg p-4 w-full max-w-sm max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Confirmar Pedido</h3>
+              <h3 className="text-base font-semibold text-gray-900">Confirmar Pedido</h3>
               <button
                 onClick={() => setShowConfirmation(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 p-1 touch-manipulation"
               >
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Customer Info */}
-            <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+            <div className="mb-3 p-3 bg-gray-50 rounded-lg">
               <div className="flex items-center mb-2">
                 <User className="h-4 w-4 text-gray-600 mr-2" />
-                <span className="font-medium">{currentUser?.displayName || currentUser?.email}</span>
+                <span className="font-medium text-sm">{currentUser?.displayName || currentUser?.email}</span>
               </div>
               <div className="flex items-center mb-2">
                 <span className="text-sm text-gray-600">
@@ -680,7 +680,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Payment Info */}
-            <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+            <div className="mb-3 p-3 bg-gray-50 rounded-lg">
               <h4 className="font-medium text-gray-900 mb-2">Forma de Pagamento:</h4>
               <div className="text-sm text-gray-600">
                 {payment.method === 'pix' && 'PIX'}
@@ -691,7 +691,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Order Items */}
-            <div className="mb-4">
+            <div className="mb-3">
               <h4 className="font-medium text-gray-900 mb-2">Itens do Pedido:</h4>
               <div className="space-y-2">
                 {state.items.map((item) => (
@@ -709,17 +709,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="flex space-x-3">
+            <div className="flex space-x-2">
               <button
                 onClick={() => setShowConfirmation(false)}
-                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex-1 py-3 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors touch-manipulation"
               >
                 Voltar
               </button>
               <button
                 onClick={confirmOrder}
                 disabled={isProcessing}
-                className={`flex-1 py-2 px-4 rounded-md font-semibold transition-colors ${
+                className={`flex-1 py-3 px-4 rounded-md font-semibold transition-colors touch-manipulation ${
                   isProcessing
                     ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-green-500 hover:bg-green-600 text-white'

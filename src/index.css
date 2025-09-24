@@ -23,6 +23,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
 }
 
 @keyframes fadeInUp {
@@ -77,4 +81,28 @@ body.cart-open {
   align-items: center !important;
   justify-content: center !important;
   min-height: 100vh !important;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+  
+  /* Better text readability */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
+  /* Smooth scrolling on mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
 }
