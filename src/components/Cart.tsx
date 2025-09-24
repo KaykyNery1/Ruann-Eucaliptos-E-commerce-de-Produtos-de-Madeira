@@ -407,7 +407,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
               maxWidth: '28rem',
               marginLeft: 'auto',
               pointerEvents: 'auto'
-            }}
+            }}>
           </div>
         </div>
       )}
