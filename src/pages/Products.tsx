@@ -557,7 +557,7 @@ const Products: React.FC = () => {
       id: '59',
       name: 'Poste 06/08 4 Mt',
       description: 'Poste de madeira 06 á 08 de diâmetro com 4 M',
-      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 54.99,
       weight: 8,
       category: 'Madeiras'
