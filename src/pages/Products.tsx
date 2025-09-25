@@ -494,16 +494,7 @@ const Products: React.FC = () => {
       category: 'Madeiras'
     }
 
-    {
-      id: '53',
-      name: 'Estaca 06/08 2,20 MT',
-      description: 'Estaca de madeira 06 á 08 de diâmetro com 2,20 M',
-      image:
-      'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
-      price: 7.99,
-      weight: 10,
-      category: 'Madeiras'
-    }
+  
     
   ];
 
