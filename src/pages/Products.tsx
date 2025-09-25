@@ -503,6 +503,508 @@ const Products: React.FC = () => {
       price: 14.99,
       weight: 10,
       category: 'Madeiras'
+    },
+
+    // Estacas adicionais
+    {
+      id: '54',
+      name: 'Estaca 04/06 2,20 M',
+      description: 'Estaca de madeira 04 á 06 de diâmetro com 2,20 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 9.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '55',
+      name: 'Estaca 08/10 2,20 M',
+      description: 'Estaca de madeira 08 á 10 de diâmetro com 2,20 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 21.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '56',
+      name: 'Estaca 10/12 2,20 M',
+      description: 'Estaca de madeira 10 á 12 de diâmetro com 2,20 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 28.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '57',
+      name: 'Estaca 12/14 2,20 M',
+      description: 'Estaca de madeira 12 á 14 de diâmetro com 2,20 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 35.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '58',
+      name: 'Estaca 14/16 2,20 M',
+      description: 'Estaca de madeira 14 á 16 de diâmetro com 2,20 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 41.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+
+    // Postes 4 Mt
+    {
+      id: '59',
+      name: 'Poste 06/08 4 Mt',
+      description: 'Poste de madeira 06 á 08 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 54.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '60',
+      name: 'Poste 08/10 4 Mt',
+      description: 'Poste de madeira 08 á 10 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 74.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '61',
+      name: 'Poste 10/12 4 Mt',
+      description: 'Poste de madeira 10 á 12 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 99.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '62',
+      name: 'Poste 12/14 4 Mt',
+      description: 'Poste de madeira 12 á 14 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 129.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '63',
+      name: 'Poste 14/16 4 Mt',
+      description: 'Poste de madeira 14 á 16 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 169.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '64',
+      name: 'Poste 16/18 4 Mt',
+      description: 'Poste de madeira 16 á 18 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 219.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '65',
+      name: 'Poste 18/20 4 Mt',
+      description: 'Poste de madeira 18 á 20 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 359.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '66',
+      name: 'Poste 20/22 4 Mt',
+      description: 'Poste de madeira 20 á 22 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 399.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '67',
+      name: 'Poste 22/24 4 Mt',
+      description: 'Poste de madeira 22 á 24 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 429.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '68',
+      name: 'Poste 28/30 4 Mt',
+      description: 'Poste de madeira 28 á 30 de diâmetro com 4 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 849.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+
+    // Postes 5 Mt
+    {
+      id: '69',
+      name: 'Poste 06/08 5 Mt',
+      description: 'Poste de madeira 06 á 08 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 79.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '70',
+      name: 'Poste 08/10 5 Mt',
+      description: 'Poste de madeira 08 á 10 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 94.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '71',
+      name: 'Poste 10/12 5 Mt',
+      description: 'Poste de madeira 10 á 12 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 124.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '72',
+      name: 'Poste 12/14 5 Mt',
+      description: 'Poste de madeira 12 á 14 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 159.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '73',
+      name: 'Poste 14/16 5 Mt',
+      description: 'Poste de madeira 14 á 16 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 249.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '74',
+      name: 'Poste 16/18 5 Mt',
+      description: 'Poste de madeira 16 á 18 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 319.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '75',
+      name: 'Poste 18/20 5 Mt',
+      description: 'Poste de madeira 18 á 20 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 409.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '76',
+      name: 'Poste 20/22 5 Mt',
+      description: 'Poste de madeira 20 á 22 de diâmetro com 5 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 549.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+
+    // Postes 6 Mt
+    {
+      id: '77',
+      name: 'Poste 06/08 6 Mt',
+      description: 'Poste de madeira 06 á 08 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 94.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '78',
+      name: 'Poste 08/10 6 Mt',
+      description: 'Poste de madeira 08 á 10 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 114.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '79',
+      name: 'Poste 10/12 6 Mt',
+      description: 'Poste de madeira 10 á 12 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 159.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '80',
+      name: 'Poste 12/14 6 Mt',
+      description: 'Poste de madeira 12 á 14 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 179.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '81',
+      name: 'Poste 14/16 6 Mt',
+      description: 'Poste de madeira 14 á 16 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 279.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '82',
+      name: 'Poste 16/18 6 Mt',
+      description: 'Poste de madeira 16 á 18 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 379.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '83',
+      name: 'Poste 18/20 6 Mt',
+      description: 'Poste de madeira 18 á 20 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 539.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '84',
+      name: 'Poste 20/22 6 Mt',
+      description: 'Poste de madeira 20 á 22 de diâmetro com 6 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 749.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+
+    // Postes 7 Mt
+    {
+      id: '85',
+      name: 'Poste 08/10 7 Mt',
+      description: 'Poste de madeira 08 á 10 de diâmetro com 7 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 134.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '86',
+      name: 'Poste 10/12 7 Mt',
+      description: 'Poste de madeira 10 á 12 de diâmetro com 7 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 179.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '87',
+      name: 'Poste 12/14 7 Mt',
+      description: 'Poste de madeira 12 á 14 de diâmetro com 7 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 249.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '88',
+      name: 'Poste 14/16 7 Mt',
+      description: 'Poste de madeira 14 á 16 de diâmetro com 7 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 349.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '89',
+      name: 'Poste 16/18 7 Mt',
+      description: 'Poste de madeira 16 á 18 de diâmetro com 7 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 424.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '90',
+      name: 'Poste 18/20 7 Mt',
+      description: 'Poste de madeira 18 á 20 de diâmetro com 7 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 649.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+    {
+      id: '91',
+      name: 'Poste 20/22 7 Mt',
+      description: 'Poste de madeira 20 á 22 de diâmetro com 7 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 819.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+
+    // Postes 8 Mt
+    {
+      id: '92',
+      name: 'Poste 08/10 8 Mt',
+      description: 'Poste de madeira 08 á 10 de diâmetro com 8 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 249.99,
+      weight: 8,
+      category: 'Madeiras'
+    },
+
+    // Esticadores 2,50 M
+    {
+      id: '93',
+      name: 'Esticador 06/08 2,50 M',
+      description: 'Esticador de madeira 06 á 08 de diâmetro com 2,50 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 21.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '94',
+      name: 'Esticador 08/10 2,50 M',
+      description: 'Esticador de madeira 08 á 10 de diâmetro com 2,50 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 29.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '95',
+      name: 'Esticador 10/12 2,50 M',
+      description: 'Esticador de madeira 10 á 12 de diâmetro com 2,50 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 49.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '96',
+      name: 'Esticador 12/14 2,50 M',
+      description: 'Esticador de madeira 12 á 14 de diâmetro com 2,50 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 64.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '97',
+      name: 'Esticador 14/16 2,50 M',
+      description: 'Esticador de madeira 14 á 16 de diâmetro com 2,50 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 84.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '98',
+      name: 'Esticador 16/18 2,50 M',
+      description: 'Esticador de madeira 16 á 18 de diâmetro com 2,50 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 114.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '99',
+      name: 'Esticador 18/20 2,50 M',
+      description: 'Esticador de madeira 18 á 20 de diâmetro com 2,50 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 139.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+
+    // Esticadores 3 Mt
+    {
+      id: '100',
+      name: 'Esticador 06/08 3 Mt',
+      description: 'Esticador de madeira 06 á 08 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 34.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '101',
+      name: 'Esticador 08/10 3 Mt',
+      description: 'Esticador de madeira 08 á 10 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 54.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '102',
+      name: 'Esticador 10/12 3 Mt',
+      description: 'Esticador de madeira 10 á 12 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 79.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '103',
+      name: 'Esticador 12/14 3 Mt',
+      description: 'Esticador de madeira 12 á 14 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 94.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '104',
+      name: 'Esticador 14/16 3 Mt',
+      description: 'Esticador de madeira 14 á 16 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 124.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '105',
+      name: 'Esticador 16/18 3 Mt',
+      description: 'Esticador de madeira 16 á 18 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 179.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '106',
+      name: 'Esticador 18/20 3 Mt',
+      description: 'Esticador de madeira 18 á 20 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 219.99,
+      weight: 8,
+      category: 'Ferragens'
+    },
+    {
+      id: '107',
+      name: 'Esticador 22/24 3 Mt',
+      description: 'Esticador de madeira 22 á 24 de diâmetro com 3 M',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
+      price: 449.99,
+      weight: 8,
+      category: 'Ferragens'
     }
 
     
