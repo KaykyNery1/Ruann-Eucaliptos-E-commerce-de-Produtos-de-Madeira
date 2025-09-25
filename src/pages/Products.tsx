@@ -490,7 +490,7 @@ const Products: React.FC = () => {
       image:
       'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 7.99,
-      weight: 10,
+      weight: 5,
       category: 'Madeiras'
     },
 
@@ -501,7 +501,7 @@ const Products: React.FC = () => {
       image:
       'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 14.99,
-      weight: 10,
+      weight: 8,
       category: 'Madeiras'
     },
 
@@ -512,7 +512,7 @@ const Products: React.FC = () => {
       description: 'Estaca de madeira 04 á 06 de diâmetro com 2,20 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 9.99,
-      weight: 8,
+      weight: 16,
       category: 'Madeiras'
     },
     {
@@ -521,7 +521,7 @@ const Products: React.FC = () => {
       description: 'Estaca de madeira 08 á 10 de diâmetro com 2,20 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 21.99,
-      weight: 8,
+      weight: 21,
       category: 'Madeiras'
     },
     {
@@ -530,7 +530,7 @@ const Products: React.FC = () => {
       description: 'Estaca de madeira 10 á 12 de diâmetro com 2,20 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 28.99,
-      weight: 8,
+      weight: 24,
       category: 'Madeiras'
     },
     {
@@ -539,7 +539,7 @@ const Products: React.FC = () => {
       description: 'Estaca de madeira 12 á 14 de diâmetro com 2,20 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 35.99,
-      weight: 8,
+      weight: 28,
       category: 'Madeiras'
     },
     {
@@ -548,7 +548,7 @@ const Products: React.FC = () => {
       description: 'Estaca de madeira 14 á 16 de diâmetro com 2,20 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 41.99,
-      weight: 8,
+      weight: 34,
       category: 'Madeiras'
     },
 
