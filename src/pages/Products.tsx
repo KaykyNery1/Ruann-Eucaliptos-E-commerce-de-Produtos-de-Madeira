@@ -877,7 +877,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 21.99,
       weight: 9,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '94',
@@ -886,7 +886,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 29.99,
       weight: 19,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '95',
@@ -895,7 +895,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 49.99,
       weight: 23,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '96',
@@ -904,7 +904,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 64.99,
       weight: 37,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '97',
@@ -913,7 +913,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 84.99,
       weight: 49,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '98',
@@ -922,7 +922,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 114.99,
       weight: 62,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '99',
@@ -931,7 +931,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 139.99,
       weight:71,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
 
     // Esticadores 3 Mt
@@ -942,7 +942,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 34.99,
       weight: 10,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '101',
@@ -951,7 +951,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 54.99,
       weight: 18,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '102',
@@ -960,7 +960,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 79.99,
       weight: 22,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '103',
@@ -969,7 +969,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 94.99,
       weight: 28,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '104',
@@ -978,7 +978,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 124.99,
       weight: 32,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '105',
@@ -987,7 +987,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 179.99,
       weight: 36,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '106',
@@ -996,7 +996,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 219.99,
       weight: 42,
-      category: 'Ferragens'
+      category: 'Madeiras'
     },
     {
       id: '107',
@@ -1005,7 +1005,7 @@ const Products: React.FC = () => {
       image: '/esticador.jpg',
       price: 449.99,
       weight: 52,
-      category: 'Ferragens'
+      category: 'Madeiras'
     }
 
     
