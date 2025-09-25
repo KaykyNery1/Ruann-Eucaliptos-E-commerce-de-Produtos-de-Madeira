@@ -576,7 +576,7 @@ const Products: React.FC = () => {
       name: 'Poste 10/12 4 Mt',
       description: 'Poste de madeira 10 á 12 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
-      price: 99.99,
+      price: 89.99,
       weight: 48,
       category: 'Madeiras'
     },
