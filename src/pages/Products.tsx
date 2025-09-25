@@ -557,7 +557,7 @@ const Products: React.FC = () => {
       id: '59',
       name: 'Poste 06/08 4 Mt',
       description: 'Poste de madeira 06 á 08 de diâmetro com 4 M',
-      image: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRiMm7cTQgAjScWu90yn4OrvL8QC48tPO8Ezw4ItSo0-z0t9_9ERR_ewlqrKA32-fXuULyVlw87pGXixYQDIp2v9e2Z17RuGIYgqN9QIt-W',
+      image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-Troncode-e-Viga-eucalipto-tratado-3.webp',
       price: 54.99,
       weight: 8,
       category: 'Madeiras'
