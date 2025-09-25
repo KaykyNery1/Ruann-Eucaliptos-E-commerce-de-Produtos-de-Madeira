@@ -874,7 +874,7 @@ const Products: React.FC = () => {
       id: '93',
       name: 'Esticador 06/08 2,50 M',
       description: 'Esticador de madeira 06 á 08 de diâmetro com 2,50 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 21.99,
       weight: 9,
       category: 'Ferragens'
@@ -883,7 +883,7 @@ const Products: React.FC = () => {
       id: '94',
       name: 'Esticador 08/10 2,50 M',
       description: 'Esticador de madeira 08 á 10 de diâmetro com 2,50 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 29.99,
       weight: 19,
       category: 'Ferragens'
@@ -892,7 +892,7 @@ const Products: React.FC = () => {
       id: '95',
       name: 'Esticador 10/12 2,50 M',
       description: 'Esticador de madeira 10 á 12 de diâmetro com 2,50 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 49.99,
       weight: 23,
       category: 'Ferragens'
@@ -901,7 +901,7 @@ const Products: React.FC = () => {
       id: '96',
       name: 'Esticador 12/14 2,50 M',
       description: 'Esticador de madeira 12 á 14 de diâmetro com 2,50 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 64.99,
       weight: 37,
       category: 'Ferragens'
@@ -910,7 +910,7 @@ const Products: React.FC = () => {
       id: '97',
       name: 'Esticador 14/16 2,50 M',
       description: 'Esticador de madeira 14 á 16 de diâmetro com 2,50 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 84.99,
       weight: 49,
       category: 'Ferragens'
@@ -919,7 +919,7 @@ const Products: React.FC = () => {
       id: '98',
       name: 'Esticador 16/18 2,50 M',
       description: 'Esticador de madeira 16 á 18 de diâmetro com 2,50 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 114.99,
       weight: 62,
       category: 'Ferragens'
@@ -928,7 +928,7 @@ const Products: React.FC = () => {
       id: '99',
       name: 'Esticador 18/20 2,50 M',
       description: 'Esticador de madeira 18 á 20 de diâmetro com 2,50 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 139.99,
       weight:71,
       category: 'Ferragens'
@@ -939,7 +939,7 @@ const Products: React.FC = () => {
       id: '100',
       name: 'Esticador 06/08 3 Mt',
       description: 'Esticador de madeira 06 á 08 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 34.99,
       weight: 10,
       category: 'Ferragens'
@@ -948,7 +948,7 @@ const Products: React.FC = () => {
       id: '101',
       name: 'Esticador 08/10 3 Mt',
       description: 'Esticador de madeira 08 á 10 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 54.99,
       weight: 18,
       category: 'Ferragens'
@@ -957,7 +957,7 @@ const Products: React.FC = () => {
       id: '102',
       name: 'Esticador 10/12 3 Mt',
       description: 'Esticador de madeira 10 á 12 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 79.99,
       weight: 22,
       category: 'Ferragens'
@@ -966,7 +966,7 @@ const Products: React.FC = () => {
       id: '103',
       name: 'Esticador 12/14 3 Mt',
       description: 'Esticador de madeira 12 á 14 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 94.99,
       weight: 28,
       category: 'Ferragens'
@@ -975,7 +975,7 @@ const Products: React.FC = () => {
       id: '104',
       name: 'Esticador 14/16 3 Mt',
       description: 'Esticador de madeira 14 á 16 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 124.99,
       weight: 32,
       category: 'Ferragens'
@@ -984,7 +984,7 @@ const Products: React.FC = () => {
       id: '105',
       name: 'Esticador 16/18 3 Mt',
       description: 'Esticador de madeira 16 á 18 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 179.99,
       weight: 36,
       category: 'Ferragens'
@@ -993,7 +993,7 @@ const Products: React.FC = () => {
       id: '106',
       name: 'Esticador 18/20 3 Mt',
       description: 'Esticador de madeira 18 á 20 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 219.99,
       weight: 42,
       category: 'Ferragens'
@@ -1002,7 +1002,7 @@ const Products: React.FC = () => {
       id: '107',
       name: 'Esticador 22/24 3 Mt',
       description: 'Esticador de madeira 22 á 24 de diâmetro com 3 M',
-      image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
+      image: '/esticador.jpg',
       price: 449.99,
       weight: 52,
       category: 'Ferragens'
