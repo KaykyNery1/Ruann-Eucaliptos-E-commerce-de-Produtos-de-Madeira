@@ -876,7 +876,7 @@ const Products: React.FC = () => {
       description: 'Esticador de madeira 06 á 08 de diâmetro com 2,50 M',
       image: 'https://images.tcdn.com.br/img/img_prod/694151/esticador_para_cabo_de_aco_08_mm_5_16_pol_18495_1_97d5b809414b47d018ecf2463f4d62fd.jpg',
       price: 21.99,
-      weight: 8,
+      weight: 2.5,
       category: 'Ferragens'
     },
     {
