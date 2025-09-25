@@ -551,7 +551,7 @@ const Products: React.FC = () => {
       weight: 8,
       category: 'Madeiras'
     },
-a
+
     // Postes 4 Mt
     {
       id: '59',
