@@ -557,7 +557,7 @@ const Products: React.FC = () => {
       id: '59',
       name: 'Poste 06/08 4 Mt',
       description: 'Poste de madeira 06 á 08 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 54.99,
       weight: 8,
       category: 'Madeiras'
@@ -566,7 +566,7 @@ const Products: React.FC = () => {
       id: '60',
       name: 'Poste 08/10 4 Mt',
       description: 'Poste de madeira 08 á 10 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 74.99,
       weight: 8,
       category: 'Madeiras'
@@ -575,7 +575,7 @@ const Products: React.FC = () => {
       id: '61',
       name: 'Poste 10/12 4 Mt',
       description: 'Poste de madeira 10 á 12 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 99.99,
       weight: 8,
       category: 'Madeiras'
@@ -585,7 +585,7 @@ const Products: React.FC = () => {
       name: 'Poste 12/14 4 Mt',
 
       description: 'Poste de madeira 12 á 14 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 129.99,
       weight: 8,
       category: 'Madeiras'
@@ -594,7 +594,7 @@ const Products: React.FC = () => {
       id: '63',
       name: 'Poste 14/16 4 Mt',
       description: 'Poste de madeira 14 á 16 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 169.99,
       weight: 8,
       category: 'Madeiras'
@@ -603,7 +603,7 @@ const Products: React.FC = () => {
       id: '64',
       name: 'Poste 16/18 4 Mt',
       description: 'Poste de madeira 16 á 18 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 219.99,
       weight: 8,
       category: 'Madeiras'
@@ -612,7 +612,7 @@ const Products: React.FC = () => {
       id: '65',
       name: 'Poste 18/20 4 Mt',
       description: 'Poste de madeira 18 á 20 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 359.99,
       weight: 8,
       category: 'Madeiras'
@@ -621,7 +621,7 @@ const Products: React.FC = () => {
       id: '66',
       name: 'Poste 20/22 4 Mt',
       description: 'Poste de madeira 20 á 22 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 399.99,
       weight: 8,
       category: 'Madeiras'
@@ -630,7 +630,7 @@ const Products: React.FC = () => {
       id: '67',
       name: 'Poste 22/24 4 Mt',
       description: 'Poste de madeira 22 á 24 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 429.99,
       weight: 8,
       category: 'Madeiras'
@@ -639,7 +639,7 @@ const Products: React.FC = () => {
       id: '68',
       name: 'Poste 28/30 4 Mt',
       description: 'Poste de madeira 28 á 30 de diâmetro com 4 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 849.99,
       weight: 8,
       category: 'Madeiras'
@@ -650,7 +650,7 @@ const Products: React.FC = () => {
       id: '69',
       name: 'Poste 06/08 5 Mt',
       description: 'Poste de madeira 06 á 08 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 79.99,
       weight: 8,
       category: 'Madeiras'
@@ -659,7 +659,7 @@ const Products: React.FC = () => {
       id: '70',
       name: 'Poste 08/10 5 Mt',
       description: 'Poste de madeira 08 á 10 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 94.99,
       weight: 8,
       category: 'Madeiras'
@@ -668,7 +668,7 @@ const Products: React.FC = () => {
       id: '71',
       name: 'Poste 10/12 5 Mt',
       description: 'Poste de madeira 10 á 12 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 124.99,
       weight: 8,
       category: 'Madeiras'
@@ -677,7 +677,7 @@ const Products: React.FC = () => {
       id: '72',
       name: 'Poste 12/14 5 Mt',
       description: 'Poste de madeira 12 á 14 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 159.99,
       weight: 8,
       category: 'Madeiras'
@@ -686,7 +686,7 @@ const Products: React.FC = () => {
       id: '73',
       name: 'Poste 14/16 5 Mt',
       description: 'Poste de madeira 14 á 16 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 249.99,
       weight: 8,
       category: 'Madeiras'
@@ -695,7 +695,7 @@ const Products: React.FC = () => {
       id: '74',
       name: 'Poste 16/18 5 Mt',
       description: 'Poste de madeira 16 á 18 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 319.99,
       weight: 8,
       category: 'Madeiras'
@@ -704,7 +704,7 @@ const Products: React.FC = () => {
       id: '75',
       name: 'Poste 18/20 5 Mt',
       description: 'Poste de madeira 18 á 20 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 409.99,
       weight: 8,
       category: 'Madeiras'
@@ -713,7 +713,7 @@ const Products: React.FC = () => {
       id: '76',
       name: 'Poste 20/22 5 Mt',
       description: 'Poste de madeira 20 á 22 de diâmetro com 5 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 549.99,
       weight: 8,
       category: 'Madeiras'
@@ -724,7 +724,7 @@ const Products: React.FC = () => {
       id: '77',
       name: 'Poste 06/08 6 Mt',
       description: 'Poste de madeira 06 á 08 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 94.99,
       weight: 8,
       category: 'Madeiras'
@@ -733,7 +733,7 @@ const Products: React.FC = () => {
       id: '78',
       name: 'Poste 08/10 6 Mt',
       description: 'Poste de madeira 08 á 10 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 114.99,
       weight: 8,
       category: 'Madeiras'
@@ -742,7 +742,7 @@ const Products: React.FC = () => {
       id: '79',
       name: 'Poste 10/12 6 Mt',
       description: 'Poste de madeira 10 á 12 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 159.99,
       weight: 8,
       category: 'Madeiras'
@@ -751,7 +751,7 @@ const Products: React.FC = () => {
       id: '80',
       name: 'Poste 12/14 6 Mt',
       description: 'Poste de madeira 12 á 14 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 179.99,
       weight: 8,
       category: 'Madeiras'
@@ -760,7 +760,7 @@ const Products: React.FC = () => {
       id: '81',
       name: 'Poste 14/16 6 Mt',
       description: 'Poste de madeira 14 á 16 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 279.99,
       weight: 8,
       category: 'Madeiras'
@@ -769,7 +769,7 @@ const Products: React.FC = () => {
       id: '82',
       name: 'Poste 16/18 6 Mt',
       description: 'Poste de madeira 16 á 18 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 379.99,
       weight: 8,
       category: 'Madeiras'
@@ -778,7 +778,7 @@ const Products: React.FC = () => {
       id: '83',
       name: 'Poste 18/20 6 Mt',
       description: 'Poste de madeira 18 á 20 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 539.99,
       weight: 8,
       category: 'Madeiras'
@@ -787,7 +787,7 @@ const Products: React.FC = () => {
       id: '84',
       name: 'Poste 20/22 6 Mt',
       description: 'Poste de madeira 20 á 22 de diâmetro com 6 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 749.99,
       weight: 8,
       category: 'Madeiras'
@@ -798,7 +798,7 @@ const Products: React.FC = () => {
       id: '85',
       name: 'Poste 08/10 7 Mt',
       description: 'Poste de madeira 08 á 10 de diâmetro com 7 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 134.99,
       weight: 8,
       category: 'Madeiras'
@@ -807,7 +807,7 @@ const Products: React.FC = () => {
       id: '86',
       name: 'Poste 10/12 7 Mt',
       description: 'Poste de madeira 10 á 12 de diâmetro com 7 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 179.99,
       weight: 8,
       category: 'Madeiras'
@@ -816,7 +816,7 @@ const Products: React.FC = () => {
       id: '87',
       name: 'Poste 12/14 7 Mt',
       description: 'Poste de madeira 12 á 14 de diâmetro com 7 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 249.99,
       weight: 8,
       category: 'Madeiras'
@@ -825,7 +825,7 @@ const Products: React.FC = () => {
       id: '88',
       name: 'Poste 14/16 7 Mt',
       description: 'Poste de madeira 14 á 16 de diâmetro com 7 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 349.99,
       weight: 8,
       category: 'Madeiras'
@@ -834,7 +834,7 @@ const Products: React.FC = () => {
       id: '89',
       name: 'Poste 16/18 7 Mt',
       description: 'Poste de madeira 16 á 18 de diâmetro com 7 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 424.99,
       weight: 8,
       category: 'Madeiras'
@@ -843,7 +843,7 @@ const Products: React.FC = () => {
       id: '90',
       name: 'Poste 18/20 7 Mt',
       description: 'Poste de madeira 18 á 20 de diâmetro com 7 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 649.99,
       weight: 8,
       category: 'Madeiras'
@@ -852,7 +852,7 @@ const Products: React.FC = () => {
       id: '91',
       name: 'Poste 20/22 7 Mt',
       description: 'Poste de madeira 20 á 22 de diâmetro com 7 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 819.99,
       weight: 8,
       category: 'Madeiras'
@@ -863,7 +863,7 @@ const Products: React.FC = () => {
       id: '92',
       name: 'Poste 08/10 8 Mt',
       description: 'Poste de madeira 08 á 10 de diâmetro com 8 M',
-      image: 'https://bolt.new/api/upload/files%2F6726089-1758826158854-Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
+      image: '/Mourão-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 249.99,
       weight: 8,
       category: 'Madeiras'
