@@ -559,7 +559,7 @@ const Products: React.FC = () => {
       description: 'Poste de madeira 06 á 08 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 54.99,
-      weight: 8,
+      weight: 12,
       category: 'Madeiras'
     },
     {
@@ -568,7 +568,7 @@ const Products: React.FC = () => {
       description: 'Poste de madeira 08 á 10 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 74.99,
-      weight: 8,
+      weight: 21,
       category: 'Madeiras'
     },
     {
@@ -577,7 +577,7 @@ const Products: React.FC = () => {
       description: 'Poste de madeira 10 á 12 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 99.99,
-      weight: 8,
+      weight: 48,
       category: 'Madeiras'
     },
     {
@@ -587,7 +587,7 @@ const Products: React.FC = () => {
       description: 'Poste de madeira 12 á 14 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 129.99,
-      weight: 8,
+      weight: 52,
       category: 'Madeiras'
     },
     {
@@ -596,7 +596,7 @@ const Products: React.FC = () => {
       description: 'Poste de madeira 14 á 16 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 169.99,
-      weight: 8,
+      weight: 66,
       category: 'Madeiras'
     },
     {
@@ -605,11 +605,11 @@ const Products: React.FC = () => {
       description: 'Poste de madeira 16 á 18 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
       price: 219.99,
-      weight: 8,
+      weight: 86,
       category: 'Madeiras'
     },
     {
-      id: '65',
+      id: '109',
       name: 'Poste 18/20 4 Mt',
       description: 'Poste de madeira 18 á 20 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
@@ -618,7 +618,7 @@ const Products: React.FC = () => {
       category: 'Madeiras'
     },
     {
-      id: '66',
+      id: '115',
       name: 'Poste 20/22 4 Mt',
       description: 'Poste de madeira 20 á 22 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
@@ -627,7 +627,7 @@ const Products: React.FC = () => {
       category: 'Madeiras'
     },
     {
-      id: '67',
+      id: '126',
       name: 'Poste 22/24 4 Mt',
       description: 'Poste de madeira 22 á 24 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
@@ -636,7 +636,7 @@ const Products: React.FC = () => {
       category: 'Madeiras'
     },
     {
-      id: '68',
+      id: '160',
       name: 'Poste 28/30 4 Mt',
       description: 'Poste de madeira 28 á 30 de diâmetro com 4 M',
       image: 'https://armazemdoeucalipto.com.br/wp-content/uploads/2023/10/Mourao-Poste-e-Vigade-eucalipto-tratado-2.webp',
